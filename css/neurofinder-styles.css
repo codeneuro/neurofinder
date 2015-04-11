@@ -1,0 +1,257 @@
+@font-face {
+  font-family: "AvenirNext";
+  src: url("../fonts/e9167238-3b3f-4813-a04a-a384394eed42.eot?#iefix");
+  src: url("../fonts/e9167238-3b3f-4813-a04a-a384394eed42.eot?#iefix") format("eot"), 
+  		 url("../fonts/1e9892c0-6927-4412-9874-1b82801ba47a.woff") format("woff"), 
+  		 url("../fonts/46cf1067-688d-4aab-b0f7-bd942af6efd8.ttf") format("truetype"), 
+  		 url("../fonts/52a192b1-bea5-4b48-879f-107f009b666f.svg#52a192b1-bea5-4b48-879f-107f009b666f") format("svg"); }
+
+@font-face {
+font-family: "Norwester";
+src: url("../fonts/norwester/norwester.eot") format("eot"), 
+		 url("../fonts/norwester.woff") format("woff"), 
+		 url("../fonts/norwester.ttf") format("truetype"), 
+		 url("../fonts/norwester.svg") format("svg"); }
+
+@font-face {
+font-family: "LeagueGothic";
+src: url("../fonts/leaguegothic/league-gothic-webfont.eot") format("eot"), 
+		 url("../fonts/leaguegothic/league-gothic-webfont.woff") format("woff"), 
+		 url("../fonts/leaguegothic/league-gothic-webfont.ttf") format("truetype"), 
+		 url("../fonts/leaguegothic/league-gothic-webfont.svg") format("svg"); }
+
+@font-face {
+font-family: "LeagueSpartan";
+src: url("../fonts/leaguespartan/leaguespartan-bold.eot") format("eot"), 
+		 url("../fonts/leaguespartan/leaguespartan-bold.woff") format("woff"), 
+		 url("../fonts/leaguespartan/leaguespartan-bold.ttf") format("truetype"), 
+		 url("../fonts/leaguespartan/leaguespartan-bold.svg") format("svg"); }
+
+
+
+body {
+	text-align: center;
+	background-color: #949494;
+	margin: 0px;
+}
+
+a {
+	color: #DA1C5C;
+	text-decoration: none;
+	transition: all .20s; 
+}
+
+a:hover {
+	color: #8A123A;
+}
+
+p {
+	font-family: "AvenirNext";
+	font-size: 18px;
+}
+
+h1 {
+	font-family: "HankenLight";
+	font-size: 36px;
+	font-weight: normal;
+	color: rgb(51,51,51);
+}
+
+h2 {
+	font-family: "HankenBook";
+	font-size: 28px;
+	font-weight: normal;
+	color: rgb(51,51,51);
+}
+
+h3 {
+	font-family: "HankenLight";
+	font-size: 19px;
+	font-weight: normal;
+	color: rgb(51,51,51);
+}
+
+h4 {
+	font-family: "HankenLight";
+	font-size: 22px;
+	font-weight: normal;
+	color: rgb(51,51,51);
+	margin-bottom: 20px;
+}
+
+h5 {
+	font-family: "Inconsolata";
+	font-size: 56px;
+	font-weight: 800;
+	color: rgb(51,51,51);
+}
+
+h6 {
+	font-family: "Inconsolata";
+	font-size: 30px;
+	color: rgb(51,51,51);
+	font-style: italic;
+}
+
+.hljs {
+	background: none;
+	font-weight: 600;
+	font-size: 14px;
+}
+
+.btn {
+	border: none;
+	font-family: "AvenirNext";
+	font-size: 18px;
+	color: inherit;
+	background: none;
+	cursor: pointer;
+	padding: 25px 80px;
+	display: inline-block;
+	letter-spacing: 1px;
+	font-weight: 700;
+	outline: none;
+	position: relative;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+.btn {
+	color: rgb(51,51,51);
+	background: rgb(255,255,255);
+	border-radius: 10px;
+	width: 170px;
+	height: 50px;
+	padding: 0;
+	margin-top: 0px;
+}
+
+.btn:active {
+	color: rgb(220,220,220);
+	background: rgb(130,130,130) !important;
+}
+
+.btn:hover {
+	background: rgb(170,170,170);
+}
+
+.title {
+	text-align: left;
+	margin-top: 22px;
+	margin-bottom: 6px;
+}
+
+.subtitle {
+	margin-top: -10px;
+	margin-bottom: 20px;
+}
+
+.bubble {
+	border-style: solid;
+	border-color: rgb(255,255,255);
+	border-width: 1px;
+	border-radius: 10px;
+	padding-left: 30px;
+	padding-right: 30px;
+	padding-bottom: 20px;
+	padding-top: 20px;
+	margin-top: 10px;
+}
+
+.bubble-side {
+	background-color: rgb(255,255,255);
+	border-radius: 40px;
+	margin-left: -250px;
+	padding-left: 250px;
+	padding-top: 10px;
+	margin-bottom: 10px;
+	padding-bottom: 3px;
+}
+
+.bubble-filled {
+	background-color: rgb(255,255,255);
+	border-radius: 40px;
+	margin-left: 20px;
+	margin-right: 20px;
+	padding-top: 6px;
+	padding-bottom: 6px;
+	padding-left: 30px;
+	padding-right: 30px;
+}
+
+.container {
+
+}
+
+.green {
+	background-color: #2BB673;
+	padding-bottom: 100px;
+	padding-top: 30px;
+}
+
+.gray {
+	border-top: 3px solid rgb(255,255,255);
+	background-color: #DDDDDD;
+	padding-top: 80px;
+	padding-bottom: 80px;
+}
+
+.dark-gray {
+	border-top: 3px solid rgb(255,255,255);
+	background-color: #949494;
+}
+
+.pink {
+	border-top: 3px solid rgb(255,255,255);
+	background-color: #CC9FAD;
+	padding-top: 40px;
+	padding-bottom: 80px;
+}
+
+.icon {
+	width: 125px;
+	padding-top: 10px;
+	margin-bottom: -10px;
+}
+
+.info-item {
+	margin-bottom: 26px;
+}
+
+.side-line {
+	border-radius: 3px 3px 3px 3px;
+  background: #CC9FAD;
+  height: 8px;
+  width: 350px;
+  margin-left: -205px;
+}
+
+#rois {
+	margin-left: auto;
+  margin-right: 0px;
+	width: 350px; 
+	height: 350px;
+	border-radius: 40px; 
+	background: url('../png/rois.png');
+	background-size: 350px 350px;
+}
+
+.icons {
+	text-align: right;
+	margin-top: 18px;
+}
+
+.sociallink {
+  margin-right: 19px;
+  border-bottom: none;
+  color: rgb(200,200,200);
+}
+
+.sociallink:hover {
+	color: rgb(80,80,80);
+};
+
+.sociallink:active {
+	color: rgb(40,40,40);
+};
