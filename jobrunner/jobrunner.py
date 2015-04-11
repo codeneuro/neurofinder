@@ -3,11 +3,20 @@ import pymongo
 from pymongo import MongoClient
 import boto
 import time
-
+import os
 
 def run_job():
     print "Connecting to MongoDB at MongoLab as user 'codeneurobot'"
-    mongo_client = MongoClient('mongodb://codeneurobot:synapsevectorodyssey2001@ds061711.mongolab.com:61711/codeneurohackathon')
+    mongo_connect_url = os.environ['MONGO_CONNECT_URL']
+    if not mongo_connect_url:
+        raise Exception("Mongo connect environment variable not set")
+    github_bot_username = os.environ['GITHUB_BOT_USERNAME']
+    if not github_bot_username:
+        raise Exception("Github bot username environment variable not set")
+    github_bot_pass = os.environ['GITHUB_BOT_PASS']
+    if not github_bot_pass:
+        raise Exception("Github bot password environment variable not set")
+    mongo_client = MongoClient(mongo_connect_url)
     print mongo_client
     codeneurohackathon = mongo_client.codeneurohackathon
     last_checked = codeneurohackathon.job_records.find_one({"type": "global_last_checked_record"})
@@ -20,7 +29,7 @@ def run_job():
     print "Last checked is now:"
     print last_checked
     print "Connecting to Github as user 'codeneurobot'"
-    gitbot = Github("codeneurobot", "synapsevectorodyssey2001")
+    gitbot = Github(github_bot_username, github_bot_pass)
     neurofinder = gitbot.get_repo('CodeNeuro/neurofinder')
     new_pull_requests = []
     repo_pull_requests = neurofinder.get_pulls()
