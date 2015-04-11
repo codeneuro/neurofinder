@@ -1,0 +1,29 @@
+.row
+    .column-12
+        h3
+            | Current Standing
+
+.row
+    .column-12
+        for submission in this.collection.models
+            .row
+                | #{submission}
+
+
+        table
+            thead
+                tr
+                    th
+
+                    th
+
+            tbody
+                tr
+                    td
+                        img()
+
+                    td
+                        a(href="https://github.com/CodeNeuro/neurofinder")
+
+
+
