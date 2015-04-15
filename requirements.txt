@@ -2,3 +2,4 @@ PyGithub
 boto
 pymongo
 thunder
+pytest
