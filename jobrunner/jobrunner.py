@@ -68,26 +68,26 @@ def execute_job(pull_req):
     return executed, msg
 
 
-def check_pull_req(pull_req, db, field, func):
+def check_pull_req(pull_req, db, status, func):
 
     id = pull_req.id
     login = pull_req.user.login
     entry = db.pull_requests.find_one({"id": id})
 
     if entry:
-        state = entry[field]
+        state = entry[status]
         if not state:
             result, msg = func(pull_req)
             if result:
                 timestamp = int(time.mktime(time.gmtime()))
-                db.pull_requests.update_one({"id": id}, {"$set": {field: True}})
-                db.pull_requests.update_one({"id": id}, {"$set": {field + "_at": timestamp}})
+                db.pull_requests.update_one({"id": id}, {"$set": {status: True}})
+                db.pull_requests.update_one({"id": id}, {"$set": {status + "_at": timestamp}})
             # pull_req.create_issue_comment(msg)
             print("Sending msg to github: %s" % msg)
             timestamp = int(time.mktime(time.gmtime()))
             db.pull_requests.update_one({"id": id}, {"$set": {"last_checked": timestamp}})
         else:
-            print("Already %s pull request %s from user %s" % (field, id, login))
+            print("Already %s pull request %s from user %s" % (status, id, login))
     else:
         raise Exception("Cannot find entry in database")
 
