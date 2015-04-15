@@ -4,6 +4,13 @@
 
 Benchmarking platform and competition for source extraction from imaging data
 
-View notebooks:
+Includes a suite for validating and executing pull requests as jobs, and storing the results in a Mongo database
+
+To run the unit tests
+- Install the requirements with `pip install -r /path/to/neurofinder/requirements.txt`
+- Call `py.test` inside the base neurofinder directory
+
+
+View example analysis notebooks:
 - Loading images and sources for [comparison](http://nbviewer.ipython.org/github/codeneuro/neurofinder/blob/master/notebooks/creating-images-and-sources.ipynb)
 - Creating images and sources for [testing](http://nbviewer.ipython.org/github/codeneuro/neurofinder/blob/master/notebooks/loading-images-and-sources.ipynb)
