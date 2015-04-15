@@ -71,26 +71,26 @@ class JobRunner(object):
 
         for pull_req in pull_requests:
 
-            pr = PullRequest(pull_req, self.db.pull_requests)
-            pr.ismergeable()
-            pr.isentry()
+            job = Job(pull_req, self.db.pull_requests)
+            job.ismergeable()
+            job.isentry()
 
-            if pr.isrecent() or force:
+            if job.isrecent() or force:
 
                 if "validate" in action:
-                    print("Validating pull request %s from user %s" % (pr.id, pr.login))
-                    pr.clear_status("validated")
-                    pr.update_status("validated")
+                    print("Validating pull request %s from user %s" % (job.id, job.login))
+                    job.clear_status("validated")
+                    job.update_status("validated")
                 if "execute" in action:
-                    print("Executing pull request %s from user %s" % (pr.id, pr.login))
-                    pr.clear_status("executed")
-                    pr.update_status("executed")
+                    print("Executing pull request %s from user %s" % (job.id, job.login))
+                    job.clear_status("executed")
+                    job.update_status("executed")
 
             else:
-                print("Skipping pull request %s from user %s" % (pr.id, pr.login))
+                print("Skipping pull request %s from user %s" % (job.id, job.login))
 
 
-class PullRequest(object):
+class Job(object):
 
     def __init__(self, pull_req, collection):
         self.pull_req = pull_req
