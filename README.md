@@ -4,7 +4,7 @@
 
 Benchmarking platform and competition for source extraction from imaging data
 
-Includes a suite for validating and executing pull requests as jobs, and storing the results in a Mongo database
+Includes a suite for validating and executing pull requests, storing the status of pull requests in a Mongo database, and outputting the results to a leaderboard
 
 To run the unit tests
 - Install the requirements with `pip install -r /path/to/neurofinder/requirements.txt`
