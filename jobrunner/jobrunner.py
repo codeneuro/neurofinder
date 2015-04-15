@@ -244,6 +244,6 @@ class Job(object):
         return validated, msg
 
 if __name__ == '__main__':
-    job = JobRunner()
-    job.reset()
-    job.run(True, ["validate", "execute"])
+    runner = JobRunner()
+    runner.reset()
+    runner.run(True, ["validate", "execute"])
