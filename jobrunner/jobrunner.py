@@ -59,7 +59,6 @@ def execute_job(pull_req):
     from thunder import ThunderContext
     tsc = ThunderContext.start(master="local", appName="neurofinder")
     data = tsc.loadExample('mouse-images')
-    foo = data.values().first()
 
     if executed:
         msg = "Executed successful"
