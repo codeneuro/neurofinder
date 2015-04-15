@@ -1,5 +1,5 @@
 import pytest
-from jobrunner.jobrunner import JobRunner, Job
+from neurofinder import JobRunner, Job
 from github.PullRequest import PullRequest
 
 

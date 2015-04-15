@@ -1,4 +1,4 @@
-from jobrunner.jobrunner import JobRunner
+from neurofinder import JobRunner
 from pymongo.database import Database
 from github.Repository import Repository
 
