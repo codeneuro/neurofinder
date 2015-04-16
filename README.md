@@ -9,7 +9,7 @@ Benchmarking platform and competition for source extraction from imaging data
 2. Fork this repository
 3. Create a branch
 4. Add a folder inside `neurofinder/submissions` with the structure described below
-5. Submit your branch as a pull request and wait for your algorithm to be validated and run!
+5. Submit your branch as a pull request and wait for your algorithm to be validated and run! Jobs will be automatically run every few days on a dynamically-created Spark cluster, so be patient with your submissions. You will be notified of job status via comments on your pull request.
 
 Submission structure:
 ```
