@@ -15,6 +15,9 @@ neurofinder/submissions/your-user-name/requirements.txt
 neurofinder/submissions/your-user-name/run/run.py
 neurofinder/submissions/your-user-name/run/__init__.py
 ```
+5. Submit your branch as a pull request and wait for your algorithm to be validated and run!
+
+## more info
 The file `info.json` should contain the following fields
 ```
 {
@@ -28,8 +31,6 @@ The file `requirements.txt` can contain any neccessary dependencies, which will 
 pip install -r requirements.txt
 ```
 See the existing folder `neurofinder/submissions/example-user/` for an example submission
-
-5. Submit your branch as a pull request and wait for your algorithm to be validated and run!
 
 ## examples
 View these analysis notebooks for examples of running source extraction algorithms:
