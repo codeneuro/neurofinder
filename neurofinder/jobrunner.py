@@ -74,19 +74,20 @@ class JobRunner(object):
             job.isentry()
 
             if job.isrecent() or force:
+                job.clear_status("validated")
+                job.clear_status("executed")
 
-                if "validate" in action:
-                    print("Validating pull request %s from user %s" % (job.id, job.login))
-                    job.clear_status("validated")
-                    job.update_status("validated")
-                if "execute" in action:
-                    print("Executing pull request %s from user %s" % (job.id, job.login))
-                    job.clear_status("executed")
-                    job.update_status("executed")
+            if "validate" in action and not job.check_status("validated"):
+                job.validate()
 
-            else:
-                print("Skipping pull request %s from user %s" % (job.id, job.login))
+            if "execute" in action and job.check_status("validated") and not job.check_status("executed"):
+                metrics, info = job.execute()
+                summary = job.summarize()
+                summary['metrics'] = metrics
+                summary['algorithm'] = info['algorithm']
+                summary['name'] = info['name']
 
+            job.update_last_checked()
 
 if __name__ == '__main__':
     runner = JobRunner()
