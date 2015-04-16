@@ -85,7 +85,9 @@ class JobRunner(object):
                 summary = job.summarize()
                 summary['metrics'] = metrics
                 summary['algorithm'] = info['algorithm']
-                summary['name'] = info['name']
+                summary['description'] = info['description']
+
+                print(summary)
 
             job.update_last_checked()
 

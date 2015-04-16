@@ -44,6 +44,13 @@ class Job(object):
         """
         return self.pull_req.head.repo.clone_url
 
+    @property
+    def branch(self):
+        """
+        Pull request branch name
+        """
+        return self.pull_req.head.ref
+
     def ismergeable(self):
         """
         Check if the pull request is mergeable and post a comment if not
@@ -100,7 +107,7 @@ class Job(object):
         """
         Send a message to the github comment
         """
-        # self.pull_req.create_issue_comment(msg)
+        #self.pull_req.create_issue_comment(msg)
         print("Sending msg to github: %s" % msg)
 
     def update_last_checked(self):
@@ -124,17 +131,36 @@ class Job(object):
         d['email'] = self.pull_req.user.email
         d['timestamp'] = timestamp
 
-    def execute(self):
+        return d
 
-        print("Executing pull request %s from user %s" % (self.id, self.login))
-
+    def clone(self):
+        """
+        Clone the repository given for this pull request
+        """
         d = tempfile.mkdtemp()
 
         subprocess.call(["git", "clone", self.url, d])
-        sys.path.append(d)
-        run = importlib.import_module('run.run')
-        f = open(d + '/submissions/%s/info.json' % self.login, 'r')
-        info = json.load(f.read())
+        os.chdir(d)
+        subprocess.call(["git", "checkout", "-b", self.branch, "origin/%s" % self.branch])
+
+        base = d + '/submissions/%s/' % self.login
+        module = base + 'run/'
+
+        return base, module
+
+    def execute(self):
+        """
+        Execute this pull request
+        """
+        print("Executing pull request %s from user %s" % (self.id, self.login))
+
+        base, module = self.clone()
+
+        f = open(base + 'info.json', 'r')
+        info = json.loads(f.read())
+
+        sys.path.append(module)
+        run = importlib.import_module('run')
 
         spark = os.getenv('SPARK_HOME')
         if spark is None or spark == '':
@@ -147,9 +173,9 @@ class Job(object):
         data, ts, truth = tsc.makeExample('sources', centers=10, noise=1.0, returnParams=True)
 
         try:
-            result = run(data)
-            print(truth.similarity(result))
-            msg = "Executed successful"
+            sources = run.run(data)
+            result = truth.similarity(sources)
+            msg = "Execution successful"
             self.update_status("executed")
         except:
             result = None
@@ -160,14 +186,12 @@ class Job(object):
         return result, info
 
     def validate(self):
-
+        """
+        Validate this pull request
+        """
         print("Validating pull request %s from user %s" % (self.id, self.login))
 
-        d = tempfile.mkdtemp()
-
-        subprocess.call(["git", "clone", self.url, d])
-
-        base = d + '/submissions/%s/' % self.login
+        base, module = self.clone()
 
         validated = True
         errors = ""
@@ -181,17 +205,22 @@ class Job(object):
         else:
             try:
                 f = open(base + 'info.json', 'r')
-                json.load(f.read())
+                json.loads(f.read())
             except:
+                validated = False
                 errors += "Cannot read info.json file\n"
-        if not os.path.isfile(base + 'run.py'):
+        if not os.path.isfile(module + 'run.py'):
             validated = False
             errors += "Missing run.py\n"
+        if not os.path.isfile(module + '__init__.py'):
+            validated = False
+            errors += "Missing __init__.py\n"
         else:
             try:
-                sys.path.append(d)
-                importlib.import_module('run.run')
+                sys.path.append(module)
+                importlib.import_module('run')
             except:
+                validated = False
                 errors += "Cannot import run from run.py"
 
         if validated:
