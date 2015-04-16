@@ -6,8 +6,11 @@ Benchmarking platform and competition for source extraction from imaging data
 
 ## submit an algorithm (currently in beta testing)
 1) Sign up for an account on github (if you don't already have one)
+
 2) Fork this repository
+
 3) Create a branch
+
 4) Add a folder inside `neurofinder/submissions` with the following structure:
 ```
 neurofinder/submissions/info.json
@@ -25,6 +28,7 @@ The file `info.json` should contain the following fields
 The file `run.py` should contain a function `run` that accepts as input a Thunder `Images` object and returns a `SourceModel`
 The file `requirements.txt` can contain any neccessary dependencies, which will be installed using `pip install -r requirements.txt`
 See the existing folder `neurofinder/submissions/example` for an example submission
+
 5) Submit your branch as a pull request and wait for your algorithm to be validated and run!
 
 ## examples
