@@ -23,8 +23,11 @@ The file `info.json` should contain the following fields
 }
 ```
 The file `run.py` should contain a function `run` that accepts as input a Thunder `Images` object and returns a `SourceModel`
-The file `requirements.txt` can contain any neccessary dependencies, which will be installed using `pip install -r requirements.txt`
-See the existing folder `neurofinder/submissions/example` for an example submission
+The file `requirements.txt` can contain any neccessary dependencies, which will be installed using
+```
+pip install -r requirements.txt
+```
+See the existing folder `neurofinder/submissions/example-user/` for an example submission
 
 5. Submit your branch as a pull request and wait for your algorithm to be validated and run!
 
