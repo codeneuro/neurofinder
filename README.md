@@ -10,10 +10,10 @@ Benchmarking platform and competition for source extraction from imaging data
 3. Create a branch
 4. Add a folder inside `neurofinder/submissions` with the following structure:
 ```
-neurofinder/submissions/info.json
-neurofinder/submissions/requirements.txt
-neurofinder/submissions/run/run.py
-neurofinder/submissions/run/__init__.py
+neurofinder/submissions/your-user-name/info.json
+neurofinder/submissions/your-user-name/requirements.txt
+neurofinder/submissions/your-user-name/run/run.py
+neurofinder/submissions/your-user-name/run/__init__.py
 ```
 The file `info.json` should contain the following fields
 ```
