@@ -14,7 +14,6 @@ Benchmarking platform and competition for source extraction from imaging data
 Submission structure:
 ```
 neurofinder/submissions/your-user-name/info.json
-neurofinder/submissions/your-user-name/requirements.txt
 neurofinder/submissions/your-user-name/run/run.py
 neurofinder/submissions/your-user-name/run/__init__.py
 ```
@@ -25,12 +24,10 @@ The file `info.json` should contain the following fields
     "description": "description of your algorithm"
 }
 ```
-The file `run.py` should contain a function `run` that accepts as input a Thunder `Images` object and returns a `SourceModel`.
-The file `requirements.txt` can contain any neccessary dependencies, which will be installed using
-```
-pip install -r requirements.txt
-```
-See the existing folder `neurofinder/submissions/example-user/` for an example submission
+The file `run.py` should contain a function `run` that accepts as input a Thunder `Images` object and returns a `SourceModel`. See the existing folder `neurofinder/submissions/example-user/` for an example submission
+
+## environment
+(Fill in description of running environment)
 
 ## examples
 View these analysis notebooks for examples of running source extraction algorithms:
