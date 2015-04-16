@@ -25,6 +25,7 @@ The file `info.json` should contain the following fields
 }
 ```
 The file `run.py` should contain a function `run` that accepts as input a Thunder `Images` object and returns a `SourceModel`. See the existing folder `neurofinder/submissions/example-user/` for an example submission
+
 Jobs will be automatically run every few days on a dynamically-created Spark cluster, so be patient with your submissions. You will be notified of job status via comments on your pull request.
 
 
