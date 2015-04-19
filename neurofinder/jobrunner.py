@@ -135,6 +135,6 @@ class JobRunner(object):
 
 
 if __name__ == '__main__':
-    runner = JobRunner(dry=True)
+    runner = JobRunner(dry=False)
     runner.reset()
     runner.run(True, ["validate", "execute"])

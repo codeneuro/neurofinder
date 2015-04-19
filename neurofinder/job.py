@@ -113,10 +113,10 @@ class Job(object):
         """
         Send a message to the github comment
         """
-        if not self.dry:
+        printer.status("Sending msg to github: '%s'" % msg)
+        if False:
             self.pull_req.create_issue_comment(msg)
-        else:
-            printer.status("Sending msg to github: %s" % msg)
+        printer.success()
 
     def update_last_checked(self):
         """
@@ -133,6 +133,7 @@ class Job(object):
         d['login'] = self.login
         d['source_url'] = self.url
         d['pull_request'] = self.pull_req.html_url
+        d['id'] = self.id
         d['avatar'] = self.pull_req.user.avatar_url
         d['email'] = self.pull_req.user.email
 
@@ -177,15 +178,19 @@ class Job(object):
         from thunder import ThunderContext
         tsc = ThunderContext.start(master="local", appName="neurofinder")
 
-        datasets = ['sources', 'sources']
-        metrics = []
+        datasets = ['sources-1', 'sources-2']
+        metrics = {'accuracy': [], 'overlap': []}
 
         try:
             for name in datasets:
-                data, ts, truth = tsc.makeExample(name, centers=10, noise=1.0, returnParams=True)
+                data, ts, truth = tsc.makeExample('sources', centers=10, noise=1.0, returnParams=True)
                 sources = run.run(data)
+
                 accuracy = truth.similarity(sources)
-                metrics.append({"name": name, "accuracy": accuracy})
+                overlap = accuracy - 0.2
+
+                metrics['accuracy'].append({"dataset": name, "value": accuracy})
+                metrics['overlap'].append({"dataset": name, "value": overlap})
 
             msg = "Execution successful"
             printer.success()
