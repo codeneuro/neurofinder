@@ -24,13 +24,23 @@ The file `info.json` should contain the following fields
     "description": "description of your algorithm"
 }
 ```
-The file `run.py` should contain a function `run` that accepts as input a Thunder `Images` object and returns a `SourceModel`. See the existing folder `neurofinder/submissions/example-user/` for an example submission
+The file `run.py` should contain a function `run` that accepts as input a Thunder `Images` object and returns a `SourceModel`, and uses Thunder's Source Extraction API to implement the algorithm. The API encourages flexibility modulartiy, allowing for a variety of algorithms. See the existing folder `neurofinder/submissions/example-user/` for an example submission.
 
 Jobs will be automatically run every few days on a dynamically-created Spark cluster, so be patient with your submissions. You will be notified of job status via comments on your pull request.
 
 
 ## environment
-(Fill in description of running environment)
+All jobs will be run on an Amazon EC2 cluster in a standardized environment, with the following specs and included libraries:
+
+- Python v2.7.6
+- Spark v1.3.0
+- Numpy v1.9.2
+- Scipy v0.15.1
+- Scikit Learn v0.16.1
+- Scikit Image v0.10.1
+- Matplotlib v1.4.3
+
+as well as several additional libraries included with Anaconda. You can develop and test your code in exactly this environment by following [these instructions](http://thunder-project.org/thunder/docs/install_ec2.html) to launch a cluster on EC2.
 
 ## examples
 View these analysis notebooks for examples of running source extraction algorithms:
