@@ -6,6 +6,8 @@ import sys
 import json
 import importlib
 
+from utils import quiet, printer
+
 
 class Job(object):
     """
@@ -139,9 +141,10 @@ class Job(object):
         """
         d = tempfile.mkdtemp()
 
-        subprocess.call(["git", "clone", self.url, d])
-        os.chdir(d)
-        subprocess.call(["git", "checkout", "-b", self.branch, "origin/%s" % self.branch])
+        with quiet():
+            subprocess.call(["git", "clone", self.url, d])
+            os.chdir(d)
+            subprocess.call(["git", "checkout", "-b", self.branch, "origin/%s" % self.branch])
 
         base = d + '/submissions/%s/' % self.login
         module = base + 'run/'
@@ -152,7 +155,7 @@ class Job(object):
         """
         Execute this pull request
         """
-        print("Executing pull request %s from user %s" % (self.id, self.login))
+        printer.status("Executing pull request %s from user %s" % (self.id, self.login))
 
         base, module = self.clone()
 
@@ -189,7 +192,7 @@ class Job(object):
         """
         Validate this pull request
         """
-        print("Validating pull request %s from user %s" % (self.id, self.login))
+        printer.status("Validating pull request %s from user %s" % (self.id, self.login))
 
         base, module = self.clone()
 
@@ -225,8 +228,10 @@ class Job(object):
 
         if validated:
             msg = "Validation successful"
+            printer.success()
             self.update_status("validated")
         else:
             msg = "Validation failed:\n" + errors
+            printer.error()
 
         self.send_message(msg)

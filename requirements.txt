@@ -3,3 +3,4 @@ boto
 pymongo
 thunder
 pytest
+termcolor

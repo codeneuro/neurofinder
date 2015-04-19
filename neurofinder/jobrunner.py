@@ -3,6 +3,7 @@ from pymongo import MongoClient
 import time
 import os
 from neurofinder import Job
+from neurofinder.utils import printer
 
 
 class JobRunner(object):
@@ -46,6 +47,8 @@ class JobRunner(object):
             new_last_checked = {"type": "global_last_checked_record", "timestamp": timestamp}
             self.db.job_records.insert(new_last_checked)
 
+        printer.status("Sending results to S3")
+        printer.success()
     def run(self, force=False, action=None):
         """
         Run a set of pull requests.
