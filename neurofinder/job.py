@@ -5,6 +5,7 @@ import os
 import sys
 import json
 import importlib
+from numpy import mean, random
 
 from utils import quiet, printer
 
@@ -178,7 +179,7 @@ class Job(object):
         from thunder import ThunderContext
         tsc = ThunderContext.start(master="local", appName="neurofinder")
 
-        datasets = ['sources-1', 'sources-2']
+        datasets = ['sources-1', 'sources-2', 'sources-3', 'sources-4', 'sources-5', 'sources-6', 'sources-7']
         metrics = {'accuracy': [], 'overlap': []}
 
         try:
@@ -187,10 +188,14 @@ class Job(object):
                 sources = run.run(data)
 
                 accuracy = truth.similarity(sources)
-                overlap = accuracy - 0.2
+                overlap = accuracy + random.randn() * 0.1
 
                 metrics['accuracy'].append({"dataset": name, "value": accuracy})
                 metrics['overlap'].append({"dataset": name, "value": overlap})
+
+            for k in metrics.keys():
+                overall = mean([v['value'] for v in metrics['accuracy']])
+                metrics[k].append({"dataset": "overall", "value": overall})
 
             msg = "Execution successful"
             printer.success()
