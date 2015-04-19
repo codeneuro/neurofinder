@@ -30,7 +30,7 @@ Jobs will be automatically run every few days on a dynamically-created Spark clu
 
 
 ## environment
-All jobs will be run on an Amazon EC2 cluster in a standardized environment, with the following specs and included libraries:
+All jobs will be run on an Amazon EC2 cluster in a standardized environment running Thunder, with the following specs and included libraries:
 
 - Python v2.7.6
 - Spark v1.3.0
