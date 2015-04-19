@@ -13,7 +13,8 @@ var LeaderboardView = AmpersandView.extend({
     autoRender: true,
 
     events: {
-        'click tr.overview': 'toggleRowDetails'
+        'click tr.overview': 'toggleRowDetails',
+        'hover .number': 'hoverDataset'
     },
 
     toggleRowDetails: function(e) {
@@ -33,6 +34,11 @@ var LeaderboardView = AmpersandView.extend({
             $label.css({opacity: 0});
         }
         $('tr.details[data-identifier="' + $target.data('identifier') + '"]').toggle();
+    },
+
+    hoverDataset: function(e) {
+        var $target = $(e.target).closest('.number');
+        console.log($target.attr('class'));
     }
 
 

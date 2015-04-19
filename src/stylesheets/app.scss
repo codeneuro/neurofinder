@@ -150,6 +150,14 @@ table {
                 }
             }
 
+            &.submission-image {
+                text-align: left;
+                vertical-align: top;
+                padding-left: 15px;
+
+                height: 75px;
+            }
+
             &.number {
                 font-family: monospace;
                 text-align: center;
