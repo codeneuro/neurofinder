@@ -47,8 +47,8 @@ View these analysis notebooks for examples of running source extraction algorith
 - Loading images and sources for [comparison](http://nbviewer.ipython.org/github/codeneuro/neurofinder/blob/master/notebooks/creating-images-and-sources.ipynb)
 - Creating images and sources for [testing](http://nbviewer.ipython.org/github/codeneuro/neurofinder/blob/master/notebooks/loading-images-and-sources.ipynb)
 
-## job runner unit tests
-This repo includes a suite for validating and executing pull requests, storing the status of pull requests in a Mongo database, and outputting the results to a leaderboard. To run the unit tests for this suite:
+## about the job runner
+This repo includes a suite for validating and executing pull requests, storing the status of pull requests in a Mongo database, and outputting the results to a leaderboard. To run its unit tests:
 - Install the requirements with `pip install -r /path/to/neurofinder/requirements.txt`
 - Call `py.test` inside the base neurofinder directory
 
