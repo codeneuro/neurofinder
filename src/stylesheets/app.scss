@@ -10,9 +10,12 @@
 $header-height: 60px;
 .header-container {
 
+    top: 0;
+
     
     width: 100%;
-    background-color: black;
+    background-color: #1EB771;
+    color: black;
 
     position: fixed;
     height: $header-height;
@@ -26,12 +29,173 @@ $header-height: 60px;
     z-index: 1000;
 }
 
+h1,h2,h3,h4,h5,h6 {
+    font-family: "HankenBook";
+    // font-weight: bold;
+}
+
 .mobile {
   display: none;
 }
 
+.hidden {
+    display: none;
+}
 
-@import "views/mobile-content";
-@import "views/desktop-content";
+.content {
+    margin-top: 1.5 * $header-height;
+}
+
+section {
+    margin-top: 60px;
+}
+
+table {
+    width: 100%;
+    margin-top: 60px;
+
+    .left {
+        text-align: left;
+    }
+
+    .right {
+        text-align: right;
+    }
+
+    .pad-left {
+        padding-left: 15px;
+    }
+
+    .pad-right  {
+        padding-right: 15px;
+    }
+
+    .pad-bottom {
+        padding-bottom: 10px;
+    }
+
+    tr.details {
+        margin-top: 0;
+        td {
+            // padding: 0;
+            text-align: right;
+            text-transform: uppercase;
+
+            &.metric-label {
+                padding-right: 15px;
+            }
+        }
+    }
+
+    thead {
+
+        .dataset-container {
+            // border-bottom: solid 1px #979797;
+            margin-bottom: 10px;
+        }
+
+        .dataset {
+            padding-top: 10px;
+            font-size: 12px;
+
+            &.overall {
+                font-weight: bold;
+            }
+
+        }
+
+        border-bottom: solid 2px #979797;
+    }
+
+    tbody {
+        // border: solid 1px #979797;
+        text-align: center;
+
+
+        tr {
+            cursor: pointer;
+            &:hover.overview {
+                background-color: darken(#fff, 10%);
+            }
+
+            &.details {
+                display: none;
+            }
+        }
+
+        // .metric-label {
+        //     width: 200px;
+        // }
+
+        td {
+
+            height: 75px;
+            // padding-top: 10px;
+            // padding-bottom: 10px;
+            vertical-align: middle;
+            // padding-left: 10px;
+            // padding-right: 10px;
+
+            &.avatar {
+                text-align: left;
+                padding-left: 10px;
+                width: 50px;
+                padding-right: 0;
+                img {
+                    vertical-align: middle;
+                    width: 45px;
+                    height: auto;
+                    border-radius: 3px;
+                    
+                }
+            }
+
+            &.number {
+                font-family: monospace;
+                text-align: center;
+                width: 75px;
+                border: solid 1px white;
+            }
+
+
+            &.details {
+                padding-right: 15px;
+                padding-left: 15px;
+                text-align: left;
+
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+            }
+
+
+            .url {
+                color: blue;
+                text-decoration: underline;
+                max-width: 75%;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+                a {
+                    color: blue;
+                }
+
+
+            }
+
+            .metric-label {
+                opacity: 0;
+                text-align: right;
+                text-transform: uppercase;
+                padding-right: 15px;
+            }
+
+            &.table-container {
+                padding: 0;
+            }
+        }
+    }
+}
+
 @import "mobile";
 

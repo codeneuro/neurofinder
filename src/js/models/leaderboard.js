@@ -6,5 +6,5 @@ var Submission = require('./submission');
 
 module.exports = Collection.extend({
     model: Submission,
-    url: '/data/leaderboard.json'
+    url: 'https://s3.amazonaws.com/code.neuro/neurofinder/results.json'
 });

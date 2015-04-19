@@ -1,19 +1,13 @@
 
+@font-face{
+    font-family:"AvenirNext-UltraLight";
+    src:url("/fonts/17c55b27-e9ab-43cd-b948-d49f97480d68.eot?#iefix");
+    src:url("/fonts/17c55b27-e9ab-43cd-b948-d49f97480d68.eot?#iefix") format("eot"),url("/fonts/fa19948e-5e38-4909-b31e-41acd170d6f2.woff") format("woff"),url("/fonts/6de0ce4d-9278-467b-b96f-c1f5f0a4c375.ttf") format("truetype"),url("/fonts/9fd4ea0c-b19a-4b21-9fdf-37045707dd78.svg#9fd4ea0c-b19a-4b21-9fdf-37045707dd78") format("svg");
+}
 
-/* #Font-Face
-================================================== */
-/*  This is the proper syntax for an @font-face file
-        Just create a "fonts" folder at the root,
-        copy your FontName into code below and remove
-        comment brackets */
 
-/*  @font-face {
-        font-family: 'FontName';
-        src: url('../fonts/FontName.eot');
-        src: url('../fonts/FontName.eot?iefix') format('eot'),
-             url('../fonts/FontName.woff') format('woff'),
-             url('../fonts/FontName.ttf') format('truetype'),
-             url('../fonts/FontName.svg#webfontZam02nTh') format('svg');
-        font-weight: normal;
-        font-style: normal; }
-*/
+@font-face{
+    font-family:"AvenirNext";
+    src:url("/fonts/e9167238-3b3f-4813-a04a-a384394eed42.eot?#iefix");
+    src:url("/fonts/e9167238-3b3f-4813-a04a-a384394eed42.eot?#iefix") format("eot"),url("/fonts/1e9892c0-6927-4412-9874-1b82801ba47a.woff") format("woff"),url("/fonts/46cf1067-688d-4aab-b0f7-bd942af6efd8.ttf") format("truetype"),url("/fonts/52a192b1-bea5-4b48-879f-107f009b666f.svg#52a192b1-bea5-4b48-879f-107f009b666f") format("svg");
+}

@@ -1,29 +1,81 @@
-.row
-    .column-12
-        h3
-            | Current Standing
+.leaderboard-container
 
-.row
-    .column-12
-        for submission in this.collection.models
-            .row
-                | #{submission}
+    .row
+        .column-12
+            h3
+                | Current Standing
 
 
-        table
-            thead
-                tr
-                    th
+    - var datasets = ['sources-1', 'sources-2', 'sources-3', 'sources-4', 'sources-5', 'sources-6', 'sources-7']
+    .row
+        .column-12
 
-                    th
+            table
+                thead
+                    tr
+                        th(colspan="3")
+                        th(colspan="#{datasets.length + 1}").dataset-container
+                            small
+                                | DATASETS
 
-            tbody
-                tr
-                    td
-                        img()
+                    tr
+                        th
+                        th(colspan="2").left.pad-left.pad-bottom
+                            | Submissions sorted by overall accuracy
 
-                    td
-                        a(href="https://github.com/CodeNeuro/neurofinder")
+                        for dataset in datasets
+                            th.dataset
+                                | #{dataset}
+                        th.dataset.overall
+                            | Overall
 
 
 
+
+                tbody
+                    for submission in this.collection.models
+                        tr.overview(data-identifier="#{submission.id}")
+                            td.avatar.desktop
+                                img(src="#{submission.avatar}")
+                            td.details
+                                h5
+                                    | #{submission.algorithm} 
+                                    small
+                                        | | #{submission.description}
+
+
+                                .url
+                                    a(href="#{submission.pull_request}").pull-request
+                                        | #{submission.pull_request}
+
+
+                            td
+                                .metric-label
+                                    | Accuracy
+
+                            for dataset in datasets
+                                - var val = submission.getMetricValueForDataset('accuracy', dataset);
+                                td(style="background-color:#{this.utils.getColorFromScore(val)}; color: #{val > 0.5 ? 'white' : 'black'};").number
+                                    | #{this.utils.preciseRound(val, 2)}
+
+
+                            - var val = submission.getMetricValueForDataset('accuracy', 'overall');
+                            td(style="background-color:#{this.utils.getColorFromScore(val)}; color: #{val > 0.5 ? 'white' : 'black'};").number
+                                | #{this.utils.preciseRound(val, 2)}
+                            
+
+                        for metric, metricName in this._.omit(submission.metrics, 'accuracy')
+
+
+                            tr(data-identifier="#{submission.id}").details
+                                td(colspan="3").metric-label
+                                    | #{metricName}
+
+                                for dataset in datasets
+                                    - var val = submission.getMetricValueForDataset(metricName, dataset);
+                                    td(style="background-color:#{this.utils.getColorFromScore(val)}; color: #{val > 0.5 ? 'white' : 'black'};").number
+                                        | #{this.utils.preciseRound(val, 2)}
+
+                                - var val = submission.getMetricValueForDataset(metricName, 'overall');
+                                td(style="background-color:#{this.utils.getColorFromScore(val)}; color: #{val > 0.5 ? 'white' : 'black'};").number
+                                    | #{this.utils.preciseRound(val, 2)}
