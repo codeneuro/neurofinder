@@ -25,7 +25,13 @@ var LeaderboardView = AmpersandView.extend({
         }
         console.log($target);
 
-        $target.find('.metric-label').toggle();
+        var $label = $target.find('.metric-label');//.toggle();
+        var opacity = $label.css('opacity');
+        if(opacity === '0') {
+            $label.css({opacity: 1});
+        } else {
+            $label.css({opacity: 0});
+        }
         $('tr.details[data-identifier="' + $target.data('identifier') + '"]').toggle();
     }
 
