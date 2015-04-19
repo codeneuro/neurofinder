@@ -20,10 +20,14 @@ class Job(object):
 
     collection : pymongo.collection.Collection
         A mongo collection for storing pull request status
+
+    dry : boolean, optional, default = False
+        Will run as a dry run if True, skipping messages to github
     """
-    def __init__(self, pull_req, collection):
+    def __init__(self, pull_req, collection, dry=False):
         self.pull_req = pull_req
         self.collection = collection
+        self.dry = dry
 
     @property
     def id(self):
@@ -109,8 +113,10 @@ class Job(object):
         """
         Send a message to the github comment
         """
-        #self.pull_req.create_issue_comment(msg)
-        print("Sending msg to github: %s" % msg)
+        if not self.dry:
+            self.pull_req.create_issue_comment(msg)
+        else:
+            printer.status("Sending msg to github: %s" % msg)
 
     def update_last_checked(self):
         """
@@ -123,15 +129,12 @@ class Job(object):
         """
         Summarize the submission by parsing various fields
         """
-        timestamp = int(time.mktime(time.gmtime()))
-
         d = dict()
         d['login'] = self.login
         d['source_url'] = self.url
         d['pull_request'] = self.pull_req.html_url
         d['avatar'] = self.pull_req.user.avatar_url
         d['email'] = self.pull_req.user.email
-        d['timestamp'] = timestamp
 
         return d
 
@@ -173,20 +176,29 @@ class Job(object):
 
         from thunder import ThunderContext
         tsc = ThunderContext.start(master="local", appName="neurofinder")
-        data, ts, truth = tsc.makeExample('sources', centers=10, noise=1.0, returnParams=True)
+
+        datasets = ['sources', 'sources']
+        metrics = []
 
         try:
-            sources = run.run(data)
-            result = truth.similarity(sources)
+            for name in datasets:
+                data, ts, truth = tsc.makeExample(name, centers=10, noise=1.0, returnParams=True)
+                sources = run.run(data)
+                accuracy = truth.similarity(sources)
+                metrics.append({"name": name, "accuracy": accuracy})
+
             msg = "Execution successful"
+            printer.success()
             self.update_status("executed")
+
         except:
-            result = None
+            metrics = None
             msg = "Execution failed"
+            printer.error()
 
         self.send_message(msg)
 
-        return result, info
+        return metrics, info
 
     def validate(self):
         """
@@ -209,9 +221,13 @@ class Job(object):
             try:
                 f = open(base + 'info.json', 'r')
                 json.loads(f.read())
-            except:
+            except IOError:
                 validated = False
-                errors += "Cannot read info.json file\n"
+                errors += "Cannot find info.json file\n"
+            except ValueError:
+                validated = False
+                errors += "Error parsing info.json file\n"
+
         if not os.path.isfile(module + 'run.py'):
             validated = False
             errors += "Missing run.py\n"
@@ -222,7 +238,7 @@ class Job(object):
             try:
                 sys.path.append(module)
                 importlib.import_module('run')
-            except:
+            except ImportError:
                 validated = False
                 errors += "Cannot import run from run.py"
 

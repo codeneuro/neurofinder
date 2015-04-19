@@ -1,24 +1,37 @@
-from github import Github
-from pymongo import MongoClient
 import time
 import os
+import json
+import boto
+from boto.s3.key import Key
+from github import Github
+from pymongo import MongoClient
+
 from neurofinder import Job
 from neurofinder.utils import printer
 
 
 class JobRunner(object):
     """
-    Class for managing pull reuquests to a repository and running jobs
+    Class for managing pull reuquests to a repository, running jobs,
+    and posting results to S3
 
     Parameters
     ----------
-    dbname : str, optional, default = 'codeneurohackathon'
+    db_name : str, optional, default = 'codeneurohackathon'
         Name of mongo database
 
-    repo_name : str, optional, default = 'CodeNeuro/neurofiner'
+    repo_name : str, optional, default = 'CodeNeuro/neurofinder'
         Name of github repository
+
+    s3_name : str, optional, defult = 'code.neuro/neurofinder'
+        Location to post results to on S3
     """
-    def __init__(self, dbname="codeneurohackathon", repo_name="CodeNeuro/neurofinder"):
+    def __init__(self,
+                 db_name="codeneurohackathon",
+                 repo_name="CodeNeuro/neurofinder",
+                 s3_name='code.neuro/neurofinder',
+                 dry=False):
+
         mongo_connect_url = os.environ['MONGO_CONNECT_URL']
         if not mongo_connect_url:
             raise Exception("Mongo connect environment variable not set")
@@ -30,11 +43,20 @@ class JobRunner(object):
             raise Exception("Github bot password environment variable not set")
 
         mongo = MongoClient(mongo_connect_url)
-        self.db = getattr(mongo, dbname)
+        self.db = getattr(mongo, db_name)
 
-        print("Connecting to Github as user '" + github_bot_username + "'")
         gitbot = Github(github_bot_username, github_bot_pass)
         self.repo = gitbot.get_repo(repo_name)
+
+        conn = boto.connect_s3()
+        bucket_name, folder = s3_name.split('/')
+        bucket = conn.get_bucket(bucket_name)
+        self.bucket = bucket
+        self.folder = folder
+
+        self.dry = dry
+
+        print("\nConnected to databases and repo, starting evaluation...\n")
 
     def reset(self):
         """
@@ -47,8 +69,16 @@ class JobRunner(object):
             new_last_checked = {"type": "global_last_checked_record", "timestamp": timestamp}
             self.db.job_records.insert(new_last_checked)
 
+    def post(self, blob):
+        """
+        Send results as a JSON file to S3
+        """
         printer.status("Sending results to S3")
+        k = Key(self.bucket)
+        k.key = self.folder + '/results.json'
+        k.set_contents_from_string(json.dumps(blob))
         printer.success()
+
     def run(self, force=False, action=None):
         """
         Run a set of pull requests.
@@ -70,9 +100,11 @@ class JobRunner(object):
 
         pull_requests = self.repo.get_pulls()
 
+        results = []
+
         for pull_req in pull_requests:
 
-            job = Job(pull_req, self.db.pull_requests)
+            job = Job(pull_req, self.db.pull_requests, dry=self.dry)
             job.ismergeable()
             job.isentry()
 
@@ -89,12 +121,20 @@ class JobRunner(object):
                 summary['metrics'] = metrics
                 summary['algorithm'] = info['algorithm']
                 summary['description'] = info['description']
-
-                print(summary)
+                summary['timestamp'] = int(time.mktime(time.gmtime()))
+                results.append(summary)
 
             job.update_last_checked()
+            
+        if not self.dry:
+            self.post(results)
+        else:
+            import pprint
+            pp = pprint.PrettyPrinter(indent=4)
+            pp.pprint(results)
+
 
 if __name__ == '__main__':
-    runner = JobRunner()
+    runner = JobRunner(dry=True)
     runner.reset()
     runner.run(True, ["validate", "execute"])
