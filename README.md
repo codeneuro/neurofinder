@@ -49,7 +49,7 @@ All jobs will be run on an Amazon EC2 cluster in a standardized environment runn
 as well as several additional libraries included with Anaconda. You can develop and test your code in exactly this environment by following [these instructions](http://thunder-project.org/thunder/docs/install_ec2.html) to launch a cluster on EC2.
 
 ## examples
-View these analysis notebooks for examples of running source extraction algorithms, on both toy data and real data on S3:
+Example notebooks for running source extraction algorithms, on both toy data and real data on S3:
 - Loading images and sources for [comparison](http://nbviewer.ipython.org/github/codeneuro/neurofinder/blob/master/notebooks/creating-images-and-sources.ipynb)
 - Creating images and sources for [testing](http://nbviewer.ipython.org/github/codeneuro/neurofinder/blob/master/notebooks/loading-images-and-sources.ipynb)
 
