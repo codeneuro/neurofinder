@@ -5,7 +5,9 @@ import os
 import sys
 import json
 import importlib
-from numpy import mean, random
+import io
+from boto.s3.key import Key
+from numpy import mean, random, asarray
 
 from utils import quiet, printer
 
@@ -22,12 +24,16 @@ class Job(object):
     collection : pymongo.collection.Collection
         A mongo collection for storing pull request status
 
+    bucket : S3 bucket
+        A bucket on S3 for posting results
+
     dry : boolean, optional, default = False
         Will run as a dry run if True, skipping messages to github
     """
-    def __init__(self, pull_req, collection, dry=False):
+    def __init__(self, pull_req, collection, bucket, dry=False):
         self.pull_req = pull_req
         self.collection = collection
+        self.bucket = bucket
         self.dry = dry
 
     @property
@@ -140,6 +146,31 @@ class Job(object):
 
         return d
 
+    def post_image(self, im, folder, filename='sources'):
+        """
+        Post an image to S3 for this pull request
+
+        Parameters
+        ----------
+        im : array
+            The image as a 2D array (grayscale) or 3D array (RGB)
+
+        name : str
+            The folder name to put file in
+        """
+        from matplotlib.pyplot import imsave, cm
+
+        im = asarray(im)
+        imfile = io.BytesIO()
+        if im.ndim == 3:
+            imsave(imfile, im, format="png")
+        else:
+            imsave(imfile, im, format="png", cmap=cm.gray)
+
+        k = Key(self.bucket)
+        k.key = 'neurofinder/images/' + str(self.id) + '/' + folder + '/' + filename + '.png'
+        k.set_contents_from_string(imfile.getvalue())
+
     def clone(self):
         """
         Clone the repository given for this pull request
@@ -179,7 +210,7 @@ class Job(object):
         from thunder import ThunderContext
         tsc = ThunderContext.start(master="local", appName="neurofinder")
 
-        datasets = ['sources-1', 'sources-2', 'sources-3', 'sources-4', 'sources-5', 'sources-6', 'sources-7']
+        datasets = ['sources-1', 'sources-2']
         metrics = {'accuracy': [], 'overlap': []}
 
         try:
@@ -192,6 +223,9 @@ class Job(object):
 
                 metrics['accuracy'].append({"dataset": name, "value": accuracy})
                 metrics['overlap'].append({"dataset": name, "value": overlap})
+
+                im = sources.masks(base=data.mean())
+                self.post_image(im, name)
 
             for k in metrics.keys():
                 overall = mean([v['value'] for v in metrics['accuracy']])

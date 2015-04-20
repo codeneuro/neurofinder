@@ -5,3 +5,4 @@ pymongo
 thunder
 pytest
 termcolor
+matplotlib

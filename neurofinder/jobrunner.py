@@ -104,7 +104,7 @@ class JobRunner(object):
 
         for pull_req in pull_requests:
 
-            job = Job(pull_req, self.db.pull_requests, dry=self.dry)
+            job = Job(pull_req, self.db.pull_requests, self.bucket, dry=self.dry)
             job.ismergeable()
             job.isentry()
 
@@ -126,7 +126,7 @@ class JobRunner(object):
 
             job.update_last_checked()
             
-        if not self.dry:
+        if not self.dry and not (len(results) == 0):
             self.post(results)
         else:
             import pprint
