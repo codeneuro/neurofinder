@@ -24,10 +24,16 @@ The file `info.json` should contain the following fields
     "description": "description of your algorithm"
 }
 ```
-The file `run.py` should contain a function `run` that accepts as input a Thunder `Images` object and returns a `SourceModel`, and uses Thunder's Source Extraction API to implement the algorithm. The API encourages flexibility modulartiy, allowing for a variety of algorithms. See the existing folder `neurofinder/submissions/example-user/` for an example submission.
+The file `run.py` should contain a function `run` that accepts as input a Thunder `Images` object and returns a `SourceModel`, and uses Thunder's Source Extraction API to implement the algorithm. The API emphasizes flexibility and modulartiy, allowing for a variety of algorithms. See the existing folder `neurofinder/submissions/example-user/` for an example submission.
 
 Jobs will be automatically run every few days on a dynamically-created Spark cluster, so be patient with your submissions. You will be notified of job status via comments on your pull request.
 
+## data sets
+Data sets for evaluating algorithms have been kindly provided by the following individuals and labs:
+- Simon Peron & Karel Svoboda / Janelia Research Campus
+- Adam Packer, Lloyd Russell, & Michael Hausser / UCL
+- (others coming soon...)
+All data hosted on Amazon S3 and availiable through the CodeNeuro [data portal](http://datasets.codeneuro.org)
 
 ## environment
 All jobs will be run on an Amazon EC2 cluster in a standardized environment running Thunder, with the following specs and included libraries:
@@ -43,7 +49,7 @@ All jobs will be run on an Amazon EC2 cluster in a standardized environment runn
 as well as several additional libraries included with Anaconda. You can develop and test your code in exactly this environment by following [these instructions](http://thunder-project.org/thunder/docs/install_ec2.html) to launch a cluster on EC2.
 
 ## examples
-View these analysis notebooks for examples of running source extraction algorithms:
+View these analysis notebooks for examples of running source extraction algorithms, on both toy data and real data on S3:
 - Loading images and sources for [comparison](http://nbviewer.ipython.org/github/codeneuro/neurofinder/blob/master/notebooks/creating-images-and-sources.ipynb)
 - Creating images and sources for [testing](http://nbviewer.ipython.org/github/codeneuro/neurofinder/blob/master/notebooks/loading-images-and-sources.ipynb)
 
