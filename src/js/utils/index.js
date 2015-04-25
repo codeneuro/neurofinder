@@ -5,7 +5,11 @@ var colorbrewer = require('colorbrewer');
 
 module.exports = {
 
-
+    linspace: function(a, b, n) {
+        var every = (b-a)/(n-1)
+        var ranged = _.range(a, b, every);
+        return ranged.length == n ? ranged : ranged.concat(b);
+    },
 
     sortByKey: function(list, key) {
         return _.sortBy(list, key);
@@ -17,10 +21,12 @@ module.exports = {
     },
 
     getColorFromScore: function(score) {
-        var color = d3.scale.quantile()
-            .domain([0, 1])
-            .range(colorbrewer.Blues[9]);
-        
+
+        var domain = this.linspace(0, 1, 9)
+        var color = d3.scale.linear()
+            .domain(domain)
+            .range(colorbrewer.GnBu[9]);
+
         return color(score);
 
     },
