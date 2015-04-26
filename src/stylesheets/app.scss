@@ -35,8 +35,9 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 body {
-    background-color: #E8DADE;
+    background-color: rgb(235,235,235);
 }
+
 
 .mobile {
   display: none;
@@ -57,17 +58,15 @@ body {
 }
 
 .round {
-    font-family: Consolas;
-    font-size: 120%;
+    font-family: "AvenirNext";
     color: white;
-    background-color: #2BB673;
     -moz-border-radius: 100px;
     border-radius: 100px;
-    padding-top: 15px;
-    padding-bottom: 15px;
-    padding-left: 5px;
-    padding-right: 0px;
-    border: 10px solid #2BB673;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    border: 2px solid white;
     text-align: center;
 }
 
@@ -113,12 +112,12 @@ section {
 }
 
 .midline {
-    border-left: dotted black 5px;
+    border-left: dotted white 5px;
     height: 40px;
 }
 
 .toppanel {
-    background-color: #D6E0E0;
+    background-color: rgb(71,71,71);
     padding-top: 50px;
     padding-bottom: 50px;
     border-bottom: solid white 10px;
@@ -141,9 +140,31 @@ section {
     border-left: solid white 10px;
 }
 
+.subtable {
+    background-color: white;
+    border-radius: 10px;
+    border-collapse: separate;
+    border-spacing: 15px 15px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    border: solid 1px white;
+    border-left: solid 6px white;
+}
+
+.subtable:hover {
+    border: solid 1px rgb(170,170,170);
+    border-left: solid 6px rgb(170,170,170);
+}
+
+.toptable {
+    margin-top: 40px;
+}
+
 table {
+
+    transition: all 0.15s ease;
+
     width: 100%;
-    margin-top: 60px;
 
     .left {
         text-align: left;
@@ -195,18 +216,16 @@ table {
 
         }
 
-        border-bottom: solid 4px #979797;
     }
 
     tbody {
-        // border: solid 1px #979797;
         text-align: center;
 
         tr {
             cursor: pointer;
-            &:hover.overview {
-                background-color: darken(#E8DADE, 5%);
-            }
+            // &:hover.overview {
+            //     background-color: darken(#E8DADE, 5%);
+            // }
 
             &.details {
                 display: none;
@@ -251,8 +270,8 @@ table {
                 font-family: monospace;
                 text-align: center;
                 width: 75px;
-                border: solid 5px #E0DBD3;
                 box-sizing: border-box;
+                border-radius:5px;
             }
 
 
