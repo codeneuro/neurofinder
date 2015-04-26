@@ -1,11 +1,20 @@
 section.toppanel
   .row
     .column-4.prefix-2
-      h3 Current rankings
+      h3(style='color: white; font-size: 45px') Current rankings
     .column-1
       .midline
-    .column-3
-      - var count = 10
-      h2 
-        span.round #{count} 
-        span &nbsp; algorithms
+    .column-2(style='margin-top:-16px')
+      h2.infoglobal
+        span(style='color: white') &nbsp; algorithms
+        br
+        span(style='color: white') &nbsp; datasets
+    .column-1(style='margin-top:-16px; margin-left: -15px')
+      - var algorithms = 1
+      - var datasets = 12
+      - var leader = "freeman-lab"
+      h2.infoglobal
+        span.round #{algorithms} 
+        br
+        span.round #{datasets} 
+        
