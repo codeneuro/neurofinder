@@ -34,6 +34,10 @@ h1,h2,h3,h4,h5,h6 {
     // font-weight: bold;
 }
 
+body {
+    background-color: #E8DADE;
+}
+
 .mobile {
   display: none;
 }
@@ -43,11 +47,92 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 .content {
-    margin-top: 1.5 * $header-height;
+    padding-top: 0px;
+}
+
+.round {
+    font-family: Consolas;
+    font-size: 120%;
+    color: white;
+    background-color: #2BB673;
+    -moz-border-radius: 100px;
+    border-radius: 100px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 5px;
+    padding-right: 0px;
+    border: 10px solid #2BB673;
+    text-align: center;
+}
+
+.row {
+    max-width: none;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.empty-container {
+    z-index: -20;
+}
+
+.sidebar {
+    background-color: #2BB673;
+    height: 100%;
+    position: fixed;
+    overflow-y: auto;
+    max-width: 275px;
+    border-right: solid white 10px;
 }
 
 section {
-    margin-top: 60px;
+    margin-top: 0px;
+}
+
+.sidetitle {
+    font-family: Consolas;
+    font-style: italic;
+    transform: rotate(270deg);
+    margin-top: 400px;
+    margin-left: 70px;
+    font-size: 75px;
+    font-weight: 800;
+}
+
+.sidepanels {
+    margin-top: 110px;
+}
+
+.main {
+    margin-left: 40px;
+}
+
+.midline {
+    border-left: dotted black 5px;
+    height: 40px;
+}
+
+.toppanel {
+    background-color: #D6E0E0;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    border-bottom: solid white 10px;
+    margin-left: -50px;
+    padding-left: 50px;
+
+    h3 {
+        font-size: 50px;
+    }
+}
+
+.sidesubtitle {
+    background-color: rgb(71,71,71);
+    color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 20px;
+    font-size: 30px;
+    text-align: right;
+    border-left: solid white 10px;
 }
 
 table {
@@ -104,18 +189,17 @@ table {
 
         }
 
-        border-bottom: solid 2px #979797;
+        border-bottom: solid 4px #979797;
     }
 
     tbody {
         // border: solid 1px #979797;
         text-align: center;
 
-
         tr {
             cursor: pointer;
             &:hover.overview {
-                background-color: darken(#fff, 10%);
+                background-color: darken(#E8DADE, 5%);
             }
 
             &.details {
@@ -162,7 +246,8 @@ table {
                 font-family: monospace;
                 text-align: center;
                 width: 75px;
-                border: solid 1px white;
+                border: solid 5px #E0DBD3;
+                box-sizing: border-box;
             }
 
 

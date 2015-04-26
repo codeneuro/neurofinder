@@ -25,7 +25,7 @@ module.exports = {
         var domain = this.linspace(0, 1, 9)
         var color = d3.scale.linear()
             .domain(domain)
-            .range(colorbrewer.GnBu[9]);
+            .range(colorbrewer.YlOrRd[9]);
 
         return color(score);
 
