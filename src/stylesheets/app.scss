@@ -50,6 +50,12 @@ body {
     padding-top: 0px;
 }
 
+.thumbnail {
+    border-radius: 10px;
+    border: solid 5px white;
+    width: 300px;
+}
+
 .round {
     font-family: Consolas;
     font-size: 120%;
@@ -237,8 +243,7 @@ table {
             &.submission-image {
                 text-align: left;
                 vertical-align: top;
-                padding-left: 15px;
-
+                padding-left: 0px;
                 height: 75px;
             }
 

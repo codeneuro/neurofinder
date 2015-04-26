@@ -64,7 +64,7 @@
                                 tr(data-identifier="#{submission.id}").details
                                     td
                                     td(rowspan="#{this._.keys(this._.omit(submission.metrics, 'accuracy')).length}").submission-image
-                                        img(src="https://s3.amazonaws.com/code.neuro/neurofinder/images/#{submission.id}/#{datasets[0]}/sources.png")
+                                        img(src="https://s3.amazonaws.com/code.neuro/neurofinder/images/#{submission.id}/#{datasets[0]}/sources.png", class="thumbnail")
 
 
                                     - var metric = submission.metrics.overlap
