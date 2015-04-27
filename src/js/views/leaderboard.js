@@ -13,13 +13,17 @@ var LeaderboardView = AmpersandView.extend({
     autoRender: true,
 
     events: {
-        'click tr.overview': 'toggleRowDetails',
+        'click .subtable': 'toggleRowDetails',
         'hover .number': 'hoverDataset'
     },
 
     toggleRowDetails: function(e) {
 
-        var $target = $(e.target).closest('tr.overview');
+        var $target = $(e.target).find('tr.overview');
+
+        if ($target.length == 0) {
+            $target = $(e.target).closest('tr.overview');
+        }
 
         if($target.hasClass('pull-request')) {
             return;
