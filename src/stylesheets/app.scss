@@ -29,13 +29,29 @@ $header-height: 60px;
     z-index: 1000;
 }
 
-h1,h2,h3,h4,h5,h6 {
+a {
+    color: #DA1C5C;
+    text-decoration: none;
+    transition: all .20s;
+}
+
+a:hover {
+    color: #8A123A;
+}
+
+h1,h2,h3,h4 {
     font-family: "HankenBook";
     // font-weight: bold;
 }
 
+h5 {
+    font-family: "AvenirNext";
+}
+
 body {
-    background-color: rgb(235,235,235);
+    background-color: rgb(230,230,230);
+    font-family: "AvenirNext";
+    font-size: 12px;
 }
 
 
@@ -148,7 +164,7 @@ section {
 
 .subtable {
     background-color: white;
-    border-radius: 6px;
+    border-radius: 5px;
     border-collapse: separate;
     border-spacing: 8px 8px;
     margin-bottom: 20px;
@@ -158,8 +174,7 @@ section {
 }
 
 .subtable:hover {
-    border: solid 1px rgb(170,170,170);
-    border-left: solid 6px rgb(170,170,170);
+    box-shadow: 0 0 0px 6px rgba(180,180,180,.35)
 }
 
 .toptable {
@@ -167,6 +182,8 @@ section {
 }
 
 table {
+
+    font-size: 14px;
 
     transition: all 0.15s ease;
 
@@ -277,7 +294,7 @@ table {
                 text-align: center;
                 width: 75px;
                 box-sizing: border-box;
-                border-radius:5px;
+                border-radius: 5px;
             }
 
 
@@ -292,7 +309,7 @@ table {
             }
 
 
-            .url {
+            /*.url {
                 color: blue;
                 text-decoration: underline;
                 max-width: 75%;
@@ -304,7 +321,7 @@ table {
                 }
 
 
-            }
+            }*/
 
             .metric-label {
                 opacity: 0;
