@@ -6,27 +6,6 @@
   		 url("../fonts/46cf1067-688d-4aab-b0f7-bd942af6efd8.ttf") format("truetype"), 
   		 url("../fonts/52a192b1-bea5-4b48-879f-107f009b666f.svg#52a192b1-bea5-4b48-879f-107f009b666f") format("svg"); }
 
-@font-face {
-font-family: "Norwester";
-src: url("../fonts/norwester/norwester.eot") format("eot"), 
-		 url("../fonts/norwester.woff") format("woff"), 
-		 url("../fonts/norwester.ttf") format("truetype"), 
-		 url("../fonts/norwester.svg") format("svg"); }
-
-@font-face {
-font-family: "LeagueGothic";
-src: url("../fonts/leaguegothic/league-gothic-webfont.eot") format("eot"), 
-		 url("../fonts/leaguegothic/league-gothic-webfont.woff") format("woff"), 
-		 url("../fonts/leaguegothic/league-gothic-webfont.ttf") format("truetype"), 
-		 url("../fonts/leaguegothic/league-gothic-webfont.svg") format("svg"); }
-
-@font-face {
-font-family: "LeagueSpartan";
-src: url("../fonts/leaguespartan/leaguespartan-bold.eot") format("eot"), 
-		 url("../fonts/leaguespartan/leaguespartan-bold.woff") format("woff"), 
-		 url("../fonts/leaguespartan/leaguespartan-bold.ttf") format("truetype"), 
-		 url("../fonts/leaguespartan/leaguespartan-bold.svg") format("svg"); }
-
 
 
 body {
@@ -80,15 +59,16 @@ h4 {
 }
 
 h5 {
-	font-family: "Inconsolata";
+	font-family: "Consolas";
 	font-size: 56px;
 	font-weight: 800;
 	color: rgb(51,51,51);
 }
 
 h6 {
-	font-family: "Inconsolata";
+	font-family: "Consolas";
 	font-size: 30px;
+	font-weight: 800;
 	color: rgb(51,51,51);
 	font-style: italic;
 }
