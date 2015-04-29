@@ -25,11 +25,10 @@ var LeaderboardView = AmpersandView.extend({
             $target = $(e.target).closest('tr.overview');
         }
 
-        if($target.hasClass('pull-request')) {
+        if ($(e.target).hasClass('pull-request')) {
             return;
         }
-        console.log($target);
-
+        
         var $label = $target.find('.metric-label');//.toggle();
         var opacity = $label.css('opacity');
         if(opacity === '0') {
