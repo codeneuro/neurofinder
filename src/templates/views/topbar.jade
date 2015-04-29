@@ -10,11 +10,11 @@ section.toppanel
         br
         span(style='color: white') &nbsp; datasets
     .column-1(style='margin-top:-16px; margin-left: -15px')
-      - var algorithms = 1
-      - var datasets = 12
+      - var algorithms = this.collection.length
+      - var datasets = this.collection.models[0].getDatasets().length
       - var leader = "freeman-lab"
       h2.infoglobal
-        span.round #{algorithms} 
+        span.round #{algorithms}
         br
-        span.round #{datasets} 
+        span.round #{datasets}
         
