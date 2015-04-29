@@ -235,10 +235,11 @@ class Job(object):
             printer.success()
             self.update_status("executed")
 
-        except:
+        except Exception as e:
             metrics = None
             msg = "Execution failed"
-            printer.error()
+            printer.error("failed, returning error")
+            print(e)
 
         self.send_message(msg)
 
