@@ -66,10 +66,9 @@ class Job(object):
 
     def ismergeable(self):
         """
-        Check if the pull request is mergeable and post a comment if not
+        Check if the pull request is mergeable
         """
-        if not self.pull_req.mergeable:
-            self.pull_req.create_issue_comment("Cannot be merged, validation failed")
+        return self.pull_req.mergeable
 
     def isrecent(self):
         """
@@ -255,6 +254,10 @@ class Job(object):
 
         validated = True
         errors = ""
+
+        if not self.ismergeable():
+            validated = False
+            errors += "Submission cannot be merged\n"
 
         if not os.path.isdir(base):
             validated = False

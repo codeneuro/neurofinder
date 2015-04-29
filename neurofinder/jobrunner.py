@@ -105,7 +105,6 @@ class JobRunner(object):
         for pull_req in pull_requests:
 
             job = Job(pull_req, self.db.pull_requests, self.bucket, dry=self.dry)
-            job.ismergeable()
             job.isentry()
 
             if job.isrecent() or force:
