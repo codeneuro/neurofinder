@@ -209,25 +209,30 @@ class Job(object):
         from thunder import ThunderContext
         tsc = ThunderContext.start(master="local", appName="neurofinder")
 
-        datasets = ['sources-1', 'sources-2']
+        datasets = ['data-0', 'data-1', 'data-2', 'data-3', 'data-4', 'data-5']
+        centers = [5, 7, 9, 11, 13, 15]
         metrics = {'accuracy': [], 'overlap': []}
 
         try:
-            for name in datasets:
-                data, ts, truth = tsc.makeExample('sources', centers=10, noise=1.0, returnParams=True)
+            for ii, name in enumerate(datasets):
+                data, ts, truth = tsc.makeExample('sources', centers=centers[ii], noise=1.0, returnParams=True)
                 sources = run.run(data)
 
                 accuracy = truth.similarity(sources)
-                overlap = accuracy + random.randn() * 0.1
+                overlap = truth.overlap(sources)
+                distance = truth.distance(sources)
+                count = sources.count
 
                 metrics['accuracy'].append({"dataset": name, "value": accuracy})
                 metrics['overlap'].append({"dataset": name, "value": overlap})
+                metrics['distance'].append({"dataset": name, "value": distance})
+                metrics['count'].append({"dataset": name, "value": count})
 
                 im = sources.masks(base=data.mean())
                 self.post_image(im, name)
 
             for k in metrics.keys():
-                overall = mean([v['value'] for v in metrics['accuracy']])
+                overall = mean([v['value'] for v in metrics[k]])
                 metrics[k].append({"dataset": "overall", "value": overall})
 
             msg = "Execution successful"
