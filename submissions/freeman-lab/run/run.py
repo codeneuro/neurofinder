@@ -4,5 +4,5 @@ def run(data):
     """
     from thunder import SourceExtraction
     method = SourceExtraction('nmf')
-    result = method.fit(data)
+    result = method.fit(data, size=(50, 50))
     return result
