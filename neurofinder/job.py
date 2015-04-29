@@ -6,8 +6,9 @@ import sys
 import json
 import importlib
 import io
+import traceback
 from boto.s3.key import Key
-from numpy import mean, random, asarray
+from numpy import mean, random, asarray, nanmean
 
 from utils import quiet, printer
 
@@ -211,21 +212,22 @@ class Job(object):
 
         datasets = ['data-0', 'data-1', 'data-2', 'data-3', 'data-4', 'data-5']
         centers = [5, 7, 9, 11, 13, 15]
-        metrics = {'accuracy': [], 'overlap': []}
+        metrics = {'accuracy': [], 'overlap': [], 'distance': [], 'count': []}
 
         try:
             for ii, name in enumerate(datasets):
-                data, ts, truth = tsc.makeExample('sources', centers=centers[ii], noise=1.0, returnParams=True)
+                data, ts, truth = tsc.makeExample('sources', dims=(200, 200),
+                                                  centers=centers[ii], noise=1.0, returnParams=True)
                 sources = run.run(data)
 
-                accuracy = truth.similarity(sources)
-                overlap = truth.overlap(sources)
-                distance = truth.distance(sources)
+                accuracy = truth.similarity(sources, metric='distance', thresh=10, minDistance=10)
+                overlap = truth.overlap(sources, minDistance=10)
+                distance = truth.distance(sources, minDistance=10)
                 count = sources.count
 
                 metrics['accuracy'].append({"dataset": name, "value": accuracy})
-                metrics['overlap'].append({"dataset": name, "value": overlap})
-                metrics['distance'].append({"dataset": name, "value": distance})
+                metrics['overlap'].append({"dataset": name, "value": nanmean(overlap)})
+                metrics['distance'].append({"dataset": name, "value": nanmean(distance)})
                 metrics['count'].append({"dataset": name, "value": count})
 
                 im = sources.masks(base=data.mean())
