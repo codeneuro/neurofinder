@@ -20,9 +20,35 @@ module.exports = {
         return val;
     },
 
-    getColorFromScore: function(score) {
+    getRangeFromName: function(name) {
+        switch (name) {
+            case 'accuracy':
+                var range = [0, 1]
+                break;
+            case 'overlap':
+                var range = [0, 1]
+                break;
+            case 'count':
+                var range = [0, 20]
+                break;
+            case 'distance':
+                var range = [0, 5]
+                break;
+            case 'area':
+                var range = [50, 100]
+                break;
+            default:
+                var range = [0, 1]
+                break;
+        }
+        return range
+    },
 
-        var domain = this.linspace(0, 1, 9)
+    getColorFromScore: function(score, name) {
+
+        var range = this.getRangeFromName(name)
+
+        var domain = this.linspace(range[0], range[1], 9)
         var color = d3.scale.linear()
             .domain(domain)
             .range(colorbrewer.YlOrRd[9]);

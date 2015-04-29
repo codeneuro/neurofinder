@@ -76,11 +76,11 @@
 
                                         for dataset in datasets
                                             - var val = submission.getMetricValueForDataset(metricName, dataset);
-                                            td(style="background-color:#{this.utils.getColorFromScore(val)}; color: #{val > 0.5 ? 'white' : 'black'};", class="number #{this.utils.makeSafeForCSS(dataset)}")
+                                            td(style="background-color:#{this.utils.getColorFromScore(val, metricName)}; color: #{val > 0.5 ? 'white' : 'black'};", class="number #{this.utils.makeSafeForCSS(dataset)}")
                                                 | #{this.utils.preciseRound(val, 2)}
 
                                         - var val = submission.getMetricValueForDataset(metricName, 'overall');
-                                        td(style="background-color:#{this.utils.getColorFromScore(val)}; color: #{val > 0.5 ? 'white' : 'black'};").number
+                                        td(style="background-color:#{this.utils.getColorFromScore(val, metricName)}; color: #{val > 0.5 ? 'white' : 'black'};").number
                                             | #{this.utils.preciseRound(val, 2)}
 
 
@@ -96,9 +96,9 @@
 
                                             for dataset in datasets
                                                 - var val = submission.getMetricValueForDataset(metricName, dataset);
-                                                td(style="background-color:#{this.utils.getColorFromScore(val)}; color: #{val > 0.5 ? 'white' : 'black'};", class="number #{this.utils.makeSafeForCSS(dataset)}")
+                                                td(style="background-color:#{this.utils.getColorFromScore(val, metricName)}; color: #{val > 0.5 ? 'white' : 'black'};", class="number #{this.utils.makeSafeForCSS(dataset)}")
                                                     | #{this.utils.preciseRound(val, 2)}
 
                                             - var val = submission.getMetricValueForDataset(metricName, 'overall');
-                                            td(style="background-color:#{this.utils.getColorFromScore(val)}; color: #{val > 0.5 ? 'white' : 'black'};").number
+                                            td(style="background-color:#{this.utils.getColorFromScore(val, metricName)}; color: #{val > 0.5 ? 'white' : 'black'};").number
                                                 | #{this.utils.preciseRound(val, 2)}
