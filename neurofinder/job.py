@@ -89,7 +89,7 @@ class Job(object):
         """
         entry = self.collection.find_one({"id": self.id})
         if not entry:
-            print("Adding entry for pull request %s from user %s" % (self.id, self.login))
+            printer.status("Adding entry for pull request %s from user %s" % (self.id, self.login))
             payload = {'id': self.id, 'login': self.login, 'validated': False, 'executed': False,
                        'last_checked': 0, 'validated_at': 0, 'executed_at': 0}
             self.collection.insert_one(payload)

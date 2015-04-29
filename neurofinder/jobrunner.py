@@ -116,12 +116,13 @@ class JobRunner(object):
 
             if "execute" in action and job.check_status("validated") and not job.check_status("executed"):
                 metrics, info = job.execute()
-                summary = job.summarize()
-                summary['metrics'] = metrics
-                summary['algorithm'] = info['algorithm']
-                summary['description'] = info['description']
-                summary['timestamp'] = int(time.mktime(time.gmtime()))
-                results.append(summary)
+                if metrics is not None:
+                    summary = job.summarize()
+                    summary['metrics'] = metrics
+                    summary['algorithm'] = info['algorithm']
+                    summary['description'] = info['description']
+                    summary['timestamp'] = int(time.mktime(time.gmtime()))
+                    results.append(summary)
 
             job.update_last_checked()
             
@@ -134,6 +135,6 @@ class JobRunner(object):
 
 
 if __name__ == '__main__':
-    runner = JobRunner(dry=False)
+    runner = JobRunner(dry=True)
     runner.reset()
     runner.run(True, ["validate", "execute"])
