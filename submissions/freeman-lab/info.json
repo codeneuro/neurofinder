@@ -1,0 +1,4 @@
+{
+	"algorithm": "NMF",
+	"description": "Block-wise non-negative matrix factorization"
+}
