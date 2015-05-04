@@ -22,6 +22,7 @@
     "ampersand-model": "^5.0.3",
     "ampersand-rest-collection": "^4.0.0",
     "ampersand-view": "^7.3.0",
+    "ampersand-view-switcher": "^2.0.0",
     "colorbrewer": "0.0.2",
     "d3": "~3.4.6",
     "inherits": "~2.0.1",
