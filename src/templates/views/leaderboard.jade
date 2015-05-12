@@ -1,4 +1,4 @@
-.leaderboard-container.noselect
+.leaderboard-container
 
     .row.main
         .column-10.prefix-2
@@ -6,7 +6,7 @@
             .row
                 .column-10
 
-                    table.toptable.noselect
+                    table.toptable
                         thead
                             tr
                                 th(colspan="3")
@@ -30,7 +30,7 @@
 
                         
                         for submission in this.collection.models
-                            table.subtable.noselect
+                            table.subtable
                                 tbody
                                     tr.overview(data-identifier="#{submission.id}")
                                         td.avatar.desktop

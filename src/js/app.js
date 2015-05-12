@@ -8,11 +8,6 @@ var SubmitView = require('./views/submit');
 var leaderboard = new Leaderboard();
 var ViewSwitcher = require('ampersand-view-switcher');
 
-// turn on code highlighting
-
-var hljs = require('highlight.js');
-hljs.initHighlightingOnLoad();
-
 // get s3 data
 
 var switcher = new ViewSwitcher(document.getElementById('leaderboard-container'));
@@ -20,6 +15,7 @@ var leaderboardView;
 
 var submitView = new SubmitView();
 var aboutView = new AboutView();
+
 
 leaderboard.fetch({
     success: function(collection) {
