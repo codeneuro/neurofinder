@@ -1,6 +1,7 @@
 @import "mixins";
 @import "fonts";
 @import "lib/base";
+@import "lib/highlight";
 @import "lib/skeleton";
 
 .centered {
@@ -100,6 +101,33 @@ body {
 
 .empty-container {
     z-index: -20;
+}
+
+.code,
+pre {
+    background-color: white;
+    font-family: monospace;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    width: 75%;
+    font-size: 14px;
+}
+
+.inline-code {
+    padding: 0;
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+    margin: 0;
+    font-size: 85%;
+    background-color: rgba(0,0,0,0.04);
+    border-radius: 3px;
+    font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+
+ul { 
+    margin: 0; padding: 0; 
 }
 
 .sidebar {
