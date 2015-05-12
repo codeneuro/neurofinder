@@ -212,7 +212,7 @@ class Job(object):
 
         datasets = ['data-0', 'data-1', 'data-2', 'data-3', 'data-4', 'data-5']
         centers = [5, 7, 9, 11, 13, 15]
-        metrics = {'accuracy': [], 'overlap': [], 'distance': [], 'count': []}
+        metrics = {'accuracy': [], 'overlap': [], 'distance': [], 'count': [], 'area': []}
 
         try:
             for ii, name in enumerate(datasets):
@@ -224,11 +224,13 @@ class Job(object):
                 overlap = truth.overlap(sources, minDistance=10)
                 distance = truth.distance(sources, minDistance=10)
                 count = sources.count
+                area = mean(sources.areas)
 
                 metrics['accuracy'].append({"dataset": name, "value": accuracy})
                 metrics['overlap'].append({"dataset": name, "value": nanmean(overlap)})
                 metrics['distance'].append({"dataset": name, "value": nanmean(distance)})
                 metrics['count'].append({"dataset": name, "value": count})
+                metrics['area'].append({"dataset": name, "value": area})
 
                 im = sources.masks(base=data.mean())
                 self.post_image(im, name)
