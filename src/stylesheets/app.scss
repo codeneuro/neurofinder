@@ -57,7 +57,7 @@ h5 {
 body {
     background-color: rgb(230,230,230);
     font-family: "AvenirNext";
-    font-size: 15px;
+    font-size: 16px;
 }
 
 hr {
@@ -196,6 +196,12 @@ section {
     margin-left: 70px;
     font-size: 75px;
     font-weight: 800;
+}
+
+.callout {
+    font-size: 20px;
+    margin-top: -200px;
+    margin-left: -10px;
 }
 
 .sidepanels {

@@ -92,7 +92,7 @@ gulp.task('jade', function() {
     var host = '/' + projectName + '/';
 
     if(!PRODUCTION_MODE) {
-        host = '/';
+        host = '';
     }
     
     return gulp.src('src/templates/index.jade')
