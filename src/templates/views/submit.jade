@@ -1,27 +1,174 @@
-.row.main(style='pointer-events: none')
+.row.main
 	
-	.column-8.prefix-2.suffix-2
+	.column-8.suffix-2
+
 		h2(style='margin-top:45px')
 			| Submit an algorithm
+
+		hr
 
 		h3
 			| Overview
 
 		p
-			| All our submissions are handled through GitHub. To submit an algorithm, follow these steps:
+			| Our submission system is integrated with GitHub. To submit an algorithm, follow these steps:
 
 		ul
 
 			li
-				| Sign up for an account on GitHub (if you don't already have one)
+				span.list-number
+					| 1
+				span
+					| Sign up for an account on GitHub (go 
+					a(href='https://github.com/join')
+						| here 
+					| if you don't already have one) 
 			li
-				| Fork the NeuroFinder repository
+				span.list-number
+					| 2
+				span
+					| Fork the NeuroFinder repository (see 
+					a(href='https://github.com/codeneuro/neurofinder')
+						| here 
+					| for an explanation of forking)
 			li
-				| Create a new branch of the repository
+				span.list-number
+					| 3
+				span
+					| Create a new branch of the repository (name the branch with your username)
 			li
-				| Add a folder inside neurofinder/submissions with the structure described below
+				span.list-number
+					| 4
+				span
+					| Add a folder inside 
+					span.inline-code
+						| neurofinder/submissions
+					| with the structure described below
 			li
-				| Submit your branch as a pull request and wait for your algorithm to be validated and run. 
+				span.list-number
+					| 5
+				span
+					| Submit your branch as a pull request and wait for your algorithm to be validated and run. 
 
 		p
-			| Validation of algorithms will be performed soon after submission, but it may take up to a week for the results of job execution to be posted.
+			| Validation will be performed soon after submission, but it may take up to a week for the results of job execution to be posted. Please be patient! You will be notified of updates through comments on your pull request. Validation will be used to detect simple errors early on so they can be quickly fixed.
+
+		hr
+
+		h3
+			| Submission structure
+
+		p
+			| We have standardized a format for input data and a format for results using classes from the Thunder library. Your submission needs to provide a function called 
+			span.inline-code 
+				| run
+			| that takes a Thunder 
+			span.inline-code 
+				| Images
+			| object as input and returns a
+			span.inline-code 
+				| SourceModel
+			| as output. You should organize this function in a module as follows
+
+			pre
+				code.
+					neurofinder/submissions/your-user-name/info.json
+					neurofinder/submissions/your-user-name/run/run.py
+					neurofinder/submissions/your-user-name/run/__init__.py
+
+		p
+			| See the 
+			a(href='https://github.com/CodeNeuro/neurofinder/tree/master/submissions/example-user')
+				| example submission 
+			| to see how the folder should be organized.
+
+		p
+			| The file 
+			span.inline-code
+				| info.json
+			| should contain the following simple metadata about your submission:
+
+		pre
+				code.
+					{
+						"algorithm": "name of your algorithm",
+						"description": "description of your algorithm"
+					}
+
+		p
+			| The file
+			span.inline-code
+				| run.py
+			| should contain a function of the following form
+			
+		pre
+			code.
+				def run(data):
+						"""
+						Run a source extraction algorithm on an Images object
+
+						Parameters
+						----------
+						data : thunder.rdds.images.Images
+								The data the algorithm will be run on
+
+						Returns
+						-------
+						model : thunder.extraction.source.SourceModel
+								Sources found by the algorithm as a SourceModel object
+						"""
+
+						# your code here
+
+						return model
+
+		p
+			| The function itself can do whatever operations required by your algorithm, but we suggest designing algorithms that make use of the existing Source Extraction API. The API emphasizes flexibility and modulartiy, allowing for a variety of algorithms. For example, many algorithms operate on spatio-temporal blocks of a data set. Simply by specifying the function to apply to each block, you can implement a complete algorithm of this form.
+
+		hr
+
+		h3
+			| Environment
+
+		p
+			| All jobs will be run on an Amazon EC2 cluster, accessing the data sets from S3, in a standardized environment with Spark, Thunder, and scientific Python. The following are included libraries and specs:
+
+		ul
+
+			li.list-name
+				| Python v2.7.6
+
+			li.list-name
+				| Spark v1.3.0
+
+			li.list-name
+				| Numpy v1.9.2
+
+			li.list-name
+				| Scipy v0.15.1
+
+			li.list-name
+				| Scikit Learn v0.16.1
+
+			li.list-name
+				| Scikit Image v0.10.1
+
+			li.list-name
+				| Matplotlib v1.4.3
+
+		br
+
+		p
+			| If your algorithm requires additional depencies, we should be able to add them to the standard environment, especially if they are pure Python packages. Please let us know if there are dependencies you need by reaching out on 
+			a(href='http://twitter.com/codeneuro')
+				| twitter 
+			| or through the 
+			a(href='https://gitter.im/CodeNeuro/neurofinder')
+				| chatroom
+			| .
+
+		p
+			| You can start your own EC2 cluster with the same environment using Thunder's EC2 deployment scripts, see the 
+			a(href='http://thunder-project.org/thunder/docs/install_ec2.html')
+				| instructions 
+			| . This is a great way to develop algorithms in the same environment in which they will be run!
