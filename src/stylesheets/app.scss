@@ -139,6 +139,14 @@ li {
     z-index: -20;
 }
 
+.callout {
+    color: #0A64A2;
+    font-weight: 600;
+    font-size: 16px;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
 .code,
 pre {
     background-color: rgb(250,250,250);
@@ -196,12 +204,6 @@ section {
     margin-left: 70px;
     font-size: 75px;
     font-weight: 800;
-}
-
-.callout {
-    font-size: 20px;
-    margin-top: -200px;
-    margin-left: -10px;
 }
 
 .sidepanels {

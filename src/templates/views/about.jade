@@ -1,6 +1,145 @@
 .row.main
 
-	.column-8.suffix-2
+	.column-9.suffix-2(style='margin-left: 30px; margin-bottom: 50px')
 
-		h2(style='margin-top:45px')
+		h2(style='margin-top:55px')
 			| About
+
+		hr
+
+		h3
+			| Goals
+
+		p
+			| Effective and reproducible data analysis requires validating methods against standard data sets.
+
+		p 
+			| A key step in analyzing neural imaging data is the identification of neurons from time-varying image sequences: "source extraction". Many algorithms aim to solve this problem, but they have yet to be compared on standardized data sets with ground truth or gold standard.
+
+		p
+			| By running in a <em class="callout">standardized environment</em> and imposing some minimal structure on algorithm inputs and ouptuts, we hope to integrate what has thus far been a disparate collection of implementations. 
+
+		p
+			| By comparing <em class="callout">multiple algorithms</em> across the same data sets, and presenting evaluation metrics in a leaderboard, we hope to understand how and why different algorithms perform — and which ones perform the best!
+
+		p
+			|	By requring that all algorithms are made <em class="callout">open source</em>, we will faciliate integration into user-facing analysis libraries after the competition ends (for example, into Thunder's Source Extraction API).
+
+		hr
+
+		h3
+			| Data
+
+		p
+			| Data sets have been generously prepared by the following individuals and labs (more coming soon):
+
+		ul
+
+		li.list-name
+			| Simon Peron and Karel Svoboda
+
+		li.list-name
+			| Adam Packer, Lloyd Russel, and Michael Hausser
+
+		li.list-name
+			| Philipp Bethge and Fritjof Helmchen
+
+		br
+
+		p
+			| For this initial competition we have chosen a narrow focus: <em class="callout">mouse two-photon calcium imaging</em> with genetically encoded calcium indicators (e.g. GCaMP6). We will soon expand the competition to incorporate other imaging modalities (light-sheet imaging, light-field imaging) and other species (zebrafish). 
+
+		hr
+
+		h3
+			| Evaluation
+
+		p 
+			| For all data sets, we have a collection of spatial regions identifying individual neurons, in the following JSON format:
+
+		pre
+			code.
+				[
+						{
+								"id" : 1,
+								"coordinates": [[x0,y0], [x1,y1], ...],
+								"values": [v0, v1, ...],
+								"bbox" : [xx,xy,yx,yy],
+								"centroid" : [x,y]
+						},
+						...
+				]
+
+		p
+			| These regions have been manually vetted and curated for all data sets, and for a subset of the data they have been confirmed through a ground-truth anatomical nuclear marker.
+
+		p
+			| A large collection of training data with both images and sources are available through the 
+			a(href='http://datasets.codeneuro.org')
+				| CodeNeuro data repository 
+			| for developing algorithms. During evaluation, your algorithm will be run on a subset of held-out test data, similar in kind to and representative of the training examples. The following metrics and stats will be computed for each dataset and algorithm:
+
+		ul
+
+		li.list-name
+			| Accuracy (comparing spatial centers)
+
+		li.list-name
+			| Overlap (comparing spatial regions)
+
+		li.list-name
+			| Distance (average distance from true centers)
+
+		li.list-name
+			| Count (number of detected regions)
+
+		li.list-name
+			| Area (number of detected regions)
+
+		br
+
+		p
+			| You can read more about these metrics by browsing the 
+			a(href='http://thunder-project.org/thunder/docs-dev/')
+				| documentation 
+			| of Thunder's Source Extraction API, in particular the 
+			span.inline-code
+				| Source
+			| and 
+			span.inline-code
+				| SourceModel
+			| classes. 
+
+		hr
+
+		h3
+			| Reward
+
+		p
+			| Currently, there is no monetary reward for the highest ranking, only personal glory, and knowing you will help solve a challenging problem in neural analysis! In future competitions we may add other rewards.
+
+		hr
+
+		h3
+			| Who
+
+		p
+			| NeuroFinder is a community effort!
+
+		p
+			| The standard formats and evaluation metrics were decided at the 
+			a(href='http://codeneuro.org/2015/NYC')
+				| CodeNeuro NYC 
+			| hackathon, with contributions from Simon Peron, Adam Packer, Logan Grosenick, Nicholas Sofroniew, Darcy Peterka, Patrick Kaifosh, Ben Poole, Sophie Aimon, Tim Machado, Eliza Chang, and many others. 
+
+		p
+			| This website and automatic job runner was also begun at the hackathon and further developed by Matt Conlen, Maxwell Rebo, Jeremy Freeman, Michael Broxton, Aero Wang, and Yangbo Du.
+
+		p
+			| If you have questions, please reach out on 
+			a(href='http://twitter.com/codeneuro')
+				| twitter 
+			| or join us in the 
+			a(href='https://gitter.im/CodeNeuro/neurofinder')
+				| chatroom
+			| .
