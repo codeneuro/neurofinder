@@ -198,6 +198,7 @@ section {
 .sidetitle {
     font-family: Consolas;
     font-style: italic;
+    -webkit-transform: rotate(270deg);
     transform: rotate(270deg);
     color: rgb(51,51,51);
     margin-top: 400px;

@@ -3,6 +3,14 @@ var _ = require('lodash');
 var d3 = require('d3');
 var colorbrewer = require('colorbrewer');
 
+Math.sign = Math.sign || function(x) {
+  x = +x;
+  if (x === 0 || isNaN(x)) {
+    return x;
+  }
+  return x > 0 ? 1 : -1;
+}
+
 module.exports = {
 
     linspace: function(a, b, n) {
