@@ -904,11 +904,12 @@ section {
 .sidetitle {
   font-family: Consolas;
   font-style: italic;
+  -webkit-transform: rotate(270deg);
   transform: rotate(270deg);
   color: #333333;
-  margin-top: 400px;
-  margin-left: 70px;
-  font-size: 75px;
+  margin-top: 340px;
+  margin-left: 75px;
+  font-size: 65px;
   font-weight: 800; }
 
 .sidepanels {
