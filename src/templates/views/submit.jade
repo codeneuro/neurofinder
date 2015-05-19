@@ -133,6 +133,45 @@
 		hr
 
 		h3
+			| Evaluation
+
+		p
+			| Your algorithm will be run on a subset of held-out test data. The following metrics and stats will be computed for each dataset and algorithm:
+
+		ul
+
+		li.list-name
+			| Accuracy (comparing spatial centers)
+
+		li.list-name
+			| Overlap (comparing spatial regions)
+
+		li.list-name
+			| Distance (average distance from true centers)
+
+		li.list-name
+			| Count (number of detected regions)
+
+		li.list-name
+			| Area (number of detected regions)
+
+		br
+
+		p
+			| You can read more about these metrics by browsing the 
+			a(href='http://thunder-project.org/thunder/docs-dev/')
+				| documentation 
+			| of Thunder's Source Extraction API, in particular the 
+			span.inline-code
+				| Source
+			| and 
+			span.inline-code
+				| SourceModel
+			| classes. 
+
+		hr
+
+		h3
 			| Environment
 
 		p

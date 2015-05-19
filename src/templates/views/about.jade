@@ -8,22 +8,31 @@
 		hr
 
 		h3
-			| Goals
+			| Goal
 
 		p
-			| Effective and reproducible data analysis requires validating methods against standard data sets.
-
-		p 
-			| A key step in analyzing neural imaging data is the identification of neurons from time-varying image sequences: "source extraction". Many algorithms aim to solve this problem, but they have yet to be compared on standardized data sets with ground truth or gold standard.
+			| Effective and reproducible data analysis requires validating methods against standard data sets. 
 
 		p
-			| By running in a <em class="callout">standardized environment</em> and imposing some minimal structure on algorithm inputs and ouptuts, we hope to integrate what has thus far been a disparate collection of implementations. 
+			| In neuroscience, new analyses are repeatedly developed to solve problems faced by nearly all researchers. But comparisons between algorithms are rarely standardized across the community, or systematically vetted. Here we consider the "source extraction" problem: identifying neurons from time-varying image sequences. There are many existing algorithms but they have yet to be compared on standard data sets with ground truth.
 
 		p
-			| By comparing <em class="callout">multiple algorithms</em> across the same data sets, and presenting evaluation metrics in a leaderboard, we hope to understand how and why different algorithms perform — and which ones perform the best!
+			| Our project has three core components:
+
+		ul
+			li.list-normal
+				| All algorithms will be run in a <em class="callout">standard environment</em>, with a standardized format for both input data and algorithm output. We hope this integrates what has thus far been a disparate collection of implementations.
+
+			li.list-normal
+				| We will compute benchmarks on a <em class="callout">regular basis</em>, so that researchers can quickly find out how their algorithm performs across many data sets with a variety of metrics. 
+
+			li.list-normal
+				|	All algorithms will be provided by and for the <em class="callout">community</em>, and our GitHub-integrated submission system ensures that all algorithms will be immediately available and usable.
+
+		br
 
 		p
-			|	By requring that all algorithms are made <em class="callout">open source</em>, we will faciliate integration into user-facing analysis libraries after the competition ends (for example, into Thunder's Source Extraction API).
+			| For this initial effort we have chosen a narrow focus: mouse two-photon calcium imaging with genetically encoded calcium indicators (e.g. GCaMP6). We will soon expand to incorporate other imaging modalities (light-sheet imaging, light-field imaging) and other species (zebrafish). 
 
 		hr
 
@@ -31,92 +40,91 @@
 			| Data
 
 		p
-			| Data sets have been generously prepared by the following individuals and labs (more coming soon):
+			| Data sets have been generously prepared by the following individuals and labs (more will be added as available):
 
 		ul
 
-		li.list-name
-			| Simon Peron and Karel Svoboda
+			li.list-name
+				| Simon Peron and Karel Svoboda
 
-		li.list-name
-			| Adam Packer, Lloyd Russel, and Michael Hausser
+			li.list-name
+				| Adam Packer, Lloyd Russel, and Michael Hausser
 
-		li.list-name
-			| Philipp Bethge and Fritjof Helmchen
+			li.list-name
+				| Philipp Bethge and Fritjof Helmchen
 
 		br
 
 		p
-			| For this initial competition we have chosen a narrow focus: <em class="callout">mouse two-photon calcium imaging</em> with genetically encoded calcium indicators (e.g. GCaMP6). We will soon expand the competition to incorporate other imaging modalities (light-sheet imaging, light-field imaging) and other species (zebrafish). 
+			| In our standardized input format, data are organized into a folder with the following contents:
 
-		hr
+		pre
+			code.
+				info.json 
+				images/image_t0.bin
+				images/image_t1.bin
+				...
+				images/conf.json
+				sources/sources.json
 
-		h3
-			| Evaluation
+		p
+			| The 
+			span.inline-code 
+				| info.json
+			| file contains metadata like contributors and imaging method (see an 
+			a(href="https://s3.amazonaws.com/neuro.datasets/challenges/neurofinder/00.00/info.json")
+				| example
+			| )
 
 		p 
-			| For all data sets, we have a collection of spatial regions identifying individual neurons, in the following JSON format:
+			| The 
+			span.inline-code 
+				| images
+			| folder contains one flat binary file per time point and a
+			span.inline-code 
+				| conf.json
+			| binary format specifcation:
+
+		pre
+			code.
+				{
+					"dims": [x,y],
+					"dtype": "uint16"
+				}
+
+		p
+			| Finally, the
+			span.inline-code 
+				| sources.json
+			| file contains describes the identified neurons using the following format:
 
 		pre
 			code.
 				[
-						{
-								"id" : 1,
-								"coordinates": [[x0,y0], [x1,y1], ...],
-								"values": [v0, v1, ...],
-								"bbox" : [xx,xy,yx,yy],
-								"centroid" : [x,y]
-						},
-						...
+					{
+						"id" : 1,
+						"coordinates": [[x0,y0], [x1,y1], ...],
+						"values": [v0, v1, ...],
+						"bbox" : [xx,xy,yx,yy],
+						"centroid" : [x,y]
+					},
+					...
 				]
 
 		p
-			| These regions have been manually vetted and curated for all data sets, and for a subset of the data they have been confirmed through a ground-truth anatomical nuclear marker.
+			| where the key properties are 
+			span.inline-code 
+				| coordinates
+			| , the list of coordinates of pixels included in that source, and  
+			span.inline-code 
+				| values
+			| , an optional list of non-zero weights on those pixels.
 
 		p
-			| A large collection of training data with both images and sources are available through the 
+			| All sources have been manually vetted and curated, and for a subset of datasets they are based on an ground-truth anatomical nuclear marker. Several training data sets in exactly this form are available through the 
 			a(href='http://datasets.codeneuro.org')
 				| CodeNeuro data repository 
-			| for developing algorithms. During evaluation, your algorithm will be run on a subset of held-out test data, similar in kind to and representative of the training examples. The following metrics and stats will be computed for each dataset and algorithm:
-
-		ul
-
-		li.list-name
-			| Accuracy (comparing spatial centers)
-
-		li.list-name
-			| Overlap (comparing spatial regions)
-
-		li.list-name
-			| Distance (average distance from true centers)
-
-		li.list-name
-			| Count (number of detected regions)
-
-		li.list-name
-			| Area (number of detected regions)
-
-		br
-
-		p
-			| You can read more about these metrics by browsing the 
-			a(href='http://thunder-project.org/thunder/docs-dev/')
-				| documentation 
-			| of Thunder's Source Extraction API, in particular the 
-			span.inline-code
-				| Source
-			| and 
-			span.inline-code
-				| SourceModel
-			| classes. 
-
-		hr
-
-		h3
-			| Reward
-
-		p
-			| Currently, there is no monetary reward for the highest ranking, only personal glory, and knowing you are helping to solve a challenging problem in neural analysis! In future competitions we may add other rewards.
+			| to be used for algorithm development. Performance of submitted algorithms will be computed on test data, similar in kind to, and representative of, the training examples.
 
 		hr
 
@@ -130,16 +138,21 @@
 			| The standard formats and evaluation metrics were decided at the 
 			a(href='http://codeneuro.org/2015/NYC')
 				| CodeNeuro NYC 
-			| hackathon, with contributions from Simon Peron, Adam Packer, Logan Grosenick, Nicholas Sofroniew, Darcy Peterka, Patrick Kaifosh, Ben Poole, Sophie Aimon, Tim Machado, Eliza Chang, and many others. 
+			| hackathon, with contributions from Simon Peron, Adam Packer, Logan Grosenick, Nicholas Sofroniew, Darcy Peterka, Patrick Kaifosh, Jeff Zaremba, Ben Poole, Sophie Aimon, Tim Machado, Eliza Chang, and many others. 
 
 		p
 			| This website and automatic job runner was also begun at the hackathon and further developed by Matt Conlen, Maxwell Rebo, Jeremy Freeman, Michael Broxton, Aero Wang, and Yangbo Du.
 
+		hr
+
+		h3
+			| Contact
+
 		p
-			| If you have questions, please reach out on 
+			| If you have questions, difficulty submitting, or a dataset to add, please reach out on 
 			a(href='http://twitter.com/codeneuro')
 				| twitter 
-			| or join us in the 
+			| or join the 
 			a(href='https://gitter.im/CodeNeuro/neurofinder')
 				| chatroom
 			| .
