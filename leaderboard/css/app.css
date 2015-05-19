@@ -792,11 +792,18 @@ li {
   margin-bottom: 20px;
   margin-left: 5px; }
 
+.list-normal {
+  margin-bottom: 10px;
+  margin-top: 10px;
+  margin-left: 40px;
+  list-style-type: square; }
+
 .list-name {
-  margin-bottom: 5px;
-  margin-top: 5px;
-  margin-left: 20px;
-  font-style: italic; }
+  margin-bottom: 10px;
+  margin-top: 10px;
+  margin-left: 40px;
+  font-style: italic;
+  list-style-type: square; }
 
 .list-number {
   font-weight: 800;
@@ -894,7 +901,7 @@ ul {
   background-color: #2BB673;
   height: 100%;
   position: fixed;
-  overflow-y: auto;
+  overflow-y: hidden;
   max-width: 275px;
   border-right: solid white 10px; }
 
