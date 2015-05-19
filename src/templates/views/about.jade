@@ -11,7 +11,7 @@
 			| Goal
 
 		p
-			| Effective and reproducible data analysis requires validating methods against standard data sets. 
+			| Reproducible data analysis requires validating methods against standard data sets. 
 
 		p
 			| In neuroscience, new analyses are repeatedly developed to solve problems faced by nearly all researchers. But comparisons between algorithms are rarely standardized across the community, or systematically vetted. Here we consider the "source extraction" problem: identifying neurons from time-varying image sequences. There are many existing algorithms but they have yet to be compared on standard data sets with ground truth.
@@ -21,7 +21,7 @@
 
 		ul
 			li.list-normal
-				| All algorithms will be run in a <em class="callout">standard environment</em>, with a standardized format for both input data and algorithm output. We hope this integrates what has thus far been a disparate collection of implementations.
+				| All algorithms will be run in a <em class="callout">common environment</em>, with a standardized format for both input data and algorithm output. We hope this integrates what has thus far been a disparate collection of implementations.
 
 			li.list-normal
 				| We will compute benchmarks on a <em class="callout">regular basis</em>, so that researchers can quickly find out how their algorithm performs across many data sets with a variety of metrics. 
@@ -112,16 +112,16 @@
 				]
 
 		p
-			| where the key properties are 
+			| where 
 			span.inline-code 
 				| coordinates
-			| , the list of coordinates of pixels included in that source, and  
+			| are a list of the coordinates of pixels included in that source, and  
 			span.inline-code 
 				| values
-			| , an optional list of non-zero weights on those pixels.
+			| are an optional list of non-zero weights on those pixels (otherwise assumed to be binary).
 
 		p
-			| All sources have been manually vetted and curated, and for a subset of datasets they are based on an ground-truth anatomical nuclear marker. Several training data sets in exactly this form are available through the 
+			| All sources have been manually vetted and curated, and for a subset of datasets they are based on an ground-truth anatomical nuclear marker. Several training data sets in this format are available through the 
 			a(href='http://datasets.codeneuro.org')
 				| CodeNeuro data repository 
 			| to be used for algorithm development. Performance of submitted algorithms will be computed on test data, similar in kind to, and representative of, the training examples.
