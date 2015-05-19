@@ -128,15 +128,98 @@
 			| for a complete example.
 
 		p
-			| Your function itself can do whatever operations required by your algorithm, but we encourage algorithms that use the Source Extraction API. The API emphasizes flexibility and modulartiy, allowing for a variety of algorithms. For example, many algorithms operate on spatio-temporal blocks of a data set, and you can implement a new one just by specifying the function to apply to each block.
+			| Your function can do whatever operations are required by your algorithm, but we encourage algorithms that use the existing Source Extraction API. The API emphasizes flexibility and modulartiy, allowing for a variety of algorithms. For example, many algorithms operate on spatio-temporal blocks of a data set, and you can implement a new one just by specifying the function to apply to each block.
 
 		hr
 
 		h3
-			| Evaluation
+			| Environment
 
 		p
-			| Your algorithm will be run on a subset of held-out test data. The following metrics and stats will be computed for each dataset and algorithm:
+			| All jobs will be run on an Amazon EC2 cluster, accessing the data sets from S3, in a standardized environment with 
+			a(href='http://spark-project.org/')
+				| Spark 
+			| , 
+			a(href='http://thunder-project.org/thunder/docs-dev/')
+				| Thunder
+			|  , and the 
+			a(href='https://store.continuum.io/cshop/anaconda/')
+				| Anaconda
+			|  distribution of scientific Python. The following are included libraries and specs:
+
+		ul
+
+		li.list-name
+			| Python v2.7.6
+
+		li.list-name
+			| Spark v1.3.0
+
+		li.list-name
+			| Numpy v1.9.2
+
+		li.list-name
+			| Scipy v0.15.1
+
+		li.list-name
+			| Scikit Learn v0.16.1
+
+		li.list-name
+			| Scikit Image v0.10.1
+
+		li.list-name
+			| Matplotlib v1.4.3
+
+		br
+
+		p
+			| You can start your own EC2 cluster with the same environment using Thunder's EC2 deployment scripts, see the 
+			a(href='http://thunder-project.org/thunder/docs-dev/install_ec2.html')
+				| instructions 
+			| . If your algorithm requires additional depencies, we should be able to add them to the standard environment, especially if they are pure Python packages. Please let us know if there are dependencies you need by reaching out on 
+			a(href='http://twitter.com/codeneuro')
+				| twitter 
+			| or through the 
+			a(href='https://gitter.im/CodeNeuro/neurofinder')
+				| chatroom
+			| .
+
+		hr
+
+		h3
+			| Training
+
+		p
+			| Several training data sets are available through the 
+			a(href='http://datasets.codeneuro.org')
+				| CodeNeuro data repository  
+			| . The easiest way to develop a new algorithm is to start a small cluster on Amazon EC2 and use Thunder's functionality to load the dataset and test your code. This is the same environment in which algorithms will be tested.
+
+		p
+			| From an instance on EC2 running Thunder, loading images and sources from one of the example data sets is easy:
+
+		pre
+			code.
+				path = "s3n://neuro.datasets/challenges/neurofinder/01.00/"
+				imgs = tsc.loadImages(path + "images")
+				sources = tsc.loadSources(path + "sources/sources.json")
+
+		p
+			| We recommend running in a Jupyter notebook to make it easy to visualize results and keep track of your progress. See the 
+			a(href='http://codeneuro.org/2015/NYC')
+				| example notebooks 
+			| for more examples of viewing the data and running source extraction algorithms. 
+
+		p
+			| Given the size of the data sets, we cannot support direct downloads of the training data, but we will soon be adding the ability to download small subsets for local, offline algorithm development.  
+
+		hr
+
+		h3
+			| Testing
+
+		p
+			| Your algorithm will be run on a subset of held-out test data, similar in kind to the training examples. The following metrics and stats will be computed for each dataset and algorithm:
 
 		ul
 
@@ -168,51 +251,3 @@
 			span.inline-code
 				| SourceModel
 			| classes. 
-
-		hr
-
-		h3
-			| Environment
-
-		p
-			| All jobs will be run on an Amazon EC2 cluster, accessing the data sets from S3, in a standardized environment with Spark, Thunder, and scientific Python. The following are included libraries and specs:
-
-		ul
-
-		li.list-name
-			| Python v2.7.6
-
-		li.list-name
-			| Spark v1.3.0
-
-		li.list-name
-			| Numpy v1.9.2
-
-		li.list-name
-			| Scipy v0.15.1
-
-		li.list-name
-			| Scikit Learn v0.16.1
-
-		li.list-name
-			| Scikit Image v0.10.1
-
-		li.list-name
-			| Matplotlib v1.4.3
-
-		br
-
-		p
-			| If your algorithm requires additional depencies, we should be able to add them to the standard environment, especially if they are pure Python packages. Please let us know if there are dependencies you need by reaching out on 
-			a(href='http://twitter.com/codeneuro')
-				| twitter 
-			| or through the 
-			a(href='https://gitter.im/CodeNeuro/neurofinder')
-				| chatroom
-			| .
-
-		p
-			| You can start your own EC2 cluster with the same environment using Thunder's EC2 deployment scripts, see the 
-			a(href='http://thunder-project.org/thunder/docs/install_ec2.html')
-				| instructions 
-			| . This is a great way to develop algorithms in the same environment in which they will be run!

@@ -21,7 +21,7 @@
 
 		ul
 			li.list-normal
-				| All algorithms will be run in a <em class="callout">common environment</em>, with a standardized format for both input data and algorithm output. We hope this integrates what has thus far been a disparate collection of implementations.
+				| All algorithms will be run in a <em class="callout">common environment</em>, with a standardized format for both input data and algorithm output. We hope this will integrate a disparate collection of existing implementations.
 
 			li.list-normal
 				| We will compute benchmarks on a <em class="callout">regular basis</em>, so that researchers can quickly find out how their algorithm performs across many data sets with a variety of metrics. 
@@ -54,6 +54,12 @@
 				| Philipp Bethge and Fritjof Helmchen
 
 		br
+
+		p
+			| All data sets for algorithm development are hosted via Amazon S3 at the 
+			a(href='http://datasets.codeneuro.org')
+				| CodeNeuro data repository  
+			| and can be accessed from instances running on EC2.
 
 		p
 			| In our standardized input format, data are organized into a folder with the following contents:
@@ -118,13 +124,7 @@
 			| are a list of the coordinates of pixels included in that source, and  
 			span.inline-code 
 				| values
-			| are an optional list of non-zero weights on those pixels (otherwise assumed to be binary).
-
-		p
-			| All sources have been manually vetted and curated, and for a subset of datasets they are based on an ground-truth anatomical nuclear marker. Several training data sets in this format are available through the 
-			a(href='http://datasets.codeneuro.org')
-				| CodeNeuro data repository 
-			| to be used for algorithm development. Performance of submitted algorithms will be computed on test data, similar in kind to, and representative of, the training examples.
+			| are an optional list of non-zero weights on those pixels (otherwise assumed to be binary). For the example training data, all sources have been manually vetted and curated, and a subset are based on an ground-truth anatomical nuclear marker.
 
 		hr
 
