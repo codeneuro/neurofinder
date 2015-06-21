@@ -133,6 +133,7 @@ li {
 .round {
     font-family: "AvenirNext";
     color: white;
+    font-size: 22px;
     -moz-border-radius: 100px;
     border-radius: 100px;
     padding-left: 10px;
@@ -466,7 +467,7 @@ table {
             }
 
             &.number:hover {
-                box-shadow: 0 0 0px 1px rgba(50,50,50,.55)
+                box-shadow: 0 0 0px 2px rgba(50,50,50,.55)
             }
 
 
