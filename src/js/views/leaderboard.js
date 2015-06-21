@@ -14,7 +14,7 @@ var LeaderboardView = AmpersandView.extend({
 
     events: {
         'click .subtable': 'toggleRowDetails',
-        'hover .number': 'hoverDataset'
+        'mouseover .number': 'hoverDataset'
     },
 
     toggleRowDetails: function(e) {
@@ -40,8 +40,23 @@ var LeaderboardView = AmpersandView.extend({
     },
 
     hoverDataset: function(e) {
+        
+        // find the current number
         var $target = $(e.target).closest('.number');
-        console.log($target.attr('class'));
+
+        // get the data set name (from the number) and submission identifier (from table body)
+        var dataset = $target.attr('data-data')
+        var identifier = $(e.target).parents('tr.overview').attr('data-identifier')
+
+        // if both are defined, update the image
+        if (identifier) {
+            if (dataset) {
+                var newimg = "https://s3.amazonaws.com/code.neuro/neurofinder/images/" + identifier + "/" + dataset + "/sources.png"
+                var image = $(e.target).parents('tbody').find('.submission-image').find('img')
+                image.attr("src", newimg)
+            }
+        }
+
     }
 
 

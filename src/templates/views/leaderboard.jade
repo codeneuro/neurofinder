@@ -7,7 +7,7 @@
                 .column-10(style='margin-left: 20px')
 
                     table.toptable.noselect
-                        thead
+                        tbody
                             tr
                                 th(colspan="3")
                                 th(colspan="#{datasets.length + 1}").dataset-container
@@ -15,12 +15,13 @@
                                         | datasets
 
                             tr
-                                th
-                                th(colspan="2").left.pad-left.pad-bottom
+                                th(colspan="3").left.pad-left.pad-bottom
                                     | Submissions sorted by overall accuracy
 
+                                th(width="10px")
+
                                 for dataset in datasets
-                                    th.dataset
+                                    th.dataset(class="number-label")
                                         | #{dataset}
                                 th.dataset.overall
                                     | Overall
@@ -53,7 +54,7 @@
 
                                         for dataset in datasets
                                             - var val = submission.getMetricValueForDataset('accuracy', dataset);
-                                            td(style="background-color:#{this.utils.getColorFromScore(val)}; color: #{val > 0.5 ? 'white' : 'black'};", class="number #{this.utils.makeSafeForCSS(dataset)}")
+                                            td(style="background-color:#{this.utils.getColorFromScore(val)}; color: #{val > 0.5 ? 'white' : 'black'};", class="number", data-data="#{dataset}")
                                                 | #{this.utils.preciseRound(val, 2)}
 
 
@@ -64,11 +65,11 @@
 
 
                                     tr(data-identifier="#{submission.id}").details
-                                        td
-                                        td(rowspan="#{this._.keys(this._.omit(submission.metrics, 'accuracy')).length}").submission-image
-                                            img(src="https://s3.amazonaws.com/code.neuro/neurofinder/images/#{submission.id}/#{datasets[0]}/sources.png", class="thumbnail")
 
-
+                                        td    
+                                        td.submission-image
+                                            img(src="https://s3.amazonaws.com/code.neuro/neurofinder/images/#{submission.id}/#{datasets[0]}/sources.png", class="thumbnail", data-identifier="#{submission.id}")
+                                        
                                         - var metric = submission.metrics.overlap
                                         - var metricName = 'overlap'
                                         td.metric-label
@@ -76,7 +77,7 @@
 
                                         for dataset in datasets
                                             - var val = submission.getMetricValueForDataset(metricName, dataset);
-                                            td(style="background-color:#{this.utils.getColorFromScore(val, metricName)}; color: #{val > 0.5 ? 'white' : 'black'};", class="number #{this.utils.makeSafeForCSS(dataset)}")
+                                            td(style="background-color:#{this.utils.getColorFromScore(val, metricName)}; color: #{val > 0.5 ? 'white' : 'black'};", class="number", data-data="#{dataset}")
                                                 | #{this.utils.preciseRound(val, 2)}
 
                                         - var val = submission.getMetricValueForDataset(metricName, 'overall');
@@ -84,19 +85,18 @@
                                             | #{this.utils.preciseRound(val, 2)}
 
 
-
-
                                     for metric, metricName in this._.omit(submission.metrics, 'accuracy', 'overlap')
 
 
                                         tr(data-identifier="#{submission.id}").details
+                                            td
                                             td
                                             td.metric-label
                                                 | #{metricName}
 
                                             for dataset in datasets
                                                 - var val = submission.getMetricValueForDataset(metricName, dataset);
-                                                td(style="background-color:#{this.utils.getColorFromScore(val, metricName)}; color: #{val > 0.5 ? 'white' : 'black'};", class="number #{this.utils.makeSafeForCSS(dataset)}")
+                                                td(style="background-color:#{this.utils.getColorFromScore(val, metricName)}; color: #{val > 0.5 ? 'white' : 'black'};", class="number", data-data="#{dataset}")
                                                     | #{this.utils.preciseRound(val, 2)}
 
                                             - var val = submission.getMetricValueForDataset(metricName, 'overall');
