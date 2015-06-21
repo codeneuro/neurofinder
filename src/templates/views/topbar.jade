@@ -1,7 +1,7 @@
 section.toppanel.noselect
   .row
     .column-4.prefix-2
-      h3(style='color: white; font-size: 45px; margin-left: 30px') Current rankings
+      h3(style='color: white; margin-left: 30px') Current rankings
     .column-1
       .midline
     .column-2(style='margin-top:-16px')
@@ -12,7 +12,6 @@ section.toppanel.noselect
     .column-1(style='margin-top:-16px; margin-left: -15px')
       - var algorithms = this.collection.length
       - var datasets = this.collection.models[0].getDatasets().length
-      - var leader = "freeman-lab"
       h2.infoglobal
         span.round #{algorithms}
         br

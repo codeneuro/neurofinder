@@ -35,6 +35,10 @@ $header-height: 60px;
     z-index: 1000;
 }
 
+p {
+    line-height: 1.4em
+}
+
 a {
     color: #DA1C5C;
     text-decoration: none;
@@ -46,7 +50,8 @@ a:hover {
 }
 
 h1,h2,h3,h4 {
-    font-family: "HankenBook";
+    font-family: "Abel";
+    color: rgb(80,80,80);
     // font-weight: bold;
 }
 
@@ -55,7 +60,7 @@ h5 {
 }
 
 body {
-    background-color: rgb(230,230,230);
+    background-color: rgb(240,240,247);
     font-family: "AvenirNext";
     font-size: 16px;
 }
@@ -74,6 +79,7 @@ li {
     margin-bottom: 10px;
     margin-top: 10px;
     margin-left: 40px;
+    line-height: 1.4em;
     list-style-type: square;
 }
 
@@ -148,10 +154,10 @@ li {
 }
 
 .callout {
-    color: #0A64A2;
-    font-weight: 600;
+    color: rgb(80,80,80);
+    font-weight: 800;
     font-size: 16px;
-    margin-left: 2px;
+    margin-left: 3px;
     margin-right: 2px;
 }
 
@@ -191,7 +197,7 @@ ul {
 }
 
 .sidebar {
-    background-color: #2BB673;
+    background-color: rgb(240,240,247);
     height: 100%;
     position: fixed;
     overflow-y: hidden;
@@ -208,7 +214,7 @@ section {
     font-style: italic;
     -webkit-transform: rotate(270deg);
     transform: rotate(270deg);
-    color: rgb(51,51,51);
+    color: rgb(80,80,80);
     margin-top: 300px;
     margin-left: 75px;
     font-size: 60px;
@@ -229,12 +235,16 @@ section {
 }
 
 .toppanel {
-    background-color: rgb(71,71,71);
+    background-color: #2BB673;
     padding-top: 50px;
     padding-bottom: 35px;
     border-bottom: solid white 10px;
     margin-left: -50px;
     padding-left: 50px;
+
+    h2 {
+        font-size: 30px;
+    }
 
     h3 {
         font-size: 50px;
@@ -252,7 +262,7 @@ section {
     border-left: solid white 10px;
     cursor: pointer;
 
-    background-color: rgb(71,71,71);
+    background-color: #2BB673;
     z-index: 0;
     letter-spacing: 1px;
     font-weight: 700;
@@ -287,7 +297,7 @@ section {
 
 .sidesubtitle:active {
     z-index: 1000;
-    color: rgb(71,71,71);
+    color: rgb(80,80,80);
 }
 
 .subtable {
@@ -317,6 +327,15 @@ section {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+}
+
+.dataset-name {
+    text-align:left;
+    margin-bottom:1px;
+}
+
+.dataset-contributors {
+    text-align:left;
 }
 
 table {
@@ -443,12 +462,11 @@ table {
                 font-family: monospace;
                 text-align: center;
                 width: 75px;
-                box-sizing: border-box;
-                border-radius: 5px;
+                border-radius: 10px;
             }
 
             &.number:hover {
-                color: black !important;
+                box-shadow: 0 0 0px 1px rgba(50,50,50,.55)
             }
 
 

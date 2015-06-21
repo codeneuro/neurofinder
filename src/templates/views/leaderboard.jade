@@ -6,30 +6,28 @@
             .row
                 .column-10(style='margin-left: 20px')
 
-                    table.toptable.noselect
-                        tbody
-                            tr
-                                th(colspan="3")
-                                th(colspan="#{datasets.length + 1}").dataset-container
-                                    medium
-                                        | datasets
+                    .row(style='margin-top: 40px; margin-bottom: 10px')
+                        .column-2.suffix-3
+                            h3(style='margin-top:14px; font-size: 24px')
+                                | Submission table
 
-                            tr
-                                th(colspan="3").left.pad-left.pad-bottom
-                                    | Submissions sorted by overall accuracy
+                        .column-2
+                            p(style='text-align:right;margin-bottom:1px;font-style: italic')
+                                | Data set
 
-                                th(width="10px")
+                            p(style='text-align:right;font-style:italic')
+                                |  Contributors
 
-                                for dataset in datasets
-                                    th.dataset(class="number-label")
-                                        | #{dataset}
-                                th.dataset.overall
-                                    | Overall
+                        .column-3
 
+                            p.dataset-name
+                                |  (hover for dataset info)
 
+                            p.dataset-contributors
+                                |  (hover for dataset info)
 
 
-                        
+                    .row
                         for submission in this.collection.models
                             table.subtable.noselect
                                 tbody
