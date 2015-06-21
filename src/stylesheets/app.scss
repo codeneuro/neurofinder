@@ -209,9 +209,9 @@ section {
     -webkit-transform: rotate(270deg);
     transform: rotate(270deg);
     color: rgb(51,51,51);
-    margin-top: 340px;
+    margin-top: 300px;
     margin-left: 75px;
-    font-size: 65px;
+    font-size: 60px;
     font-weight: 800;
 }
 
@@ -397,6 +397,13 @@ table {
         //     width: 200px;
         // }
 
+        th {
+
+            &.number-label {
+                width: 75px;
+            }
+        }
+
         td {
 
             height: 75px;
@@ -407,13 +414,16 @@ table {
             // padding-right: 10px;
 
             &.avatar {
+                display: block;
                 text-align: left;
-                padding-left: 10px;
-                width: 50px;
+                padding-left: 0px;
+                width: 40px;
+                height: 40px;
+                padding-top: 20px;
                 padding-right: 0;
                 img {
                     vertical-align: middle;
-                    width: 45px;
+                    width: 75px;
                     height: auto;
                     border-radius: 3px;
                     
@@ -421,10 +431,12 @@ table {
             }
 
             &.submission-image {
+                display: -webkit-inline-box;
                 text-align: left;
                 vertical-align: top;
                 padding-left: 0px;
                 height: 75px;
+                margin-left: -25px;
             }
 
             &.number {
@@ -433,6 +445,10 @@ table {
                 width: 75px;
                 box-sizing: border-box;
                 border-radius: 5px;
+            }
+
+            &.number:hover {
+                color: black !important;
             }
 
 
