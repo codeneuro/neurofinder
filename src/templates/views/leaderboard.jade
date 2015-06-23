@@ -52,12 +52,14 @@
 
                                         for dataset in datasets
                                             - var val = submission.getMetricValueForDataset('accuracy', dataset);
-                                            td(style="background-color:#{this.utils.getColorFromScore(val)}; color: #{val > 0.5 ? 'white' : 'black'};", class="number", data-data="#{dataset}")
+                                            - var mid = this.utils.getMidpointFromName('accuracy')
+                                            td(style="background-color:#{this.utils.getColorFromScore(val, 'accuracy', 'Blues')}; color: #{val > mid ? 'white' : 'black'};", class="number", data-data="#{dataset}")
                                                 | #{this.utils.preciseRound(val, 2)}
 
 
                                         - var val = submission.getMetricValueForDataset('accuracy', 'overall');
-                                        td(style="background-color:#{this.utils.getColorFromScore(val)}; color: #{val > 0.5 ? 'white' : 'black'};").number
+                                        - var mid = this.utils.getMidpointFromName('accuracy')
+                                        td(style="background-color:#{this.utils.getColorFromScore(val, 'accuracy', 'Blues')}; color: #{val > mid ? 'white' : 'black'};").number
                                             | #{this.utils.preciseRound(val, 2)}
                                         
 
@@ -75,11 +77,13 @@
 
                                         for dataset in datasets
                                             - var val = submission.getMetricValueForDataset(metricName, dataset);
-                                            td(style="background-color:#{this.utils.getColorFromScore(val, metricName)}; color: #{val > 0.5 ? 'white' : 'black'};", class="number", data-data="#{dataset}")
+                                            - var mid = this.utils.getMidpointFromName(metricName)
+                                            td(style="background-color:#{this.utils.getColorFromScore(val, metricName)}; color: #{val > mid ? 'white' : 'black'};", class="number", data-data="#{dataset}")
                                                 | #{this.utils.preciseRound(val, 2)}
 
                                         - var val = submission.getMetricValueForDataset(metricName, 'overall');
-                                        td(style="background-color:#{this.utils.getColorFromScore(val, metricName)}; color: #{val > 0.5 ? 'white' : 'black'};").number
+                                        - var mid = this.utils.getMidpointFromName(metricName);
+                                        td(style="background-color:#{this.utils.getColorFromScore(val, metricName)}; color: #{val > mid ? 'white' : 'black'};").number
                                             | #{this.utils.preciseRound(val, 2)}
 
 
@@ -94,9 +98,11 @@
 
                                             for dataset in datasets
                                                 - var val = submission.getMetricValueForDataset(metricName, dataset);
-                                                td(style="background-color:#{this.utils.getColorFromScore(val, metricName)}; color: #{val > 0.5 ? 'white' : 'black'};", class="number", data-data="#{dataset}")
+                                                - var mid = this.utils.getMidpointFromName(metricName);
+                                                td(style="background-color:#{this.utils.getColorFromScore(val, metricName)}; color: #{val > mid ? 'white' : 'black'};", class="number", data-data="#{dataset}")
                                                     | #{this.utils.preciseRound(val, 2)}
 
                                             - var val = submission.getMetricValueForDataset(metricName, 'overall');
-                                            td(style="background-color:#{this.utils.getColorFromScore(val, metricName)}; color: #{val > 0.5 ? 'white' : 'black'};").number
+                                            - var mid = this.utils.getMidpointFromName(metricName);
+                                            td(style="background-color:#{this.utils.getColorFromScore(val, metricName)}; color: #{val > mid ? 'white' : 'black'};").number
                                                 | #{this.utils.preciseRound(val, 2)}

@@ -28,6 +28,11 @@ module.exports = {
         return val;
     },
 
+    getMidpointFromName: function(name) {
+        var extent = this.getRangeFromName(name)
+        return extent[0] + (extent[1] - extent[0]) / 2
+    },
+
     getRangeFromName: function(name) {
         switch (name) {
             case 'accuracy':
@@ -52,14 +57,17 @@ module.exports = {
         return range
     },
 
-    getColorFromScore: function(score, name) {
+    getColorFromScore: function(score, name, colormap) {
+
+
+        var colormap = colormap || 'Oranges'
 
         var range = this.getRangeFromName(name)
 
         var domain = this.linspace(range[0], range[1], 9)
         var color = d3.scale.linear()
             .domain(domain)
-            .range(colorbrewer.YlOrRd[9]);
+            .range(colorbrewer[colormap][9]);
 
         return color(score);
 
