@@ -60,7 +60,7 @@ module.exports = {
     getColorFromScore: function(score, name, colormap) {
 
 
-        var colormap = colormap || 'Oranges'
+        var colormap = colormap || 'OrRd'
 
         var range = this.getRangeFromName(name)
 
