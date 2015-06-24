@@ -2,11 +2,12 @@
 
 [![Join the chat at https://gitter.im/CodeNeuro/neurofinder](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/CodeNeuro/neurofinder?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-Benchmarking platform and competition for source extraction from imaging data. 
+Benchmarking platform and competition for source extraction from imaging data. Develop interactively using Docker and Jupyter notebooks, have your algorithms automatically deployed and tested in the cloud using Spark. 
 
-Interactive testing using Docker and Jupyter notebooks.
-
-Automatic evaluation and cloud deployment using Spark.
+## explore the data and algorithms
+1. Go to [codeneuro notebooks](http://notebooks.codeneuro.org)
+2. Launch a notebook session and click on the neurofinder section
+3. Explore the notebooks to learn about data format and see example algorithm designs
 
 ## submit an algorithm (currently in beta testing)
 1. Sign up for an account on github (if you don't already have one)
@@ -30,7 +31,7 @@ The file `info.json` should contain the following fields
 ```
 The file `run.py` should contain a function `run` that accepts as input a Thunder `Images` object and returns a `SourceModel`, and uses Thunder's Source Extraction API to implement the algorithm. The API emphasizes flexibility and modulartiy, allowing for a variety of algorithms. See the existing folder `neurofinder/submissions/example-user-example-algorithm/` for an example submission.
 
-Jobs will be automatically run every few days on a dynamically-created Spark cluster, so be patient with your submissions. You will be notified of job status via comments on your pull request.
+Jobs will be automatically run every few days on a dynamically-deployed Spark cluster, so be patient with your submissions. You will be notified of job status via comments on your pull request.
 
 ## data sets
 Data sets for evaluating algorithms have been kindly provided by the following individuals and labs:
@@ -43,7 +44,7 @@ Data sets for evaluating algorithms have been kindly provided by the following i
 All data hosted on Amazon S3 and training availiable through the CodeNeuro [data portal](http://datasets.codeneuro.org)
 
 ## environment
-All jobs will be run on an Amazon EC2 cluster in a standardized environment. **We provide Docker containers with an interactive version of this same environment running in Jupyter notebooks.** This is useful for testing and developing algorithms, but is currently limited to only one node.
+All jobs will be run on an Amazon EC2 cluster in a standardized environment. Our notebooks service uses Docker containers to deploy an interactive version of this same environment running in Jupyter notebooks. This is useful for testing and developing algorithms, but is currently limited to only one node.
 
 The environment has following specs and included libraries:
 
@@ -55,12 +56,7 @@ The environment has following specs and included libraries:
 - Scikit Image v0.10.1
 - Matplotlib v1.4.3
 
-as well as several additional libraries included with Anaconda. You can develop and test your code in exactly this environment by following [these instructions](http://thunder-project.org/thunder/docs/install_ec2.html) to launch a cluster on EC2.
-
-## examples
-Example notebooks for running source extraction algorithms, on both toy data and real data on S3:
-- Loading images and sources for [comparison](http://nbviewer.ipython.org/github/codeneuro/neurofinder/blob/master/notebooks/creating-images-and-sources.ipynb)
-- Creating images and sources for [testing](http://nbviewer.ipython.org/github/codeneuro/neurofinder/blob/master/notebooks/loading-images-and-sources.ipynb)
+as well as several additional libraries included with Anaconda. You can develop and test your code in a full cluster deployment by following [these instructions](http://thunder-project.org/thunder/docs/install_ec2.html) to launch a cluster on EC2.
 
 ## about the job runner
 This repo includes a suite for validating and executing pull requests, storing the status of pull requests in a Mongo database, and outputting the results to a leaderboard. To run its unit tests:
