@@ -2,7 +2,9 @@
 
 [![Join the chat at https://gitter.im/CodeNeuro/neurofinder](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/CodeNeuro/neurofinder?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-Benchmarking platform and competition for source extraction from imaging data. Develop interactively using Docker and Jupyter notebooks, have your algorithms automatically deployed and tested in the cloud using Spark. 
+Benchmarking platform and competition for source extraction from imaging data. 
+
+Develop algorithms interactively in standard environments using Docker and Jupyter notebooks. Have your algorithms automatically deployed and tested in the cloud using Spark. 
 
 ## explore the data and algorithms
 1. Go to [codeneuro notebooks](http://notebooks.codeneuro.org)
