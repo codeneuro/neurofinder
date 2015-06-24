@@ -13,9 +13,9 @@ Benchmarking platform and competition for source extraction from imaging data
 
 Submission structure:
 ```
-neurofinder/submissions/your-user-name/info.json
-neurofinder/submissions/your-user-name/run/run.py
-neurofinder/submissions/your-user-name/run/__init__.py
+neurofinder/submissions/user-name-alogirthm-name/info.json
+neurofinder/submissions/user-name-alogirthm-name/run/run.py
+neurofinder/submissions/user-name-alogirthm-name/run/__init__.py
 ```
 The file `info.json` should contain the following fields
 ```
@@ -24,7 +24,7 @@ The file `info.json` should contain the following fields
     "description": "description of your algorithm"
 }
 ```
-The file `run.py` should contain a function `run` that accepts as input a Thunder `Images` object and returns a `SourceModel`, and uses Thunder's Source Extraction API to implement the algorithm. The API emphasizes flexibility and modulartiy, allowing for a variety of algorithms. See the existing folder `neurofinder/submissions/example-user/` for an example submission.
+The file `run.py` should contain a function `run` that accepts as input a Thunder `Images` object and returns a `SourceModel`, and uses Thunder's Source Extraction API to implement the algorithm. The API emphasizes flexibility and modulartiy, allowing for a variety of algorithms. See the existing folder `neurofinder/submissions/example-user-example-algorithm/` for an example submission.
 
 Jobs will be automatically run every few days on a dynamically-created Spark cluster, so be patient with your submissions. You will be notified of job status via comments on your pull request.
 
