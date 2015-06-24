@@ -2,7 +2,11 @@
 
 [![Join the chat at https://gitter.im/CodeNeuro/neurofinder](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/CodeNeuro/neurofinder?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-Benchmarking platform and competition for source extraction from imaging data
+Benchmarking platform and competition for source extraction from imaging data. 
+
+Interactive testing using Docker and Jupyter notebooks.
+
+Automatic evaluation and cloud deployment using Spark.
 
 ## submit an algorithm (currently in beta testing)
 1. Sign up for an account on github (if you don't already have one)
@@ -31,13 +35,17 @@ Jobs will be automatically run every few days on a dynamically-created Spark clu
 ## data sets
 Data sets for evaluating algorithms have been kindly provided by the following individuals and labs:
 - Simon Peron & Karel Svoboda / Janelia Research Campus
-- Adam Packer, Lloyd Russell, & Michael Hausser / UCL
-- (others coming soon...)
+- Adam Packer, Lloyd Russell & Michael Hausser / UCL
+- Jeff Zaremba, Patrick Kaifosh & Attila Losonczy / Columbia
+- Nicholas Sofroniew & Karel Svoboda / Janelia Research Campus
+- Philipp Bethge and Fritjof Helmchen / University of Zurich (in preparation)
 
-All data hosted on Amazon S3 and availiable through the CodeNeuro [data portal](http://datasets.codeneuro.org)
+All data hosted on Amazon S3 and training availiable through the CodeNeuro [data portal](http://datasets.codeneuro.org)
 
 ## environment
-All jobs will be run on an Amazon EC2 cluster in a standardized environment running Thunder, with the following specs and included libraries:
+All jobs will be run on an Amazon EC2 cluster in a standardized environment. **We provide Docker containers with an interactive version of this same environment running in Jupyter notebooks.** This is useful for testing and developing algorithms, but is currently limited to only one node.
+
+The environment has following specs and included libraries:
 
 - Python v2.7.6
 - Spark v1.3.0
