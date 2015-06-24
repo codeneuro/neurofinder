@@ -188,7 +188,8 @@ class Job(object):
 
         return base, module
 
-    def load_info(self, data_path, data_name):
+    @staticmethod
+    def load_info(data_path, data_name):
         """
         Load metadata from info.json associated with a data set
 
@@ -208,6 +209,10 @@ class Job(object):
         blob = json.loads(k.get_contents_as_string())
         return blob
 
+    @staticmethod
+    def get_master():
+        return open('/root/spark-ec2/cluster-url').read()[:-1]
+
     def execute(self):
         """
         Execute this pull request
@@ -222,25 +227,26 @@ class Job(object):
         sys.path.append(module)
         run = importlib.import_module('run')
 
-        spark = os.getenv('SPARK_HOME')
-        if spark is None or spark == '':
+        spark_home = os.getenv('SPARK_HOME')
+        if spark_home is None or spark_home == '':
             raise Exception('must assign the environmental variable SPARK_HOME with the location of Spark')
-        sys.path.append(os.path.join(spark, 'python'))
-        sys.path.append(os.path.join(spark, 'python/lib/py4j-0.8.2.1-src.zip'))
+        sys.path.append(os.path.join(spark_home, 'python'))
+        sys.path.append(os.path.join(spark_home, 'python/lib/py4j-0.8.2.1-src.zip'))
 
         from thunder import ThunderContext
-        tsc = ThunderContext.start(master="local", appName="neurofinder")
+        from thunder.utils.launch import findThunderEgg
+        tsc = ThunderContext.start(master=self.get_master(), appName="neurofinder")
+        tsc.addPyFile(findThunderEgg())
 
-        data_path = 'neuro.datasets.private/challenges/neurofinder'
-
+        data_path = 'neuro.datasets/challenges/neurofinder'
         datasets = ['00.00', '00.01']
 
         metrics = {'accuracy': [], 'overlap': [], 'distance': [], 'count': [], 'area': []}
 
         try:
             for ii, name in enumerate(datasets):
-                data = tsc.loadImages('s3n://' + data_path + name + '/images/')
-                truth = tsc.loadSources('s3n://' + data_path + name + '/sources/sources.json')
+                data = tsc.loadImages('s3n://' + data_path + '/' + name + '/images/', recursive=True)
+                truth = tsc.loadSources('s3n://' + data_path + '/' + name + '/sources/sources.json')
                 sources = run.run(data)
 
                 accuracy = truth.similarity(sources, metric='distance', thresh=10, minDistance=10)
@@ -292,6 +298,8 @@ class Job(object):
             print(traceback.format_exc())
 
         self.send_message(msg)
+        
+        tsc.stop()
 
         return metrics, info
 
