@@ -8,6 +8,7 @@ import importlib
 import io
 import traceback
 import boto
+import glob
 from boto.s3.key import Key
 from numpy import mean, random, asarray, nanmean
 
@@ -183,7 +184,7 @@ class Job(object):
             os.chdir(d)
             subprocess.call(["git", "checkout", "-b", self.branch, "origin/%s" % self.branch])
 
-        base = d + '/submissions/%s/' % self.login
+        base = glob.glob(d + '/submissions/%s*/' % self.login)[0]
         module = base + 'run/'
 
         return base, module
