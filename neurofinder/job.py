@@ -7,6 +7,7 @@ import json
 import importlib
 import io
 import traceback
+import boto
 from boto.s3.key import Key
 from numpy import mean, random, asarray, nanmean
 
@@ -187,6 +188,26 @@ class Job(object):
 
         return base, module
 
+    def load_info(self, data_path, data_name):
+        """
+        Load metadata from info.json associated with a data set
+
+        Parameters
+        ----------
+        data_path : str
+            Path to the data (bucket / folder / subfolder)
+
+        data_name : str
+            Name of the data set (e.g. "00.00")
+        """
+        bucket, folder, subfolder = data_path.split("/")
+        conn = boto.connect_s3()
+        bucket = conn.get_bucket(bucket)
+        k = Key(bucket)
+        k.key = folder + '/' + subfolder + '/' + data_name + '/info.json'
+        blob = json.loads(k.get_contents_as_string())
+        return blob
+
     def execute(self):
         """
         Execute this pull request
@@ -210,14 +231,16 @@ class Job(object):
         from thunder import ThunderContext
         tsc = ThunderContext.start(master="local", appName="neurofinder")
 
-        datasets = ['data-0', 'data-1', 'data-2', 'data-3', 'data-4', 'data-5']
-        centers = [5, 7, 9, 11, 13, 15]
+        data_path = 'neuro.datasets.private/challenges/neurofinder'
+
+        datasets = ['00.00', '00.01']
+
         metrics = {'accuracy': [], 'overlap': [], 'distance': [], 'count': [], 'area': []}
 
         try:
             for ii, name in enumerate(datasets):
-                data, ts, truth = tsc.makeExample('sources', dims=(200, 200),
-                                                  centers=centers[ii], noise=1.0, returnParams=True)
+                data = tsc.loadImages('s3n://' + data_path + name + '/images/')
+                truth = tsc.loadSources('s3n://' + data_path + name + '/sources/sources.json')
                 sources = run.run(data)
 
                 accuracy = truth.similarity(sources, metric='distance', thresh=10, minDistance=10)
@@ -226,18 +249,37 @@ class Job(object):
                 count = sources.count
                 area = mean(sources.areas)
 
-                metrics['accuracy'].append({"dataset": name, "value": accuracy})
-                metrics['overlap'].append({"dataset": name, "value": nanmean(overlap)})
-                metrics['distance'].append({"dataset": name, "value": nanmean(distance)})
-                metrics['count'].append({"dataset": name, "value": count})
-                metrics['area'].append({"dataset": name, "value": area})
+                blob = self.load_info(data_path, name)
+                contributors = str(", ".join(blob['contributors']))
+
+                base = {"dataset": name, "contributors": contributors}
+
+                m = {"value": accuracy}
+                m.update(base)
+                metrics['accuracy'].append(m)
+
+                m = {"value": nanmean(overlap)}
+                m.update(base)
+                metrics['overlap'].append(m)
+
+                m = {"value": nanmean(distance)}
+                m.update(base)
+                metrics['distance'].append(m)
+
+                m = {"value": count}
+                m.update(base)
+                metrics['count'].append(m)
+
+                m = {"value": area}
+                m.update(base)
+                metrics['area'].append(m)
 
                 im = sources.masks(base=data.mean())
                 self.post_image(im, name)
 
             for k in metrics.keys():
                 overall = mean([v['value'] for v in metrics[k]])
-                metrics[k].append({"dataset": "overall", "value": overall})
+                metrics[k].append({"dataset": "overall", "contributors": "", "value": overall})
 
             msg = "Execution successful"
             printer.success()
