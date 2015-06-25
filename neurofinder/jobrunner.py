@@ -102,6 +102,8 @@ class JobRunner(object):
 
         results = []
 
+        from multiprocessing import Lock
+        lock = Lock()
         for pull_req in pull_requests:
 
             job = Job(pull_req, self.db.pull_requests, self.bucket, dry=self.dry)
@@ -115,6 +117,12 @@ class JobRunner(object):
                 job.validate()
 
             if "execute" in action and job.check_status("validated") and not job.check_status("executed"):
+                from multiprocessing import Process, Pipe
+                conn1, conn2 = Pipe()
+                proc = Process(target=job.execute, args=(lock, conn2))
+                proc.start()
+                lock.acquire()
+                metrics, info = conn1.recv()
                 metrics, info = job.execute()
                 if metrics is not None:
                     summary = job.summarize()

@@ -215,10 +215,12 @@ class Job(object):
     def get_master():
         return open('/root/spark-ec2/cluster-url').read()[:-1]
 
-    def execute(self):
+    def execute(self, lock, pipe):
         """
         Execute this pull request
         """
+        lock.acquire()
+
         printer.status("Executing pull request %s from user %s" % (self.id, self.login))
 
         base, module = self.clone()
@@ -315,7 +317,8 @@ class Job(object):
         tsc.stop()
         sys.path.remove(module)
 
-        return metrics, info
+        pipe.send((metrics, info))
+        lock.release()
 
     def validate(self):
         """
