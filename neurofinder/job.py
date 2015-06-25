@@ -11,7 +11,7 @@ import boto
 import glob
 import imp
 from boto.s3.key import Key
-from numpy import mean, asarray, nanmean
+from numpy import mean, asarray, nanmean, percentile
 
 from utils import quiet, printer
 
@@ -215,10 +215,12 @@ class Job(object):
     def get_master():
         return open('/root/spark-ec2/cluster-url').read()[:-1]
 
-    def execute(self):
+    def execute(self, lock, pipe):
         """
         Execute this pull request
         """
+        lock.acquire()
+
         printer.status("Executing pull request %s from user %s" % (self.id, self.login))
 
         base, module = self.clone()
@@ -228,9 +230,6 @@ class Job(object):
 
         sys.path.append(module)
         run = importlib.import_module('run', module)
-        print(run.__file__)
-        print(sys.path)
-        print(os.environ['PYTHONPATH'])
 
         spark_home = os.getenv('SPARK_HOME')
         if spark_home is None or spark_home == '':
@@ -248,7 +247,7 @@ class Job(object):
             time.sleep(5)
 
         base_path = 'neuro.datasets/challenges/neurofinder'
-        datasets = ['00.00', '00.01']
+        datasets = ['00.00', '00.01', '01.00', '01.01']
 
         metrics = {'accuracy': [], 'overlap': [], 'distance': [], 'count': [], 'area': []}
 
@@ -293,7 +292,8 @@ class Job(object):
                 m.update(base)
                 metrics['area'].append(m)
 
-                im = sources.masks(base=data.mean())
+                base = data.mean()
+                im = sources.masks(outline=True, base=base.clip(0, percentile(base, 99.9)))
                 self.post_image(im, name)
 
             for k in metrics.keys():
@@ -315,7 +315,8 @@ class Job(object):
         tsc.stop()
         sys.path.remove(module)
 
-        return metrics, info
+        pipe.send((metrics, info))
+        lock.release()
 
     def validate(self):
         """
