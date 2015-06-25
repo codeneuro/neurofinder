@@ -9,6 +9,7 @@ import io
 import traceback
 import boto
 import glob
+import imp
 from boto.s3.key import Key
 from numpy import mean, asarray, nanmean
 
@@ -357,7 +358,7 @@ class Job(object):
         else:
             try:
                 sys.path.append(module)
-                importlib.import_module('run')
+                imp.find_module('run')
                 sys.path.remove(module)
             except ImportError:
                 validated = False
