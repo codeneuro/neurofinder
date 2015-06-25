@@ -227,6 +227,7 @@ class Job(object):
 
         sys.path.append(module)
         run = importlib.import_module('run')
+        print(run.__file__)
 
         spark_home = os.getenv('SPARK_HOME')
         if spark_home is None or spark_home == '':
@@ -239,6 +240,11 @@ class Job(object):
         tsc = ThunderContext.start(master=self.get_master(), appName="neurofinder")
         tsc.addPyFile(findThunderEgg())
 
+        log4j = tsc._sc._jvm.org.apache.log4j
+        log4j.LogManager.getRootLogger().setLevel(log4j.Level.ERROR)
+        
+        print(tsc._sc.defaultParallelism)
+
         base_path = 'neuro.datasets/challenges/neurofinder'
         datasets = ['00.00', '00.01']
 
@@ -246,6 +252,9 @@ class Job(object):
 
         try:
             for ii, name in enumerate(datasets):
+
+                printer.status("Proccessing data set %s" % (name))
+
                 data_path = 's3n://' + base_path + '/' + name
                 data = tsc.loadImages(data_path + '/images/', recursive=True, npartitions=100)
                 truth = tsc.loadSources(data_path + '/sources/sources.json')
@@ -302,6 +311,7 @@ class Job(object):
         self.send_message(msg)
         
         tsc.stop()
+        sys.path.remove(module)
 
         return metrics, info
 
