@@ -121,9 +121,10 @@ class JobRunner(object):
                 conn1, conn2 = Pipe()
                 proc = Process(target=job.execute, args=(lock, conn2))
                 proc.start()
+                time.sleep(1)
                 lock.acquire()
                 metrics, info = conn1.recv()
-                metrics, info = job.execute()
+                #metrics, info = job.execute()
                 if metrics is not None:
                     summary = job.summarize()
                     summary['metrics'] = metrics
