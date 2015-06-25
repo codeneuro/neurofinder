@@ -247,7 +247,7 @@ class Job(object):
         try:
             for ii, name in enumerate(datasets):
                 data_path = 's3n://' + base_path + '/' + name
-                data = tsc.loadImages(data_path + '/images/', recursive=True, npartitions=tsc._sc.defaultParallelism)
+                data = tsc.loadImages(data_path + '/images/', recursive=True, npartitions=tsc._sc.defaultParallelism*2)
                 truth = tsc.loadSources(data_path + '/sources/sources.json')
                 sources = run.run(data)
 
