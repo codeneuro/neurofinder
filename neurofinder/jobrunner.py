@@ -124,6 +124,7 @@ class JobRunner(object):
                 time.sleep(1)
                 lock.acquire()
                 metrics, info = conn1.recv()
+                lock.release()
                 #metrics, info = job.execute()
                 if metrics is not None:
                     summary = job.summarize()
