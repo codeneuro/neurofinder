@@ -357,6 +357,7 @@ class Job(object):
             try:
                 sys.path.append(module)
                 importlib.import_module('run')
+                sys.path.remove(module)
             except ImportError:
                 validated = False
                 errors += "Cannot import run from run.py"
