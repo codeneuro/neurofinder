@@ -11,7 +11,7 @@ import boto
 import glob
 import imp
 from boto.s3.key import Key
-from numpy import mean, asarray, nanmean
+from numpy import mean, asarray, nanmean, percentile
 
 from utils import quiet, printer
 
@@ -247,7 +247,7 @@ class Job(object):
             time.sleep(5)
 
         base_path = 'neuro.datasets/challenges/neurofinder'
-        datasets = ['00.00', '00.01']
+        datasets = ['00.00', '00.01', '01.00', '01.01']
 
         metrics = {'accuracy': [], 'overlap': [], 'distance': [], 'count': [], 'area': []}
 
@@ -292,7 +292,9 @@ class Job(object):
                 m.update(base)
                 metrics['area'].append(m)
 
-                im = sources.masks(base=data.mean())
+                base = data.mean()
+                base = base.clip(0, percentile(base, 75))
+                im = sources.masks(base=base)
                 self.post_image(im, name)
 
             for k in metrics.keys():
