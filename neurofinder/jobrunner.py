@@ -123,9 +123,8 @@ class JobRunner(object):
                 proc.start()
                 time.sleep(1)
                 lock.acquire()
-                metrics, info = conn1.recv()
                 lock.release()
-                #metrics, info = job.execute()
+                metrics, info = conn1.recv()
                 if metrics is not None:
                     summary = job.summarize()
                     summary['metrics'] = metrics
