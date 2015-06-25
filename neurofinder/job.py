@@ -226,7 +226,7 @@ class Job(object):
         info = json.loads(f.read())
 
         sys.path.append(module)
-        run = importlib.import_module('run')
+        run = importlib.import_module(module)
         print(run.__file__)
         print(sys.path)
 
