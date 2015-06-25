@@ -226,9 +226,10 @@ class Job(object):
         info = json.loads(f.read())
 
         sys.path.append(module)
-        run = importlib.import_module(module)
+        run = importlib.import_module('run', module)
         print(run.__file__)
         print(sys.path)
+        print(os.environ['PYTHONPATH'])
 
         spark_home = os.getenv('SPARK_HOME')
         if spark_home is None or spark_home == '':
