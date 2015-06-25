@@ -228,6 +228,7 @@ class Job(object):
         sys.path.append(module)
         run = importlib.import_module('run')
         print(run.__file__)
+        print(sys.path)
 
         spark_home = os.getenv('SPARK_HOME')
         if spark_home is None or spark_home == '':
@@ -252,10 +253,10 @@ class Job(object):
         try:
             for ii, name in enumerate(datasets):
 
-                printer.status("Proccessing data set %s" % (name))
+                printer.status("Proccessing data set %s" % name)
 
                 data_path = 's3n://' + base_path + '/' + name
-                data = tsc.loadImages(data_path + '/images/', recursive=True, npartitions=tsc._sc.defaultParalleism*2)
+                data = tsc.loadImages(data_path + '/images/', recursive=True, npartitions=tsc._sc.defaultParallelism*2)
                 truth = tsc.loadSources(data_path + '/sources/sources.json')
                 sources = run.run(data)
 
