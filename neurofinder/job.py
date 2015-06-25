@@ -10,7 +10,7 @@ import traceback
 import boto
 import glob
 from boto.s3.key import Key
-from numpy import mean, random, asarray, nanmean
+from numpy import mean, asarray, nanmean
 
 from utils import quiet, printer
 
@@ -235,15 +235,14 @@ class Job(object):
         sys.path.append(os.path.join(spark_home, 'python'))
         sys.path.append(os.path.join(spark_home, 'python/lib/py4j-0.8.2.1-src.zip'))
 
-        from thunder import ThunderContext
-        from thunder.utils.launch import findThunderEgg
-        tsc = ThunderContext.start(master=self.get_master(), appName="neurofinder")
-        tsc.addPyFile(findThunderEgg())
-
-        log4j = tsc._sc._jvm.org.apache.log4j
-        log4j.LogManager.getRootLogger().setLevel(log4j.Level.ERROR)
-        
-        print(tsc._sc.defaultParallelism)
+        with quiet():
+            from thunder import ThunderContext
+            from thunder.utils.launch import findThunderEgg
+            tsc = ThunderContext.start(master=self.get_master(), appName="neurofinder")
+            tsc.addPyFile(findThunderEgg())
+            log4j = tsc._sc._jvm.org.apache.log4j
+            log4j.LogManager.getRootLogger().setLevel(log4j.Level.ERROR)
+            time.sleep(5)
 
         base_path = 'neuro.datasets/challenges/neurofinder'
         datasets = ['00.00', '00.01']
@@ -256,7 +255,7 @@ class Job(object):
                 printer.status("Proccessing data set %s" % (name))
 
                 data_path = 's3n://' + base_path + '/' + name
-                data = tsc.loadImages(data_path + '/images/', recursive=True, npartitions=100)
+                data = tsc.loadImages(data_path + '/images/', recursive=True, npartitions=tsc._sc.defaultParalleism*2)
                 truth = tsc.loadSources(data_path + '/sources/sources.json')
                 sources = run.run(data)
 
