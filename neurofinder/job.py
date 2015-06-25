@@ -293,8 +293,7 @@ class Job(object):
                 metrics['area'].append(m)
 
                 base = data.mean()
-                base = base.clip(0, percentile(base, 75))
-                im = sources.masks(base=base)
+                im = sources.masks(outline=True, base=base.clip(0, percentile(base, 99.9)))
                 self.post_image(im, name)
 
             for k in metrics.keys():
