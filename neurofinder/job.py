@@ -190,19 +190,19 @@ class Job(object):
         return base, module
 
     @staticmethod
-    def load_info(data_path, data_name):
+    def load_info(base_path, data_name):
         """
         Load metadata from info.json associated with a data set
 
         Parameters
         ----------
-        data_path : str
+        base_path : str
             Path to the data (bucket / folder / subfolder)
 
         data_name : str
             Name of the data set (e.g. "00.00")
         """
-        bucket, folder, subfolder = data_path.split("/")
+        bucket, folder, subfolder = base_path.split("/")
         conn = boto.connect_s3()
         bucket = conn.get_bucket(bucket)
         k = Key(bucket)
@@ -239,7 +239,7 @@ class Job(object):
         tsc = ThunderContext.start(master=self.get_master(), appName="neurofinder")
         tsc.addPyFile(findThunderEgg())
 
-        data_path = 'neuro.datasets/challenges/neurofinder'
+        base_path = 'neuro.datasets/challenges/neurofinder'
         datasets = ['00.00', '00.01']
 
         metrics = {'accuracy': [], 'overlap': [], 'distance': [], 'count': [], 'area': []}
@@ -256,7 +256,7 @@ class Job(object):
                 count = sources.count
                 area = mean(sources.areas)
 
-                blob = self.load_info(data_path, name)
+                blob = self.load_info(base_path, name)
                 contributors = str(", ".join(blob['contributors']))
 
                 base = {"dataset": name, "contributors": contributors}
