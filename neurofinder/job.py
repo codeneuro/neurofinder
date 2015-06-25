@@ -246,8 +246,9 @@ class Job(object):
 
         try:
             for ii, name in enumerate(datasets):
-                data = tsc.loadImages('s3n://' + data_path + '/' + name + '/images/', recursive=True)
-                truth = tsc.loadSources('s3n://' + data_path + '/' + name + '/sources/sources.json')
+                data_path = 's3n://' + base_path + '/' + name
+                data = tsc.loadImages(data_path + '/images/', recursive=True, npartitions=tsc._sc.defaultParallelism)
+                truth = tsc.loadSources(data_path + '/sources/sources.json')
                 sources = run.run(data)
 
                 accuracy = truth.similarity(sources, metric='distance', thresh=10, minDistance=10)
