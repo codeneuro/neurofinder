@@ -1,3 +1,4 @@
+@import url(http://fonts.googleapis.com/css?family=Abel);
 @font-face {
   font-family: "AvenirNext-UltraLight";
   src: url("../fonts/17c55b27-e9ab-43cd-b948-d49f97480d68.eot?#iefix");
@@ -765,6 +766,9 @@ img {
     margin: 0;
     padding-top: 15px; }
 
+p {
+  line-height: 1.4em; }
+
 a {
   color: #DA1C5C;
   text-decoration: none;
@@ -774,15 +778,20 @@ a:hover {
   color: #8A123A; }
 
 h1, h2, h3, h4 {
-  font-family: "HankenBook"; }
+  font-family: "Abel";
+  color: #505050; }
 
 h5 {
   font-family: "AvenirNext"; }
 
 body {
-  background-color: #e6e6e6;
+  background-color: #ebebf5;
   font-family: "AvenirNext";
-  font-size: 16px; }
+  font-size: 16px;
+  text-rendering: optimizeLegibility; }
+
+html {
+  text-rendering: optimizeLegibility; }
 
 hr {
   border-width: 3px 0 0; }
@@ -796,6 +805,7 @@ li {
   margin-bottom: 10px;
   margin-top: 10px;
   margin-left: 40px;
+  line-height: 1.4em;
   list-style-type: square; }
 
 .list-name {
@@ -841,6 +851,7 @@ li {
 .round {
   font-family: "AvenirNext";
   color: white;
+  font-size: 22px;
   -moz-border-radius: 100px;
   border-radius: 100px;
   padding-left: 10px;
@@ -859,14 +870,14 @@ li {
   z-index: -20; }
 
 .callout {
-  color: #0A64A2;
-  font-weight: 600;
+  color: #505050;
+  font-weight: 800;
   font-size: 16px;
-  margin-left: 2px;
+  margin-left: 3px;
   margin-right: 2px; }
 
 .code, pre {
-  background-color: #fafafa;
+  background-color: white;
   font-family: monospace;
   padding: 15px;
   border-radius: 8px;
@@ -898,7 +909,7 @@ ul {
   padding: 0; }
 
 .sidebar {
-  background-color: #2BB673;
+  background-color: #ebebf5;
   height: 100%;
   position: fixed;
   overflow-y: hidden;
@@ -913,10 +924,10 @@ section {
   font-style: italic;
   -webkit-transform: rotate(270deg);
   transform: rotate(270deg);
-  color: #333333;
-  margin-top: 340px;
+  color: #505050;
+  margin-top: 300px;
   margin-left: 75px;
-  font-size: 65px;
+  font-size: 60px;
   font-weight: 800; }
 
 .sidepanels {
@@ -930,12 +941,14 @@ section {
   height: 40px; }
 
 .toppanel {
-  background-color: #474747;
+  background-color: #2BB673;
   padding-top: 50px;
   padding-bottom: 35px;
   border-bottom: solid white 10px;
   margin-left: -50px;
   padding-left: 50px; }
+  .toppanel h2 {
+    font-size: 30px; }
   .toppanel h3 {
     font-size: 50px; }
 
@@ -948,7 +961,7 @@ section {
   text-align: right;
   border-left: solid white 10px;
   cursor: pointer;
-  background-color: #474747;
+  background-color: #2BB673;
   z-index: 0;
   letter-spacing: 1px;
   font-weight: 700;
@@ -978,7 +991,7 @@ section {
 
 .sidesubtitle:active {
   z-index: 1000;
-  color: #474747; }
+  color: #505050; }
 
 .subtable {
   background-color: white;
@@ -1005,6 +1018,14 @@ section {
   -ms-user-select: none;
   user-select: none; }
 
+.dataset-name {
+  text-align: left;
+  margin-bottom: 1px;
+  margin-top: 9px; }
+
+.dataset-contributors {
+  text-align: left; }
+
 table {
   font-size: 14px;
   transition: all 0.15s ease;
@@ -1020,6 +1041,8 @@ table {
   table .pad-bottom {
     padding-bottom: 10px; }
   table tr.details {
+    width: 250px;
+    max-width: 250px;
     margin-top: 0; }
     table tr.details td {
       text-align: right;
@@ -1039,9 +1062,14 @@ table {
       cursor: pointer; }
       table tbody tr.details {
         display: none; }
+    table tbody th.number-label {
+      width: 75px; }
     table tbody td {
       height: 75px;
       vertical-align: middle;
+      /*            &.number:hover {
+                box-shadow: 0 0 0px 2px rgba(50,50,50,.55)
+            }*/
       /*.url {
                 color: blue;
                 text-decoration: underline;
@@ -1056,32 +1084,38 @@ table {
 
             }*/ }
       table tbody td.avatar {
+        display: block;
         text-align: left;
-        padding-left: 10px;
-        width: 50px;
+        padding-left: 0px;
+        width: 40px;
+        height: 40px;
+        padding-top: 20px;
         padding-right: 0; }
         table tbody td.avatar img {
           vertical-align: middle;
-          width: 45px;
+          width: 75px;
           height: auto;
           border-radius: 3px; }
       table tbody td.submission-image {
+        display: -webkit-inline-box;
         text-align: left;
         vertical-align: top;
         padding-left: 0px;
-        height: 75px; }
+        height: 75px;
+        margin-left: -25px; }
       table tbody td.number {
         font-family: monospace;
         text-align: center;
         width: 75px;
-        box-sizing: border-box;
-        border-radius: 5px; }
+        border-radius: 10px;
+        opacity: 0.7; }
+      table tbody td.number-full {
+        opacity: 1; }
       table tbody td.details {
         padding-right: 15px;
-        padding-left: 15px;
+        padding-left: 20px;
         text-align: left;
         text-overflow: ellipsis;
-        white-space: nowrap;
         overflow: hidden; }
       table tbody td .metric-label {
         opacity: 0;
