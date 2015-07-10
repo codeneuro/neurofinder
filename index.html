@@ -16,89 +16,88 @@
 <html>
 <body>
 
-<section id="top">
+<div id='wrapper'>
 
-	<div class="row">
+  <div id='content'>
 
-    <div class="column-5">
-      <h1 style="padding-top: 70px">NEUROFINDER</h1>
-    </div>
+    <section id="top">
 
-    <div class="column-7">
-      <a href='http://codeneuro.org'><img style="width: 500px; padding-top: 40px; float: right" src="svg/logo.svg"></a>
-    </div>
+    	<div class="row">
+
+        <div class="column-5">
+          <h1 style="padding-top: 70px">NEUROFINDER</h1>
+        </div>
+
+        <div class="column-7">
+          <a href='http://codeneuro.org'><img style="width: 500px; padding-top: 40px; float: right" src="svg/logo.svg"></a>
+        </div>
+
+      </div>
+
+      <div class="row" style="margin-top: 15px; margin-bottom: 15px">
+
+        <div class="column-7">
+          <h3>A community driven<br><span class='indent'>neuroscience analysis challenge</span></h3>
+        </div>
+
+        <div class="prefix-1 column-4" style="text-align: center">
+          <a class='launch-wrapper' href='http://codeneuro.org/neurofinder/leaderboard' target="_blank"><button class='launch'><p class='launch-text'>leaderboard</p></button></a>
+        </div>
+
+      </div>
+
+
+    </section>
+
+    <section id="bottom">
+
+    	<div class="row">
+    	
+    		<div class="column-4" style="text-align: center;">
+          <div class='left'>
+      			<h2>test your code in interactive <a id='notebooks' class="big">notebooks</a> with Docker and tmpnb</h2>
+            <img class="icon" src="svg/share-icon.svg">
+          </div>
+    		</div>
+
+        <div class="column-4" style="text-align: center;">
+          <div class='center bordered'>
+            <h2>submit algorithms through a github integrated <a href='http://github.com/codeneuro/neurofinder' class="big">system</a></h2>
+            <img class="icon" src="svg/algorithm-icon.svg"></img>
+          </div>
+        </div>
+
+        <div class="column-4" style="text-align: center;">
+          <div class='right'>
+            <h2>deploy on validation data with a Spark cluster and see <a href='http://codeneuro.org/neurofinder/leaderboard' class="big">results</a></h2>
+            <img class="icon" src="svg/speed-icon.svg"></img>
+          </div>
+        </div>
+
+      
+
+    	</div>
+    	
+    </section>
 
   </div>
 
-  <div class="row" style="margin-top: 30px; margin-bottom: 30px">
-
-    <div class="column-7">
-      <h3>A community driven<br><span style="padding-left: 30px">neuroscience analysis challenge</span></h3>
+  <div id='footer'>
+    <span style='margin-left: 95px'><a class="social-link" href="mailto:info@codeneuro.org"><i id="icon" class="fa fa-envelope-square fa-4x"></i></a><a class="social-link" href="https://twitter.com/CodeNeuro"><i id="icon" class="fa fa-twitter-square fa-4x"></i></a><a class="social-link" href="http://github.com/codeneuro/notebooks"><i id="icon" class="fa fa-github-square fa-4x"></i></a></span>
     </div>
-
-    <div class="prefix-1 column-4">
-      <a class='launch-wrapper' href='http://codeneuro.org/neurofinder/leaderboard' target="_blank"><button class='launch'><p class='launch-text'>leaderboard</p></button></a>
-    </div>
-
   </div>
 
-
-</section>
-
-<section id="bottom">
-
-	<div class="row">
-	
-		<div class="column-4">
-			<h2>Test your code in interactive <a href='http://notebooks.codeneuro.org' class="big">notebooks</a> with Docker and tmpnb</h2>
-		</div>
-
-    <div class="column-4">
-      <h2 class='middle'>submit algorithms through a github integrated <a href='http://github.com/codeneuro/neurofinder' class="big">system</a></h2>
-    </div>
-
-    <div class="column-4">
-      <h2>deploy on validation data with a Spark cluster and see <a href='http://codeneuro.org/neurofinder/leaderboard' class="big">results</a></h2>
-    </div>
-
-  
-
-	</div>
-
-	<div class="row" style="max-width: 1450px">
-		<div class="column-5 prefix-7" style="text-align: right">
-		<span style='margin-left: 95px'><a class="social-link" href="mailto:info@codeneuro.org"><i id="icon" class="fa fa-envelope-square fa-4x"></i></a><a class="social-link" href="https://twitter.com/CodeNeuro"><i id="icon" class="fa fa-twitter-square fa-4x"></i></a><a class="social-link" href="http://github.com/codeneuro/notebooks"><i id="icon" class="fa fa-github-square fa-4x"></i></a></span>
-		</div>
-	</div>
-	
-</section>
+</div>
 
 <script>
 
-	$.getJSON('http://notebooks.codeneuro.org:9000/stats', function(data) {
-		var free = data.available
-		var total = data.capacity
-		$('#free').text(free)
-		$('#total').text(total)
-		var ratio = free / total
-		if (ratio < 0.666 & ratio > 0.333) {
-			$('#free').css('color', 'rgb(247,142,52)')
-		} else if (ratio < 0.333) {
-			$('#free').css('color', 'rgb(227,46,23)')
-		} else {
-			$('#free').css('color', 'rgb(39,184,90)')
-		}
-	});
-
-</script>
-
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-63776812-1', 'auto');
-  ga('send', 'pageview');
+  $("#notebooks").click(function() {
+    $.ajax({type: "POST", data: JSON.stringify({"path": "/"}), 
+      url: "http://notebooks.codeneuro.org:9000/api/spawn/"})
+    .done( function(data) {
+      console.log(data.url)
+      window.location.href = data.url + 'notebooks/neurofinder/intro.ipynb'
+    })
+  })
 
 </script>
