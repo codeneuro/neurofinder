@@ -1,8 +1,33 @@
 @import url(http://fonts.googleapis.com/css?family=Abel);
 @font-face {
+  font-family: "CooperHewitt-Medium";
+  src: url("fonts/CooperHewitt-Medium.woff") format("woff"), url("fonts/CooperHewitt-Medium.eot") format("eot"); }
+
+@font-face {
+  font-family: "CooperHewitt-MediumItalic";
+  src: url("fonts/CooperHewitt-MediumItalic.woff") format("woff"), url("fonts/CooperHewitt-MediumItalic.eot") format("eot"); }
+
+@font-face {
+  font-family: "CooperHewitt-Light";
+  src: url("fonts/CooperHewitt-Light.woff") format("woff"), url("fonts/CooperHewitt-Light.eot") format("eot"); }
+
+@font-face {
+  font-family: "CooperHewitt-LightItalic";
+  src: url("fonts/CooperHewitt-LightItalic.woff") format("woff"), url("fonts/CooperHewitt-LightItalic.eot") format("eot"); }
+
+@font-face {
+  font-family: "CooperHewitt-Book";
+  src: url("fonts/CooperHewitt-Book.woff") format("woff"), url("fonts/CooperHewitt-Book.eot") format("eot"); }
+
+@font-face {
   font-family: "AvenirNext-UltraLight";
   src: url("../fonts/17c55b27-e9ab-43cd-b948-d49f97480d68.eot?#iefix");
   src: url("../fonts/17c55b27-e9ab-43cd-b948-d49f97480d68.eot?#iefix") format("eot"), url("../fonts/fa19948e-5e38-4909-b31e-41acd170d6f2.woff") format("woff"), url("../fonts/6de0ce4d-9278-467b-b96f-c1f5f0a4c375.ttf") format("truetype"), url("../fonts/9fd4ea0c-b19a-4b21-9fdf-37045707dd78.svg#9fd4ea0c-b19a-4b21-9fdf-37045707dd78") format("svg"); }
+
+@font-face {
+  font-family: "AvenirNext";
+  src: url("../fonts/e9167238-3b3f-4813-a04a-a384394eed42.eot?#iefix");
+  src: url("../fonts/e9167238-3b3f-4813-a04a-a384394eed42.eot?#iefix") format("eot"), url("../fonts/1e9892c0-6927-4412-9874-1b82801ba47a.woff") format("woff"), url("../fonts/46cf1067-688d-4aab-b0f7-bd942af6efd8.ttf") format("truetype"), url("../fonts/52a192b1-bea5-4b48-879f-107f009b666f.svg#52a192b1-bea5-4b48-879f-107f009b666f") format("svg"); }
 
 @font-face {
   font-family: "AvenirNext";
@@ -65,8 +90,6 @@ body {
   background: #fff;
   font: 14px/21px "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #444;
-  -webkit-font-smoothing: antialiased;
-  /* Fix for webkit rendering */
   -webkit-text-size-adjust: 100%; }
 
 /* #Typography
@@ -767,7 +790,7 @@ img {
     padding-top: 15px; }
 
 p {
-  line-height: 1.4em; }
+  line-height: 1.45em; }
 
 a {
   color: #DA1C5C;
@@ -782,12 +805,15 @@ h1, h2, h3, h4 {
   color: #505050; }
 
 h5 {
-  font-family: "AvenirNext"; }
+  font-family: "CooperHewitt-Light";
+  color: #050505;
+  font-size: 18px; }
 
 body {
   background-color: #ebebf5;
-  font-family: "AvenirNext";
+  font-family: "CooperHewitt-Light";
   font-size: 16px;
+  color: #0a0a0a;
   text-rendering: optimizeLegibility; }
 
 html {
@@ -813,6 +839,7 @@ li {
   margin-top: 10px;
   margin-left: 40px;
   font-style: italic;
+  font-family: "CooperHewitt-LightItalic";
   list-style-type: square; }
 
 .list-number {
@@ -871,35 +898,35 @@ li {
 
 .callout {
   color: #505050;
-  font-weight: 800;
+  font-weight: 600;
   font-size: 16px;
   margin-left: 3px;
   margin-right: 2px; }
 
 .code, pre {
   background-color: white;
-  font-family: monospace;
+  font-family: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
   padding: 15px;
   border-radius: 8px;
   margin-top: 10px;
   margin-bottom: 20px;
   width: 100%;
   font-size: 14px;
-  font-weight: 600;
-  letter-spacing: -1; }
+  font-weight: 400;
+  letter-spacing: -1;
+  line-height: 1.5em; }
 
 .inline-code {
   padding-left: 5px;
   padding-right: 5px;
-  padding-top: 0.15em;
+  padding-top: 0.2em;
   padding-bottom: 0.2em;
   margin: 0;
-  font-size: 85%;
-  font-weight: 600;
+  font-size: 90%;
+  font-weight: 500;
   background-color: #fafafa;
   border-radius: 3px;
-  font: 14px;
-  font-family: monospace;
+  font-family: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
   margin-left: 5px;
   margin-right: 5px;
   color: #408F69; }
@@ -1112,8 +1139,8 @@ table {
       table tbody td.number-full {
         opacity: 1; }
       table tbody td.details {
-        padding-right: 15px;
-        padding-left: 20px;
+        padding-right: 0px;
+        padding-left: 10px;
         text-align: left;
         text-overflow: ellipsis;
         overflow: hidden; }
