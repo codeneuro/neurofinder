@@ -1,209 +1,103 @@
-<!DOCTYPE html>
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="chrome=1">
-  <meta name="description" content="CodeNeuro is bringing neuroscientists, data scientists, hackers, and visualizers together to help understand the brain.">
-  <title>NeuroFinder</title>
-  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css">
-  <link rel="stylesheet" href="css/neurofinder-styles.css">
-  <link rel="stylesheet" href="css/shelves.css">
-  <link href='http://fonts.googleapis.com/css?family=Oswald:400,700,300' rel='stylesheet' type='text/css'>
-  <link href='http://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
-  <link href='http://fonts.googleapis.com/css?family=Inconsolata:400,700' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" media="screen" href="http://openfontlibrary.org/face/hanken" rel="stylesheet" type="text/css"/>
-  <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
-  <link rel="icon" sizes="16x16 32x32" href="favicon.ico?v=2">
-  <script>hljs.initHighlightingOnLoad();</script>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<link href='http://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
+<title>Notebooks</title>
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/shelves.css">
+<link href='http://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
+<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<link rel="icon" sizes="16x16 32x32" href="favicon.ico?v=2">
+<meta name="description" content="Interactive notebooks for exploring and analyzing neuroscience data in the browser">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
 <html>
-
 <body>
 
-  <div class="container green">
+<div id='wrapper'>
 
-    <div class="row">
+  <div id='content'>
 
-      <div class="column-6 suffix-1">
-        <h5 class="title">NEUROFINDER</h5>
-        <h6 class="title subtitle">Source Extraction Challenge</h6>
-      </div>
+    <section id="top">
 
-      <div class="column-5">
-        <a href='http://codeneuro.org'><img style="width: 700px" src="svg/logoneurohunter.svg"></a>
-      </div>
+    	<div class="row">
 
-    </div>
-
-    <br>
-
-    <div class="row">
-
-      <div class="column-12">
-        <div class="bubble" style="margin-right: 15px; margin-left: 15px">
-          <h1 style="font-size: 40px">A community-driven competition to extract neuronal signals from calcium imaging data</h1>
+        <div class="column-5">
+          <h1 style="padding-top: 70px">NEUROFINDER</h1>
         </div>
-      </div>
 
-    </div>
-
-    <br>
-    <br>
-    <br>
-
-    <div class="row">
-
-      <div class="column-4">
-        <div class="bubble" style="margin-right: 15px; margin-left: 15px">
-          <img class="icon" src="svg/share-icon.svg">
-          <h3>Sharing data sets vetted for training on Amazon S3 with contributions from several labs</h3>
+        <div class="column-7">
+          <a href='http://codeneuro.org'><img style="width: 500px; padding-top: 40px; float: right" src="svg/logo.svg"></a>
         </div>
+
       </div>
 
-      <div class="column-4">
-        <div class="bubble" style="margin-right: 15px; margin-left:15px">
-          <img class="icon" src="svg/algorithm-icon.svg">
-          <h3>Integrating a diversity of community-developed algorithms into a common framework</h3>
+      <div class="row" style="margin-top: 15px; margin-bottom: 15px">
+
+        <div class="column-7">
+          <h3>A community driven<br><span class='indent'>neuroscience analysis challenge</span></h3>
         </div>
-      </div>
 
-      <div class="column-4">
-        <div class="bubble" style="margin-left: 15px; margin-right: 15px">
-          <img class="icon" src="svg/speed-icon.svg">
-          <h3>Running and benchmarking easily and quickly using cloud-based cluster computing</h3>
+        <div class="prefix-1 column-4" style="text-align: center">
+          <a class='launch-wrapper' href='http://codeneuro.org/neurofinder/leaderboard' target="_blank"><button class='launch'><p class='launch-text'>leaderboard</p></button></a>
         </div>
+
       </div>
 
-    </div>
 
-  </div>
+    </section>
 
+    <section id="bottom">
 
-  <div class="container gray">
-
-    <div class="row">
-
-      <div class="column-7">
-
-        <div class="bubble-side">
-
-          <div class="row">
-
-            
-            <div class="column-2">
-              <div style="text-align: right; margin-right: 20px; margin-top: 5px">
-                <br>
-                <div class="side-line"></div>
-                <h2>About</h2>
-                <br>
-                <br>
-                <br>  
-              </div>
-            </div>
-
-            <div class="column-4">
-              <div style="text-align: left">
-                <p class="info-item">We are developing a standardized API for “source extraction” algorithms along with a standard <a href="#formats">input</a> and <a href="#formats">output</a> format in the <a href="http://thunder-project.org">Thunder</a> library, running on Apache Spark.</p>
-                <p class="info-item">We will coordinate and launch a competition as a community at the <a href="../2015/NYC/">CodeNeuroNYC</a> hackathon, to proceed over subsequent months.</p>
-                <p class="info-item">Training <a href="http://datasets.codeneuro.org">data sets</a> will be made available and accessible with cloud-based tools.</p>
-              </div>
-            </div>
-
+    	<div class="row">
+    	
+    		<div class="column-4" style="text-align: center;">
+          <div class='left'>
+      			<h2>test your code in interactive <a id='notebooks' class="big">notebooks</a> with Docker and tmpnb</h2>
+            <img class="icon" src="svg/share-icon.svg">
           </div>
+    		</div>
 
+        <div class="column-4" style="text-align: center;">
+          <div class='center bordered'>
+            <h2>submit algorithms through a github integrated <a href='http://github.com/codeneuro/neurofinder' class="big">system</a></h2>
+            <img class="icon" src="svg/algorithm-icon.svg"></img>
+          </div>
         </div>
 
-
-      </div>
-
-      <div class="column-5">
-        
-        <div id='rois'>
+        <div class="column-4" style="text-align: center;">
+          <div class='right'>
+            <h2>deploy on validation data with a Spark cluster and see <a href='http://codeneuro.org/neurofinder/leaderboard' class="big">results</a></h2>
+            <img class="icon" src="svg/speed-icon.svg"></img>
+          </div>
         </div>
 
-      </div>
-
-    </div>
-
-    <div class="row">
-    <h4 style="font-size: 34px">Have an algorithm to contribute?<br>Or want to help with the competition?</h4>
-    <a href="https://gitter.im/CodeNeuro/neurofinder"><button class="btn">CHAT WITH US</button></a>
-    </div>
-
-  </div>
-
-
-
-  <div id="formats" class="container pink">
-
-    <div class="row">
-
-      <div class="column-6">
-        <h2>Input format</h2>
-        <div class="bubble-filled">
-          <pre><code class="json" style="text-align: left">
-images
-- a folder of flat binary files
-
-images/time_t.bin
-- file with volume at a single time point
-
-images/conf.json
-{
-    "dims": [x,y],
-    "dtype": "uint16"
-}
-</code>
-</pre>
-
-        </div>
-      </div>
-
-      <div class="column-6">
-        <h2>Output format</h2>
-        <div class="bubble-filled">
-          <pre><code class="json" style="text-align: left">
-sources/sources.json
-[
-    {
-        "id" : 1,
-        "coordinates": [[x0,y0], [x1,y1], ...],
-        "values": [v0, v1],
-        "bbox" : [xx,xy,yx,yy],
-        "centroid" : [x,y]
-    },
-    ...
-]
-</code>
-</pre>
-        </div>
-      </div>
-
-    </div>
-
-  </div>
-
-  <div class="container dark-gray">
-
-    <div class="row">
-
-      <div class="column-8">
-        <h1 style="text-align: left; margin-top: 33px">Questions? Get in touch</h1>
-      </div>
       
-      <div class="column-4">
-        <div class="icons">
-          <span><a class="sociallink" href="mailto:info@codeneuro.org"><i id="icon" class="fa fa-envelope-square fa-4x"></i></a><a class="sociallink" href="https://twitter.com/CodeNeuro"><i id="icon" class="fa fa-twitter-square fa-4x"></i></a><a class="sociallink" href="http://codeneuro.org"><i id="icon" class="fa fa-share-square fa-flip-horizontal fa-4x"></i></a></span>
-        </div>
-      </div>
-    
-    </div>
+
+    	</div>
+    	
+    </section>
 
   </div>
 
+  <div id='footer'>
+    <span style='margin-left: 95px'><a class="social-link" href="mailto:info@codeneuro.org"><i id="icon" class="fa fa-envelope-square fa-4x"></i></a><a class="social-link" href="https://twitter.com/CodeNeuro"><i id="icon" class="fa fa-twitter-square fa-4x"></i></a><a class="social-link" href="http://github.com/codeneuro/notebooks"><i id="icon" class="fa fa-github-square fa-4x"></i></a></span>
+    </div>
+  </div>
 
+</div>
 
-</body>
+<script>
+
+  $("#notebooks").click(function() {
+    $.ajax({type: "POST", data: JSON.stringify({"path": "/"}), 
+      url: "http://notebooks.codeneuro.org:9000/api/spawn/"})
+    .done( function(data) {
+      console.log(data.url)
+      window.location.href = data.url + 'notebooks/neurofinder/intro.ipynb'
+    })
+  })
+
+</script>
