@@ -96,7 +96,7 @@
       url: "http://notebooks.codeneuro.org:9000/api/spawn/"})
     .done( function(data) {
       console.log(data.url)
-      window.location.href = data.url + 'notebooks/neurofinder/intro.ipynb'
+      window.open(data.url + 'notebooks/neurofinder/intro.ipynb', '_blank');
     })
   })
 
