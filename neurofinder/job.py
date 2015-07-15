@@ -339,10 +339,6 @@ class Job(object):
         validated = True
         errors = ""
 
-        if not self.ismergeable():
-            validated = False
-            errors += "Submission cannot be merged\n"
-
         if not os.path.isdir(base):
             validated = False
             errors += "Missing directory submissions/%s\n" % self.login
