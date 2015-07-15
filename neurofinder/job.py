@@ -291,7 +291,7 @@ class Job(object):
 
                 m = {"value": f}
                 m.update(base)
-                metrics['false alarms'].append(m)
+                metrics['errors'].append(m)
 
                 m = {"value": o}
                 m.update(base)
