@@ -250,7 +250,7 @@ class Job(object):
         base_path = 'neuro.datasets/challenges/neurofinder'
         datasets = ['00.00', '00.01', '01.00', '01.01']
 
-        metrics = {'score': [], 'hits': [], 'false alarms': [], 'overlap': [], 'excess': []}
+        metrics = {'score': [], 'hits': [], 'errors': [], 'overlap': [], 'excess': []}
 
         try:
             for ii, name in enumerate(datasets):
