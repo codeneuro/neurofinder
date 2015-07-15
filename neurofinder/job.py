@@ -222,12 +222,15 @@ class Job(object):
         """
         lock.acquire()
 
-        printer.status("Executing pull request %s from user %s" % (self.id, self.login))
-
         base, module = self.clone()
 
         f = open(base + 'info.json', 'r')
         info = json.loads(f.read())
+
+        printer.status("Executing pull request %s from user %s"
+                       % (self.id, self.login))
+        printer.status("Branch name: %s" % self.branch)
+        printer.status("Algorithm name: %s" % info['algorithm'])
 
         sys.path.append(module)
         run = importlib.import_module('run', module)
