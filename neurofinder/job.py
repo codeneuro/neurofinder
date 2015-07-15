@@ -12,6 +12,7 @@ import glob
 import imp
 from boto.s3.key import Key
 from numpy import mean, asarray, nanmean, percentile
+from scipy.stats import norm
 
 from utils import quiet, printer
 
@@ -249,7 +250,7 @@ class Job(object):
         base_path = 'neuro.datasets/challenges/neurofinder'
         datasets = ['00.00', '00.01', '01.00', '01.01']
 
-        metrics = {'accuracy': [], 'overlap': [], 'distance': [], 'count': [], 'area': []}
+        metrics = {'score': [], 'hits': [], 'false alarms': [], 'overlap': [], 'excess': []}
 
         try:
             for ii, name in enumerate(datasets):
@@ -261,36 +262,44 @@ class Job(object):
                 truth = tsc.loadSources(data_path + '/sources/sources.json')
                 sources = run.run(data)
 
-                accuracy = truth.similarity(sources, metric='distance', thresh=10, minDistance=10)
-                overlap = truth.overlap(sources, minDistance=10)
-                distance = truth.distance(sources, minDistance=10)
-                count = sources.count
-                area = mean(sources.areas)
+                h, f = truth.similarity(sources, metric='distance', minDistance=5)
+                if h == 0.0:
+                    h = 1.0 / (2*truth.count)
+                if f == 0.0:
+                    f = 1.0 / (2*truth.count)
+                if h == 1.0:
+                    h = 1.0 - 1.0 / (2*truth.count)
+                if f == 1.0:
+                    f = 1.0 - 1.0 / (2*truth.count)
+                score = norm.ppf(h) - norm.ppf(f)
+                o, e = tuple(nanmean(truth.overlap(sources, method='rates', minDistance=5), axis=0))
 
                 blob = self.load_info(base_path, name)
-                contributors = str(", ".join(blob['contributors']))
+                contributors = str(", ".join(blob["contributors"]))
+                animal = blob["animal"]
+                region = blob["region"]
 
-                base = {"dataset": name, "contributors": contributors}
+                base = {"dataset": name, "contributors": contributors, "region": region, "animal": animal}
 
-                m = {"value": accuracy}
+                m = {"value": score}
                 m.update(base)
-                metrics['accuracy'].append(m)
+                metrics['score'].append(m)
 
-                m = {"value": nanmean(overlap)}
+                m = {"value": h}
+                m.update(base)
+                metrics['hits'].append(m)
+
+                m = {"value": f}
+                m.update(base)
+                metrics['false alarms'].append(m)
+
+                m = {"value": o}
                 m.update(base)
                 metrics['overlap'].append(m)
 
-                m = {"value": nanmean(distance)}
+                m = {"value": e}
                 m.update(base)
-                metrics['distance'].append(m)
-
-                m = {"value": count}
-                m.update(base)
-                metrics['count'].append(m)
-
-                m = {"value": area}
-                m.update(base)
-                metrics['area'].append(m)
+                metrics['excess'].append(m)
 
                 base = data.mean()
                 im = sources.masks(outline=True, base=base.clip(0, percentile(base, 99.9)))
@@ -298,7 +307,8 @@ class Job(object):
 
             for k in metrics.keys():
                 overall = mean([v['value'] for v in metrics[k]])
-                metrics[k].append({"dataset": "overall", "contributors": "", "value": overall})
+                metrics[k].append({"dataset": "overall", "value": overall,
+                                   "contributors": "", "region": "", "animal": ""})
 
             msg = "Execution successful"
             printer.success()
