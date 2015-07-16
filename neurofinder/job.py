@@ -263,7 +263,7 @@ class Job(object):
                 data_path = 's3n://' + base_path + '/' + name
                 data_info = self.load_info(base_path, name)
                 data = tsc.loadImages(data_path + '/images/', recursive=True,
-                                      npartitions=400)
+                                      npartitions=600)
                 truth = tsc.loadSources(data_path + '/sources/sources.json')
                 sources = run.run(data, info=data_info)
 
