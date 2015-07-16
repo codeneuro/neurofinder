@@ -261,11 +261,13 @@ class Job(object):
                 printer.status("Proccessing data set %s" % name)
 
                 data_path = 's3n://' + base_path + '/' + name
-                data = tsc.loadImages(data_path + '/images/', recursive=True, startIdx=0, stopIdx=100)
+                data_info = self.load_info(base_path, name)
+                data = tsc.loadImages(data_path + '/images/', recursive=True, startIdx=0, stopIdx=200)
                 truth = tsc.loadSources(data_path + '/sources/sources.json')
-                sources = run.run(data)
+                sources = run.run(data, info=data_info)
 
-                h, f = truth.similarity(sources, metric='distance', minDistance=5)
+                threshold = 6.0 / data_info['pixels-per-micron']
+                h, f = truth.similarity(sources, metric='distance', minDistance=threshold)
                 if h == 0.0:
                     h = 1.0 / (2*truth.count)
                 if f == 0.0:
@@ -275,16 +277,15 @@ class Job(object):
                 if f == 1.0:
                     f = 1.0 - 1.0 / (2*truth.count)
                 score = norm.ppf(h) - norm.ppf(f)
-                overlap = truth.overlap(sources, method='rates', minDistance=5)
+                overlap = truth.overlap(sources, method='rates', minDistance=threshold)
                 if len(overlap) > 0:
                     o, e = tuple(nanmean(overlap, axis=0))
                 else:
                     o, e = 0.0, 1.0
 
-                blob = self.load_info(base_path, name)
-                contributors = str(", ".join(blob["contributors"]))
-                animal = blob["animal"]
-                region = blob["region"]
+                contributors = str(", ".join(data_info["contributors"]))
+                animal = data_info["animal"]
+                region = data_info["region"]
 
                 base = {"dataset": name, "contributors": contributors, "region": region, "animal": animal}
 
