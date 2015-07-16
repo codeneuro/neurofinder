@@ -251,7 +251,7 @@ class Job(object):
             time.sleep(5)
 
         base_path = 'neuro.datasets/challenges/neurofinder'
-        datasets = ['00.00', '00.01', '01.00', '01.01', '02.00', '02.01', '03.00']
+        datasets = ['03.00']
 
         metrics = {'score': [], 'hits': [], 'errors': [], 'overlap': [], 'excess': []}
 
@@ -278,6 +278,7 @@ class Job(object):
                     f = 1.0 - 1.0 / (2*truth.count)
                 score = norm.ppf(h) - norm.ppf(f)
                 overlap = truth.overlap(sources, method='rates', minDistance=threshold)
+                print(overlap)
                 if len(overlap) > 0:
                     o, e = tuple(nanmean(overlap, axis=0))
                 else:
