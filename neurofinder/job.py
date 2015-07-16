@@ -251,7 +251,7 @@ class Job(object):
             time.sleep(5)
 
         base_path = 'neuro.datasets/challenges/neurofinder'
-        datasets = ['00.00', '00.01', '01.00', '01.01', '02.00', '02.01', '03.00']
+        datasets = ['00.00', '00.01', '01.00', '01.01', '02.00', '02.01']
 
         metrics = {'score': [], 'hits': [], 'errors': [], 'overlap': [], 'excess': []}
 
