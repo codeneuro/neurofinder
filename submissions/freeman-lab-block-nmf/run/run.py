@@ -1,4 +1,4 @@
-def run(data):
+def run(data, info):
     """
     Run a Thunder source extraction algorithm
     """
