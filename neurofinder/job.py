@@ -250,8 +250,8 @@ class Job(object):
             log4j.LogManager.getRootLogger().setLevel(log4j.Level.ERROR)
             time.sleep(5)
 
-        base_path = 'neuro.datasets/challenges/neurofinder'
-        datasets = ['03.00']
+        base_path = 'neuro.datasets.private/challenges/neurofinder.test'
+        datasets = ['00.00.test', '00.01.test', '01.00.test', '01.01.test', '02.00.test', '02.01.test']
 
         metrics = {'score': [], 'hits': [], 'errors': [], 'overlap': [], 'excess': []}
 
@@ -262,7 +262,7 @@ class Job(object):
 
                 data_path = 's3n://' + base_path + '/' + name
                 data_info = self.load_info(base_path, name)
-                data = tsc.loadImages(data_path + '/images/', recursive=True)
+                data = tsc.loadImages(data_path + '/images/', recursive=True, startIdx=0, stopIdx=100)
                 truth = tsc.loadSources(data_path + '/sources/sources.json')
                 sources = run.run(data, info=data_info)
 
