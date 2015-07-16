@@ -1,4 +1,4 @@
-def run(data):
+def run(data, info):
     """
     Run a source extraction algorithm on an Images object
 
