@@ -253,7 +253,7 @@ class Job(object):
         base_path = 'neuro.datasets.private/challenges/neurofinder.test'
         datasets = ['00.00.test', '00.01.test', '01.00.test', '01.01.test', '02.00.test', '02.01.test']
 
-        metrics = {'score': [], 'hits': [], 'errors': [], 'overlap': [], 'excess': []}
+        metrics = {'score': [], 'recall': [], 'precision': [], 'overlap': [], 'exactness': []}
 
         try:
             for ii, name in enumerate(datasets):
@@ -268,21 +268,14 @@ class Job(object):
                 sources = run.run(data, info=data_info)
 
                 threshold = 6.0 / data_info['pixels-per-micron']
-                h, f = truth.similarity(sources, metric='distance', minDistance=threshold)
-                if h == 0.0:
-                    h = 1.0 / (2*truth.count)
-                if f == 0.0:
-                    f = 1.0 / (2*truth.count)
-                if h == 1.0:
-                    h = 1.0 - 1.0 / (2*truth.count)
-                if f == 1.0:
-                    f = 1.0 - 1.0 / (2*truth.count)
-                score = norm.ppf(h) - norm.ppf(f)
-                overlap = truth.overlap(sources, method='rates', minDistance=threshold)
-                if sum(~isnan(overlap)) > 0:
-                    o, e = tuple(nanmean(overlap, axis=0))
+
+                recall, precision, score = truth.similarity(sources, metric='distance', minDistance=threshold)
+
+                stats = truth.overlap(sources, method='rates', minDistance=threshold)
+                if sum(~isnan(stats)) > 0:
+                    overlap, exactness = tuple(nanmean(stats, axis=0))
                 else:
-                    o, e = 0.0, 1.0
+                    overlap, exactness = 0.0, 1.0
 
                 contributors = str(", ".join(data_info["contributors"]))
                 animal = data_info["animal"]
@@ -294,21 +287,21 @@ class Job(object):
                 m.update(base)
                 metrics['score'].append(m)
 
-                m = {"value": h}
+                m = {"value": recall}
                 m.update(base)
-                metrics['hits'].append(m)
+                metrics['recall'].append(m)
 
-                m = {"value": f}
+                m = {"value": precision}
                 m.update(base)
-                metrics['errors'].append(m)
+                metrics['precision'].append(m)
 
-                m = {"value": o}
+                m = {"value": overlap}
                 m.update(base)
                 metrics['overlap'].append(m)
 
-                m = {"value": e}
+                m = {"value": exactness}
                 m.update(base)
-                metrics['excess'].append(m)
+                metrics['exactness'].append(m)
 
                 base = data.mean()
                 im = sources.masks(outline=True, base=base.clip(0, percentile(base, 99.9)))
