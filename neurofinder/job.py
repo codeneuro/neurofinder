@@ -280,8 +280,10 @@ class Job(object):
                 contributors = str(", ".join(data_info["contributors"]))
                 animal = data_info["animal"]
                 region = data_info["region"]
+                lab = data_info["lab"]
 
-                base = {"dataset": name, "contributors": contributors, "region": region, "animal": animal}
+                base = {"dataset": name, "contributors": contributors,
+                        "lab": lab, "region": region, "animal": animal}
 
                 m = {"value": score}
                 m.update(base)
