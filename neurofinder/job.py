@@ -261,9 +261,7 @@ class Job(object):
                 printer.status("Proccessing data set %s" % name)
 
                 data_path = 's3n://' + base_path + '/' + name
-                print(tsc._sc.defaultParallelism*2)
-                data = tsc.loadImages(data_path + '/images/', recursive=True,
-                                      startIdx=0, stopIdx=100, npartitions=tsc._sc.defaultParallelism*2)
+                data = tsc.loadImages(data_path + '/images/', recursive=True, startIdx=0, stopIdx=100)
                 truth = tsc.loadSources(data_path + '/sources/sources.json')
                 sources = run.run(data)
 
