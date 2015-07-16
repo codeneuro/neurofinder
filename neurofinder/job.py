@@ -11,7 +11,7 @@ import boto
 import glob
 import imp
 from boto.s3.key import Key
-from numpy import mean, asarray, nanmean, percentile
+from numpy import mean, asarray, nanmean, percentile, sum, isnan
 from scipy.stats import norm
 
 from utils import quiet, printer
@@ -278,8 +278,7 @@ class Job(object):
                     f = 1.0 - 1.0 / (2*truth.count)
                 score = norm.ppf(h) - norm.ppf(f)
                 overlap = truth.overlap(sources, method='rates', minDistance=threshold)
-                print(overlap)
-                if len(overlap) > 0:
+                if sum(~isnan(overlap)) > 0:
                     o, e = tuple(nanmean(overlap, axis=0))
                 else:
                     o, e = 0.0, 1.0
