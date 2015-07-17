@@ -7,6 +7,9 @@ def run(data, info):
     data : thunder.rdds.images.Images
         The data the algorithm will be run on
 
+    info : dict
+        Metadata associated with the dataset
+
     Returns
     -------
     result : thunder.extraction.source.SourceModel
