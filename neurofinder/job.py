@@ -125,8 +125,7 @@ class Job(object):
         Send a message to the github comment
         """
         printer.status("Sending msg to github: '%s'" % msg)
-        if False:
-            self.pull_req.create_issue_comment(msg)
+        self.pull_req.create_issue_comment(msg)
         printer.success()
 
     def update_last_checked(self):
