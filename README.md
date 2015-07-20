@@ -2,7 +2,7 @@
 
 [![Join the chat at https://gitter.im/CodeNeuro/neurofinder](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/CodeNeuro/neurofinder?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-Benchmarking platform and competition for source extraction from imaging data. 
+Benchmarking platform and challenge for source extraction from imaging data. 
 
 Develop algorithms interactively in standard environments using Docker and Jupyter notebooks. Have your algorithms automatically deployed and tested in the cloud using Spark. 
 
@@ -11,7 +11,7 @@ Develop algorithms interactively in standard environments using Docker and Jupyt
 2. Launch a notebook session and click on the neurofinder section
 3. Explore the notebooks to learn about data format and see example algorithm designs
 
-## submit an algorithm (currently in beta testing)
+## submit an algorithm
 1. Sign up for an account on github (if you don't already have one)
 2. Fork this repository
 3. Create a branch
@@ -31,19 +31,19 @@ The file `info.json` should contain the following fields
     "description": "description of your algorithm"
 }
 ```
-The file `run.py` should contain a function `run` that accepts as input a Thunder `Images` object and returns a `SourceModel`, and uses Thunder's Source Extraction API to implement the algorithm. The API emphasizes flexibility and modulartiy, allowing for a variety of algorithms. See the existing folder `neurofinder/submissions/example-user-example-algorithm/` for an example submission.
+The file `run.py` should contain a function `run` that accepts as input an `Images` object and an `info` dictionary, and returns a `SourceModel` (these classes are from [Thunder](http://thunder-project.org)'s Source Extraction API). See the existing folder `neurofinder/submissions/example-user-example-algorithm/` for an example submission.
 
 Jobs will be automatically run every few days on a dynamically-deployed Spark cluster, so be patient with your submissions. You will be notified of job status via comments on your pull request.
 
 ## data sets
-Data sets for evaluating algorithms have been kindly provided by the following individuals and labs:
+Data sets for evaluating algorithms have been generously provided by the following individuals and labs:
 - Simon Peron & Karel Svoboda / Janelia Research Campus
 - Adam Packer, Lloyd Russell & Michael Hausser / UCL
 - Jeff Zaremba, Patrick Kaifosh & Attila Losonczy / Columbia
 - Nicholas Sofroniew & Karel Svoboda / Janelia Research Campus
 - Philipp Bethge and Fritjof Helmchen / University of Zurich (in preparation)
 
-All data hosted on Amazon S3 and training availiable through the CodeNeuro [data portal](http://datasets.codeneuro.org)
+All data hosted on Amazon S3 and training data availiable through the CodeNeuro [data portal](http://datasets.codeneuro.org).
 
 ## environment
 All jobs will be run on an Amazon EC2 cluster in a standardized environment. Our notebooks service uses Docker containers to deploy an interactive version of this same environment running in Jupyter notebooks. This is useful for testing and developing algorithms, but is currently limited to only one node.
@@ -61,7 +61,7 @@ The environment has following specs and included libraries:
 as well as several additional libraries included with Anaconda. You can develop and test your code in a full cluster deployment by following [these instructions](http://thunder-project.org/thunder/docs/install_ec2.html) to launch a cluster on EC2.
 
 ## about the job runner
-This repo includes a suite for validating and executing pull requests, storing the status of pull requests in a Mongo database, and outputting the results to a leaderboard. To run its unit tests:
+This repo includes a suite for validating and executing pull requests, storing the status of pull requests in a Mongo database, and outputting the results to S3. To run its unit tests:
 - Install the requirements with `pip install -r /path/to/neurofinder/requirements.txt`
 - Call `py.test` inside the base neurofinder directory
 
