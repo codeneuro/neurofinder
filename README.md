@@ -38,7 +38,7 @@ Jobs will be automatically run every few days on a dynamically-deployed Spark cl
 ## data sets
 Data sets for evaluating algorithms have been generously provided by the following individuals and labs:
 - Simon Peron & Karel Svoboda / Janelia Research Campus
-- Adam Packer, Lloyd Russell & Michael Hausser / UCL
+- Adam Packer, Lloyd Russell & Michael H&auml;usser / UCL
 - Jeff Zaremba, Patrick Kaifosh & Attila Losonczy / Columbia
 - Nicholas Sofroniew & Karel Svoboda / Janelia Research Campus
 - Philipp Bethge and Fritjof Helmchen / University of Zurich (in preparation)
