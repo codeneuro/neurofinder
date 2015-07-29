@@ -2,6 +2,7 @@ import time
 import os
 import json
 import boto
+import argparse
 from boto.s3.key import Key
 from github import Github
 from pymongo import MongoClient
@@ -144,6 +145,13 @@ class JobRunner(object):
 
 
 if __name__ == '__main__':
-    runner = JobRunner(dry=False)
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--dry', dest='dry', action='store_true')
+    parser.add_argument('--no-dry', dest='dry', action='store_false')
+    parser.set_defaults(feature=False)
+    args = parser.parse_args()
+
+    runner = JobRunner(dry=args.dry)
     runner.reset()
     runner.run(True, ["validate", "execute"])
