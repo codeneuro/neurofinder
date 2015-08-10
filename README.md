@@ -9,7 +9,10 @@ Develop algorithms interactively in standard environments using Docker and Jupyt
 ## explore the data and algorithms in interactive notebooks
 1. Go to [neurofinder](http://neurofinder.codeneuro.org)
 2. Click on the notebook link
-3. Explore the tutorial notebooks to learn about data formats, run example algorithms, and see walk-throughs for writing custom algorithms.
+3. Explore the tutorial notebooks to learn about data formats and run example algorithms
+4. Run the custom algorithm notebooks to see how to write an algorithm.
+
+All notebooks also available at this [repo](https://github.com/CodeNeuro/notebooks/tree/master/worker/notebooks/neurofinder)
 
 ## submit an algorithm
 1. Sign up for an account on github (if you don't already have one)
