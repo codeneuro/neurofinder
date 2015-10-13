@@ -4,7 +4,7 @@
 
 Benchmarking platform and challenge for source extraction from imaging data. 
 
-Develop algorithms interactively in standard environments using Docker and Jupyter notebooks. Have your algorithms automatically deployed and tested in the cloud using Spark. 
+Develop algorithms interactively in the browser using Jupyter notebooks -- or download the data locally and develop in your favorite computing environment. Then have your algorithms automatically deployed and tested in the cloud.
 
 ## explore the data and algorithms in interactive notebooks
 1. Go to [neurofinder](http://neurofinder.codeneuro.org)
@@ -13,6 +13,11 @@ Develop algorithms interactively in standard environments using Docker and Jupyt
 4. Run the custom algorithm notebooks to see how to write an algorithm.
 
 All notebooks also available at this [repo](https://github.com/CodeNeuro/notebooks/tree/master/worker/notebooks/neurofinder)
+
+## download the local data
+1. Go to the [local](https://github.com/codeneuro/neurofinder//tree/master/local) section to see a list of datasets
+2. Download one of them
+3. Use the example scripts to load and play with the data in your language of choice
 
 ## submit an algorithm
 1. Sign up for an account on github (if you don't already have one)
