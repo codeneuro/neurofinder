@@ -1,16 +1,5 @@
 # local training data
 
-Training data for the [NeuroFinder](http://neurofinder.codeneuro.org) analysis benchmarking system, available for direct download.
-
-Several training datasets are available for direct download and local testing. Each downloadable dataset includes metadata (as `.json`), images (as `.bin`), and coordinates of identified neuronal sources aka ROIs (as `.json`). Most datasets are a few GBs large.
-
-Links to the data sets are as follows (with lab of origin)
-
-- [neurofinder.00.00](https://s3.amazonaws.com/neuro.datasets/challenges/neurofinder/neurofinder.00.00.zip) Simon Peron : *Svoboda Lab*
-- [neurofinder.00.01](https://s3.amazonaws.com/neuro.datasets/challenges/neurofinder/neurofinder.00.01.zip) Simon Peron : *Svoboda Lab*
-- [neurofinder.01.00](https://s3.amazonaws.com/neuro.datasets/challenges/neurofinder/neurofinder.01.00.zip) Adam Packer, Lloyd Russell : *Hausser Lab*
-- [neurofinder.01.01](https://s3.amazonaws.com/neuro.datasets/challenges/neurofinder/neurofinder.01.01.zip) Adam Packer, Lloyd Russell : *Hausser Lab*
-- [neurofinder.02.00](https://s3.amazonaws.com/neuro.datasets/challenges/neurofinder/neurofinder.02.00.zip) Nicholas Sofroniew : *Svoboda Lab*
-- [neurofinder.02.01](https://s3.amazonaws.com/neuro.datasets/challenges/neurofinder/neurofinder.02.01.zip) Nicholas Sofroniew : *Svoboda Lab*
+Several training datasets for the [NeuroFinder](http://neurofinder.codeneuro.org) analysis benchmarking system are available for direct download and local testing. Each downloadable dataset includes metadata (as `.json`), images (as `.bin`), and coordinates of identified neuronal sources aka ROIs (as `.json`). Most datasets are a few GBs large. See the list of available datasets in [datasets.md](https://github.com/CodeNeuro/neurofinder/blob/master/local/datasets.md). You can also view them at [datasets.codeneuro.org](http://datasets.codeneuro.org).
 
 Each download also includes example loading scripts in `python` and `MATLAB`, the source code of which is in this repository. To contribute example loading scripts in other languages, just submit a PR to this repo!
