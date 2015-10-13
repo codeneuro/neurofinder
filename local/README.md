@@ -23,6 +23,6 @@ Links to the data sets are as follows (with lab of origin)
 - [neurofinder.training.01.04]() *Adam Packer, Lloyd Russell : Hausser Lab*
 - [neurofinder.training.02.00]() *Nicholas Sofroniew : Svoboda Lab*
 - [neurofinder.training.02.01]() *Nicholas Sofroniew : Svoboda Lab*
-- [neurofinder.training.03.00]() *Nicholas Sofroniew : Svoboda Lab*
+- [neurofinder.training.03.00]() *Jeff Zaremba : Losonczy Lab*
 
-Each download also includes example loading scripts in both `python` and `MATLAB`, the source code of which is contained in this repository. If you want to contribute example loading scripts in another language, just submit a PR to this repo!
+Each download also includes example loading scripts in `python` and `MATLAB`, the source code of which is in this repository. To contribute example loading scripts in other languages, just submit a PR to this repo!
