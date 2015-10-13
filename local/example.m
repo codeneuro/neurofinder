@@ -20,7 +20,7 @@ x = conf.dims(1);
 y = conf.dims(2);
 n = length(files);
 imgs = zeros([x, y, n], 'uint16');
-for i = 1:length(files);
+for i = 1:length(files)
 	fid = fopen(files(i).name,'r');
 	imgs(:,:,i) = reshape(fread(fid, 'uint16'), x, y);
 	fclose(fid);
@@ -29,8 +29,12 @@ end
 % load the sources
 sources = loadjson('sources/sources.json');
 masks = zeros(x, y);
-for i = 1:length(sources);
-	coords = sources(i).coordinates;
+for i = 1:length(sources)
+	if isstruct(sources)
+		coords = sources(i).coordinates;
+	elseif iscell(sources)
+		coords = sources{i}.coordinates;
+	end
 	masks(sub2ind([x, y], coords(:,1), coords(:,2))) = 1;
 end
 
