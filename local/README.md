@@ -1,6 +1,6 @@
-# local training
+# local training data
 
-Several training datasets are available for direct download and local testing. Each downloadable dataset includes metadata (as JSON), images (as binary files), and coordinates of identified neuronal sources aka ROIs (as JSON). Most datasets are a few GBs.
+Several training datasets are available for direct download and local testing. Each downloadable dataset includes metadata (as `.json`), images (as `.bin`), and coordinates of identified neuronal sources aka ROIs (as `.json`). Most datasets are a few GBs large.
 
 Links to the data sets are as follows (with lab of origin)
 
