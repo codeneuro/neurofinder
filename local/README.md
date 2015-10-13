@@ -4,8 +4,8 @@ Several training datasets are available for direct download and local testing. E
 
 Links to the data sets are as follows (with lab of origin)
 
-- [neurofinder.training.00.00]() *Simon Peron : Svoboda Lab*
-- [neurofinder.training.00.01](https://s3.amazonaws.com/neuro.datasets/challenges/neurofinder/00.01/neurofinder.training.00.01.zip) *Simon Peron : Svoboda Lab*
+- [neurofinder.training.00.00](https://s3.amazonaws.com/neuro.datasets/challenges/neurofinder/neurofinder.00.00.zip) *Simon Peron : Svoboda Lab*
+- [neurofinder.training.00.01](https://s3.amazonaws.com/neuro.datasets/challenges/neurofinder/neurofinder.00.01.zip) *Simon Peron : Svoboda Lab*
 - [neurofinder.training.00.02]() *Simon Peron : Svoboda Lab*
 - [neurofinder.training.00.03]() *Simon Peron : Svoboda Lab*
 - [neurofinder.training.00.04]() *Simon Peron : Svoboda Lab*
