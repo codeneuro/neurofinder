@@ -6,7 +6,7 @@ Benchmarking platform and challenge for source extraction from imaging data.
 
 Develop algorithms interactively in the browser using Jupyter notebooks -- or download the data locally and develop in your favorite computing environment. Then have your algorithms automatically deployed and tested in the cloud.
 
-## explore the data and algorithms in interactive notebooks
+## explore the training data in interactive notebooks
 1. Go to [neurofinder](http://neurofinder.codeneuro.org)
 2. Click on the notebook link
 3. Explore the tutorial notebooks to learn about data formats and run example algorithms
@@ -14,7 +14,7 @@ Develop algorithms interactively in the browser using Jupyter notebooks -- or do
 
 All notebooks also available at this [repo](https://github.com/CodeNeuro/notebooks/tree/master/worker/notebooks/neurofinder)
 
-## download the local data
+## download the training data for local exploration
 1. Go to the [local](https://github.com/codeneuro/neurofinder//tree/master/local) section to see a list of datasets
 2. Download one of them
 3. Use the example scripts to load and play with the data in your language of choice
