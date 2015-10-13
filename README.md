@@ -4,7 +4,7 @@
 
 Benchmarking platform and challenge for source extraction from imaging data. 
 
-Develop algorithms interactively in the browser using Jupyter notebooks -- or download the data locally and develop in your favorite computing environment. Then have your algorithms automatically deployed and tested in the cloud.
+Develop algorithms interactively in the browser using Jupyter notebooks — or download the data locally and develop in your favorite computing environment. Then have your algorithms automatically deployed and tested in the cloud.
 
 ## explore the training data in interactive notebooks
 1. Go to [neurofinder](http://neurofinder.codeneuro.org)
