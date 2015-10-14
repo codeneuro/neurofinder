@@ -8,7 +8,7 @@ Data can be accessed from withn interactive Jupyter notebooks directly from the 
 - [`neurofinder.00.01`](https://s3.amazonaws.com/neuro.datasets/challenges/neurofinder/neurofinder.00.01.zip) Simon Peron : *Svoboda Lab*
 - [`neurofinder.00.02`](https://s3.amazonaws.com/neuro.datasets/challenges/neurofinder/neurofinder.00.02.zip) Simon Peron : *Svoboda Lab*
 - [`neurofinder.00.03`](https://s3.amazonaws.com/neuro.datasets/challenges/neurofinder/neurofinder.00.03.zip) Simon Peron : *Svoboda Lab*
-- `neurofinder.00.04` Simon Peron : *Svoboda Lab*
+- [`neurofinder.00.04`](https://s3.amazonaws.com/neuro.datasets/challenges/neurofinder/neurofinder.00.04.zip) Simon Peron : *Svoboda Lab*
 - `neurofinder.00.05` Simon Peron : *Svoboda Lab*
 - `neurofinder.00.06` Simon Peron : *Svoboda Lab*
 - `neurofinder.00.07` Simon Peron : *Svoboda Lab*
