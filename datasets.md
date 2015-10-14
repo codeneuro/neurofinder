@@ -2,7 +2,9 @@
 
 All datasets are hosted on Amazon S3 and cataloged at [datasets.codeneuro.org](http://datasets.codeneuro.org).
 
-Data can be accessed from withn interactive Jupyter notebooks directly from the browser (via [notebooks.codeneuro.org](http://notebooks.codeneuro.org)), or can be downloaded for local testing using the links provided here.
+Data can be accessed from withn interactive Jupyter notebooks directly from the browser (via [notebooks.codeneuro.org](http://notebooks.codeneuro.org)), or can be downloaded for local evaluation using the links provided here. Each dataset includes both raw data and identified neurons.
+
+Only "training" data is made available here. A separate collection of "test" data is held out for validating algorithm submissions, see this [link](http://neurofinder.codeneuro.org/leaderboard/#submit) for more info on submitting an algorithm.
 
 - [`neurofinder.00.00`](https://s3.amazonaws.com/neuro.datasets/challenges/neurofinder/neurofinder.00.00.zip) Simon Peron : *Svoboda Lab*
 - [`neurofinder.00.01`](https://s3.amazonaws.com/neuro.datasets/challenges/neurofinder/neurofinder.00.01.zip) Simon Peron : *Svoboda Lab*
