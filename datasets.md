@@ -2,7 +2,9 @@
 
 All datasets are hosted on Amazon S3 and cataloged at [datasets.codeneuro.org](http://datasets.codeneuro.org).
 
-Data can be accessed from withn interactive Jupyter notebooks directly from the browser via [notebooks.codeneuro.org](http://notebooks.codeneuro.org), or can be downloaded for local evaluation using the links provided here. Each dataset includes both raw image data and coordinates of identified neurons in standardized formats.
+Data can be accessed from withn interactive Jupyter notebooks directly from the browser via [notebooks.codeneuro.org](http://notebooks.codeneuro.org), or can be downloaded for local evaluation using the links provided here. 
+
+Each downloaded dataset includes both raw image data and coordinates of identified neurons in standardized formats, as well as simple example scripts for loading data in both `python` and `MATLAB`.
 
 Only "training" data are made available here. A separate collection of "testing" data are held out for validating algorithm submissions. If you have an algorithm that works well on the training data, visit [neurofinder.codeneuro.org](http://neurofinder.codeneuro.org/leaderboard/#submit) for more info on submitting an algorithm!
 
