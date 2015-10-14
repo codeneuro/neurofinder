@@ -15,9 +15,9 @@ Only "training" data are made available here. A separate collection of "testing"
 - [`neurofinder.00.06`](https://s3.amazonaws.com/neuro.datasets/challenges/neurofinder/neurofinder.00.06.zip) Simon Peron : *Svoboda Lab*
 - [`neurofinder.00.07`](https://s3.amazonaws.com/neuro.datasets/challenges/neurofinder/neurofinder.00.07.zip) Simon Peron : *Svoboda Lab*
 - [`neurofinder.00.08`](https://s3.amazonaws.com/neuro.datasets/challenges/neurofinder/neurofinder.00.08.zip) Simon Peron : *Svoboda Lab*
-- `neurofinder.00.09` Simon Peron : *Svoboda Lab*
-- `neurofinder.00.10` Simon Peron : *Svoboda Lab*
-- `neurofinder.00.11` Simon Peron : *Svoboda Lab*
+- [`neurofinder.00.09`](https://s3.amazonaws.com/neuro.datasets/challenges/neurofinder/neurofinder.00.09.zip) Simon Peron : *Svoboda Lab*
+- [`neurofinder.00.10`](https://s3.amazonaws.com/neuro.datasets/challenges/neurofinder/neurofinder.00.10.zip) Simon Peron : *Svoboda Lab*
+- [`neurofinder.00.11`](https://s3.amazonaws.com/neuro.datasets/challenges/neurofinder/neurofinder.00.11.zip) Simon Peron : *Svoboda Lab*
 - [`neurofinder.01.00`](https://s3.amazonaws.com/neuro.datasets/challenges/neurofinder/neurofinder.01.00.zip) Adam Packer, Lloyd Russell : *Hausser Lab*
 - [`neurofinder.01.01`](https://s3.amazonaws.com/neuro.datasets/challenges/neurofinder/neurofinder.01.01.zip) Adam Packer, Lloyd Russell : *Hausser Lab*
 - `neurofinder.01.02` Adam Packer + Lloyd Russell : *Hausser Lab*
