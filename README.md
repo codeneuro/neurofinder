@@ -15,8 +15,8 @@ Develop algorithms interactively in the browser using Jupyter notebooks — or d
 All notebooks also available at this [repo](https://github.com/CodeNeuro/notebooks/tree/master/worker/notebooks/neurofinder)
 
 ## download the training data for local exploration
-1. Visit the [local](https://github.com/codeneuro/neurofinder//tree/master/local) section of this repo 
-2. Browse the [list](https://github.com/CodeNeuro/neurofinder/blob/master/local/DATASETS.md) of datasets for direct download
+1. Visit the [local](https://github.com/codeneuro/neurofinder//tree/master/local) section of this repo for an overview
+2. Browse the [list](https://github.com/CodeNeuro/neurofinder/blob/master/datasets.md) of datasets for direct download
 2. Download one or more of them
 3. Use the example scripts to load and explore the data in your language of choice
 
