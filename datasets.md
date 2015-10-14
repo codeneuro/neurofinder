@@ -25,4 +25,4 @@ Only "training" data are made available here. A separate collection of "testing"
 - `neurofinder.01.04` Adam Packer + Lloyd Russell : *Hausser Lab*
 - [`neurofinder.02.00`](https://s3.amazonaws.com/neuro.datasets/challenges/neurofinder/neurofinder.02.00.zip) Nicholas Sofroniew : *Svoboda Lab*
 - [`neurofinder.02.01`](https://s3.amazonaws.com/neuro.datasets/challenges/neurofinder/neurofinder.02.01.zip) Nicholas Sofroniew : *Svoboda Lab*
-- `neurofinder.03.00` Jeff Zaremba : *Losonczy Lab*
+- [`neurofinder.03.00`](https://s3.amazonaws.com/neuro.datasets/challenges/neurofinder/neurofinder.03.00.zip) Jeff Zaremba : *Losonczy Lab*
