@@ -16,7 +16,7 @@ All notebooks also available at this [repo](https://github.com/CodeNeuro/noteboo
 
 ## download the training data for local exploration
 1. Visit the [local](https://github.com/codeneuro/neurofinder//tree/master/local) section of this repo 
-2. Browse the [list](https://github.com/CodeNeuro/neurofinder/blob/master/local/datasets.md) of datasets for download
+2. Browse the [list](https://github.com/CodeNeuro/neurofinder/blob/master/local/DATASETS.md) of datasets for direct download
 2. Download one or more of them
 3. Use the example scripts to load and explore the data in your language of choice
 
@@ -52,7 +52,7 @@ Data sets for evaluating algorithms have been generously provided by the followi
 - Nicholas Sofroniew & Karel Svoboda / Janelia Research Campus
 - Philipp Bethge and Fritjof Helmchen / University of Zurich (in preparation)
 
-All data hosted on Amazon S3 and training data availiable through the CodeNeuro [data portal](http://datasets.codeneuro.org).
+All data hosted on Amazon S3. Training data availiable through the CodeNeuro [data portal](http://datasets.codeneuro.org), and also for direct download via the links in this [list](https://github.com/CodeNeuro/neurofinder/blob/master/local/DATASETS.md).
 
 ## environment
 All jobs will be run on an Amazon EC2 cluster in a standardized environment. Our notebooks service uses Docker containers to deploy an interactive version of this same environment running in Jupyter notebooks. This is useful for testing and developing algorithms, but is currently limited to only one node.
