@@ -12,8 +12,8 @@ Only "training" data are made available here. A separate collection of "testing"
 - [`neurofinder.00.03`](https://s3.amazonaws.com/neuro.datasets/challenges/neurofinder/neurofinder.00.03.zip) Simon Peron : *Svoboda Lab*
 - [`neurofinder.00.04`](https://s3.amazonaws.com/neuro.datasets/challenges/neurofinder/neurofinder.00.04.zip) Simon Peron : *Svoboda Lab*
 - [`neurofinder.00.05`](https://s3.amazonaws.com/neuro.datasets/challenges/neurofinder/neurofinder.00.05.zip) Simon Peron : *Svoboda Lab*
-- `neurofinder.00.06` Simon Peron : *Svoboda Lab*
-- `neurofinder.00.07` Simon Peron : *Svoboda Lab*
+- [`neurofinder.00.06`](https://s3.amazonaws.com/neuro.datasets/challenges/neurofinder/neurofinder.00.06.zip) Simon Peron : *Svoboda Lab*
+- [`neurofinder.00.07`](https://s3.amazonaws.com/neuro.datasets/challenges/neurofinder/neurofinder.00.07.zip) Simon Peron : *Svoboda Lab*
 - `neurofinder.00.08` Simon Peron : *Svoboda Lab*
 - `neurofinder.00.09` Simon Peron : *Svoboda Lab*
 - `neurofinder.00.10` Simon Peron : *Svoboda Lab*
