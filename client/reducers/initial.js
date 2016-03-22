@@ -8,24 +8,6 @@ module.exports = {
   },
   submissions: {
     loading: true,
-    entries: [
-      {
-        detail: false,
-        info: null,
-        name: '',
-        email: '',
-        repository: '',
-        handle: '',
-        scores: [
-          {
-            dataset: '',
-            recall: '',
-            precision: '',
-            overlap: '',
-            exactness: ''
-          }
-        ]
-      }
-    ]
+    entries: []
   }
 }

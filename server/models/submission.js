@@ -1,10 +1,8 @@
 var mongoose = require('mongoose')
 
 module.exports = mongoose.model('Submission', {
-  name: { type: String, unique: true },
-  email: String,
+  user: String,
   repository: String,
-  handle: String,
   algorithm: String,
   answers: [
     {
@@ -15,6 +13,7 @@ module.exports = mongoose.model('Submission', {
   results: [
     {
       dataset: String,
+      lab: String,
       scores: [
         {label: String, value: Number}
       ]

@@ -2,11 +2,12 @@ var hx = require('hxdx').hx
 var dx = require('hxdx').dx
 var ax = require('../../reducers/actions')
 var connect = require('hxdx').connect
+var gh = require('parse-github-url')
 
 function submit (state) {
   var style = {
     form: {
-      width: '50%',
+      width: '60%',
       display: 'inline-block',
       textAlign: 'right'
     },
@@ -15,7 +16,7 @@ function submit (state) {
       fontSize: '18px',
       border: 'none',
       borderBottom: 'solid 1px black',
-      marginBottom: '8px',
+      marginBottom: '20px',
       marginLeft: '5px',
       width: '60%'
     },
@@ -23,14 +24,14 @@ function submit (state) {
       color: 'rgb(130,130,130)'
     },
     dropzone: {
-      marginLeft: '20%',
-      width: '120px',
-      height: '120px',
+      marginLeft: '10%',
+      width: '125px',
+      height: '125px',
       border: 'dotted 4px rgb(86, 171, 114)',
       display: 'inline-block',
       verticalAlign: 'bottom',
       textAlign: 'center',
-      padding: '30px'
+      padding: '20px'
     },
     droptext: {
       fontSize: '150%',
@@ -42,13 +43,13 @@ function submit (state) {
       fontSize: '16px'
     },
     message: {
-      marginTop: '20px',
+      marginTop: '15px',
       pointerEvents: 'none'
     }
   }
 
   function status () {
-    if (state.upload.submitting) return hx`<div style=${style.message}>submitting...</div>`
+    if (state.upload.submitting) return hx`<div className='loader'></div>`
     else if (state.upload.error) return hx`<div style=${style.message}>${state.upload.message}</div>`
     else if (state.upload.completed) return hx`<div style=${style.message}>completed!</div>`
     else return hx`<div style=${style.message}></div>`
@@ -72,16 +73,17 @@ function submit (state) {
           failed = true
           message = 'error parsing file!'
         }
+        var repo = document.querySelector('#repository').value
+        var repo = (repo !== '') ? gh(repo) : {repository: ''}
         var payload = {
-          name: document.querySelector('#name').value,
-          email: document.querySelector('#email').value,
-          repository: document.querySelector('#repository').value,
+          repository: 'https://github.com/' + repo.repository,
           user: document.querySelector('#user').value,
           algorithm: document.querySelector('#algorithm').value,
           answers: answers
         }
 
-        Array('name', 'email', 'repository', 'user', 'algorithm').forEach(function (field) {
+        Array('repository', 'user', 'algorithm').forEach(function (field) {
+          console.log(payload[field])
           if (!payload[field] || payload[field] == '') {
             failed = true
             message = 'forget a form?'
@@ -125,22 +127,16 @@ function submit (state) {
     }, ...]
   </pre></code>
   <div>
-    Then fill out the form below and drag your JSON file into the well.
+    Then fill out the form below and drag your JSON file into the well. Each submission must have a unique GitHub user and algorithm name, but multiple submissions from the same user are fine.
   </div>
   <br>
 
   <div style=${style.form}>
     <div>
-    <span style=${style.label}>name</span> <input id='name' style=${style.input}>
-    </div>
-    <div>
-    <span style=${style.label}>email</span> <input id='email' style=${style.input}>
+    <span style=${style.label}>github user</span> <input id='user' style=${style.input}>
     </div>
     <div>
     <span style=${style.label}>github repository</span> <input id='repository' style=${style.input}>
-    </div>
-    <div>
-    <span style=${style.label}>github user</span> <input id='user' style=${style.input}>
     </div>
     <div>
     <span style=${style.label}>algorithm name</span> <input id='algorithm' style=${style.input}>

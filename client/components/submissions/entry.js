@@ -31,7 +31,7 @@ module.exports = function (state) {
     },
     field: {
       color: 'rgb(141,144,146)',
-      width: '15%',
+      width: '13%',
       textAlign: 'left',
       marginLeft: '2%',
       marginTop: '2%'
@@ -66,14 +66,17 @@ module.exports = function (state) {
       paddingLeft: '5%',
       backgroundColor: 'rgb(100,100,100)',
       borderRadius: '2px'
+    },
+    link: {
+      color: 'rgb(81,82,84)'
     }
   }
 
   var scale = d3.scaleLinear().domain([0, 1]).range(["rgb(80, 110, 90)", "rgb(100, 240, 160)"])
 
   function onclick () {
-    if (state.detail) dx({type: 'HIDE_DETAIL', name: state.name})
-    else dx({type: 'SHOW_DETAIL', name: state.name})
+    if (state.detail) dx({type: 'HIDE_DETAIL', _id: state._id})
+    else dx({type: 'SHOW_DETAIL', _id: state._id})
   }
 
   var fields = state.results[0].scores.map(function (score) {
@@ -111,13 +114,33 @@ module.exports = function (state) {
   function onmouseover (e) {
     clearTimeout(timeout)
     var info = e.srcElement['data-info']
-    dx({type: 'SET_INFO', name: state.name, info: info})
+    dx({type: 'SET_INFO', _id: state._id, info: info})
   }
 
   function onmouseout (e) {
     timeout = setTimeout(function () {
-      dx({type: 'REMOVE_INFO', name: state.name})
+      dx({type: 'REMOVE_INFO', _id: state._id})
     }, 50)
+  }
+
+  function onclicklink (e) {
+    e.preventDefault()
+    if (state.detail) {
+      e.stopPropagation()
+      window.open(e.srcElement.href)
+    }
+  }
+
+  function onmouseoverlink (e) {
+    if (state.detail) {
+      e.srcElement.style.color = 'rgb(10,10,10)'
+    }
+  }
+
+  function onmouseoutlink (e) {
+    if (state.detail) {
+      e.srcElement.style.color = 'rgb(81,82,84)'
+    }
   }
 
   function detail () {
@@ -125,9 +148,10 @@ module.exports = function (state) {
     else return hx`<div><div>mouse over</div><div>for info</div></div>`
   }
 
-
   return hx`<div className='entry' style=${style.box} onclick=${onclick}>
-    <div style=${style.info}>${state.handle}<br>${state.algorithm}</div>
+    <div style=${style.info}>
+      <span onclick=${onclicklink} onmouseover=${onmouseoverlink} onmouseout=${onmouseoutlink} href=${'https://github.com/' + state.user}>${'@' + state.user}</span><br><span onclick=${onclicklink} onmouseover=${onmouseoverlink} onmouseout=${onmouseoutlink} className='simple-link' href=${state.repository}>${state.algorithm}</span>
+    </div>
     <div style=${style.header}>${header()}</div>
     <div style=${style.detail}>${detail()}</div>
     <div style=${style.matrix}>${matrix()}</div>

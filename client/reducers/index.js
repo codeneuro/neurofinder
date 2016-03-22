@@ -34,6 +34,9 @@ var upload = function (state, action) {
     case o.UPLOAD_SUCCESS:
       return {submitting: false, error: false, completed: true, message: ''}
 
+    case o.UPLOAD_RESET:
+      return {submitting: false, error: false, completed: false, message: ''}
+
     default:
       return state
   }
@@ -51,25 +54,25 @@ var submissions = function (state, action) {
 
     case o.SHOW_DETAIL:
       var entries = state.entries.map(function (entry) {
-        return assign({}, entry, {detail: entry.name === action.name ? true : entry.detail})
+        return assign({}, entry, {detail: entry._id === action._id ? true : entry.detail})
       })
       return assign({}, state, {entries: entries})
 
     case o.HIDE_DETAIL:
       var entries = state.entries.map(function (entry) {
-        return assign({}, entry, {detail: entry.name === action.name ? false : entry.detail})
+        return assign({}, entry, {detail: entry._id === action._id ? false : entry.detail})
       })
       return assign({}, state, {entries: entries})
 
     case o.SET_INFO:
       var entries = state.entries.map(function (entry) {
-        return assign({}, entry, {info: entry.name === action.name ? action.info : entry.info})
+        return assign({}, entry, {info: entry._id === action._id ? action.info : entry.info})
       })
       return assign({}, state, {entries: entries})
 
     case o.REMOVE_INFO:
       var entries = state.entries.map(function (entry) {
-        return assign({}, entry, {info: entry.name === action.name ? null : entry.info})
+        return assign({}, entry, {info: entry._id === action._id ? null : entry.info})
       })
       return assign({}, state, {entries: entries})
 

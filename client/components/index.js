@@ -7,9 +7,9 @@ var submissions = require('./submissions')
 module.exports = function (state) {
   var style = {
     main: {
-      width: '70%',
-      marginLeft: '15%',
-      marginRight: '15%',
+      width: (window.innerWidth > 1100) ? '60%' : '70%',
+      marginLeft: (window.innerWidth > 1100) ? '20%' : '15%',
+      marginRight: (window.innerWidth > 1100) ? '20%' : '15%',
       marginBottom: '100px'
     },
     header: {

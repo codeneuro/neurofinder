@@ -10,7 +10,8 @@ var constants = {
   REMOVE_INFO: 'REMOVE_INFO',
   UPLOAD_ERROR: 'UPLOAD_ERROR',
   UPLOAD_STARTED: 'UPLOAD_STARTED',
-  UPLOAD_SUCCESS: 'UPLOAD_SUCCESS'
+  UPLOAD_SUCCESS: 'UPLOAD_SUCCESS',
+  UPLOAD_RESET: 'UPLOAD_RESET'
 }
 
 var host = 'http://localhost:8080'
@@ -22,8 +23,6 @@ function fetch () {
       url: host + '/api/submissions', 
       json: true
     }, function (err, res, body) {
-      console.log('logging body')
-      console.log(body)
       if (err) {
         return dx({
           type: constants.FETCH_SUBMISSIONS, 
@@ -47,7 +46,13 @@ function submit (data) {
       body: JSON.stringify(data), 
       json: true
     }, function (req, res, body) {
-      if (res.statusCode == 200) dx({ type: 'UPLOAD_SUCCESS' })
+      if (res.statusCode == 200) {
+        fetch()(dx)
+        dx({ type: 'UPLOAD_SUCCESS' })
+        setTimeout(function () {
+          dx({ type: 'UPLOAD_RESET' })
+        }, 2000)
+      }
       else dx({ type: 'UPLOAD_ERROR', message: res.response || 'failed to upload' })
     })
   }

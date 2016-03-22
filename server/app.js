@@ -32,34 +32,45 @@ var start = function (opts) {
   app.post('/api/submit/', function(req, res){ 
     var answers = req.body.answers
 
-    var results = []
-    var datasets = Dataset.find({}, function (err, data) {
-      data.forEach(function (dataset) {
-        answers.forEach(function (answer) {
-          if (answer.dataset === dataset.name) {
-            results.push({
-              dataset: dataset.name,
-              lab: dataset.lab,
-              scores: evaluate.score(answer.data, dataset.data)
-            })
-          }
-        })
-      })
-
-      if (results.length != data.length) {
-        return res.status(500).end('too few datasets')
+    Submission.find({user: req.body.user, algorithm: req.body.algorithm}, function (err, data) {
+      if (data && data.length > 0) {
+        return res.status(500).end('already submitted!')
       }
+      else {
+        var results = []
+        var datasets = Dataset.find({}, function (err, data) {
+          data.forEach(function (dataset) {
+            answers.forEach(function (answer) {
+              if (answer.dataset === dataset.name) {
+                results.push({
+                  dataset: dataset.name,
+                  lab: dataset.lab,
+                  scores: evaluate.score(answer.sources, dataset.sources)
+                })
+              }
+            })
+          })
 
-      results = evaluate.average(results)
-      req.body.results = results
+          if (results.length != data.length) {
+            return res.status(500).end('too few datasets')
+          }
 
-      return res.status(200).end('submission succeeeded')
+          results = evaluate.average(results)
+          req.body.results = results
 
-      // var submission = new Submission(req.body)
-      // submission.save(function (err, data) {
-      //   if (err) return console.error(err)
-      //   console.log('submission saved to db from user: ' + data.name)
-      // })
+          var submission = new Submission(req.body)
+
+          submission.save(function (err, data) {
+            if (err) {
+              return res.status(500).end('failure posting results')
+            }
+            else {
+              console.log('submission saved to db from user: ' + data.user)
+              return res.status(200).end('submission succeeeded')
+            }
+          })
+        })
+      }
     })
   })
 
