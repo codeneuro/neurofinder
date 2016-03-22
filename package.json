@@ -1,0 +1,40 @@
+{
+  "name": "neurofinder",
+  "version": "1.0.0",
+  "description": "benchmarking app for neuron identification",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "browserify client/index.js -o client/bundle.js",
+    "start": "watchify client/index.js -o client/bundle.js & node server/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CodeNeuro/neurofinder.git"
+  },
+  "keywords": [
+    "neuron",
+    "app",
+    "leaderboard",
+    "benchmark"
+  ],
+  "author": "freeman-lab",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/CodeNeuro/neurofinder/issues"
+  },
+  "homepage": "https://github.com/CodeNeuro/neurofinder#readme",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "browser-request": "^0.3.3",
+    "d3-scale": "^0.6.4",
+    "drag-and-drop-files": "0.0.1",
+    "drag-drop": "^2.11.0",
+    "express": "^4.13.4",
+    "lodash.sortby": "^4.2.1",
+    "mongoose": "^4.4.7",
+    "object-assign": "^4.0.1",
+    "redux": "^3.3.1",
+    "s3": "^4.4.0"
+  }
+}

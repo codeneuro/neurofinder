@@ -1,0 +1,41 @@
+body {
+  padding: 0px;
+  margin: 0px;
+  font-size: 18px;
+  font-family: 'Abel';
+  color: rgb(40,40,40);
+  cursor: default;
+  overflow-x: hidden;
+  background: white;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; 
+}
+
+html { width: 100vw; }
+
+a {
+  text-decoration: none;
+  outline: none;
+  color: rgb(86, 171, 114);
+}
+
+a:hover {
+  color: rgb(46, 121, 84);
+  outline: none;
+}
+
+input:focus {
+  outline: none;
+}
+
+.entry:hover {
+  border-left: solid 6px rgb(136, 138, 140) !important;
+  padding-left: 3px !important;
+}
+
+.tab:hover {
+  border-left: solid 6px rgb(86, 171, 114) !important;
+  padding-left: 3px !important;
+}

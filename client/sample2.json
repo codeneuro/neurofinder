@@ -1,0 +1,37 @@
+module.exports = {
+  "name": "Jason Wittenbach",
+  "email": "jason.wittenbach@gmail.com",
+  "repository": "http://github.com/jwittenbach/algorithm",
+  "handle": "@jwittenbach",
+  "algorithm": "localcorr",
+  "answers": [
+    {
+      "dataset": "00.00.test",
+      "sources": [{"coordinates": [[0, 0], [0, 1]]}, {"coordinates": [[0, 2], [0, 2]]}]
+    },
+    {
+      "dataset": "00.01.test",
+      "sources": [{"coordinates": [[0, 0], [0, 1]]}]
+    },
+    {
+      "dataset": "01.00.test",
+      "sources": [{"coordinates": [[0, 0], [0, 1]]}]
+    },
+    {
+      "dataset": "01.01.test",
+      "sources": [{"coordinates": [[0, 0], [0, 1]]}]
+    },
+    {
+      "dataset": "02.00.test",
+      "sources": [{"coordinates": [[0, 0], [0, 1]]}]
+    },
+    {
+      "dataset": "02.01.test",
+      "sources": [{"coordinates": [[0, 0], [0, 1]]}]
+    },
+    {
+      "dataset": "03.00.test",
+      "sources": [{"coordinates": [[0, 0], [0, 1]]}]
+    }
+  ]
+}
