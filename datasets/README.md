@@ -1,14 +1,5 @@
 # local training data
 
-Several training datasets are available for direct download and local testing. Each downloadable dataset includes metadata (as `.json`), images (as `.bin`), and coordinates of identified neuronal sources aka ROIs (as `.json`). Most datasets are a few GBs large.
+Several training datasets for the [NeuroFinder](http://neurofinder.codeneuro.org) analysis benchmarking system are available for direct download and local testing. Each downloadable dataset includes metadata (as `.json`) images (as `.bin`) and coordinates of identified neuronal sources aka ROIs (as `.json`). Most datasets are a few GBs large. Browse the [list](https://github.com/CodeNeuro/neurofinder/blob/master/datasets.md) of datasets on GitHub for direct download links, and also visit [datasets.codeneuro.org](http://datasets.codeneuro.org) for more dataset information.
 
-Links to the data sets are as follows (with lab of origin)
-
-- [neurofinder.00.00](https://s3.amazonaws.com/neuro.datasets/challenges/neurofinder/neurofinder.00.00.zip) Simon Peron : *Svoboda Lab*
-- [neurofinder.00.01](https://s3.amazonaws.com/neuro.datasets/challenges/neurofinder/neurofinder.00.01.zip) Simon Peron : *Svoboda Lab*
-- [neurofinder.01.00](https://s3.amazonaws.com/neuro.datasets/challenges/neurofinder/neurofinder.01.00.zip) Adam Packer, Lloyd Russell : *Hausser Lab*
-- [neurofinder.01.01](https://s3.amazonaws.com/neuro.datasets/challenges/neurofinder/neurofinder.01.01.zip) Adam Packer, Lloyd Russell : *Hausser Lab*
-- [neurofinder.02.00](https://s3.amazonaws.com/neuro.datasets/challenges/neurofinder/neurofinder.02.00.zip) Nicholas Sofroniew : *Svoboda Lab*
-- [neurofinder.02.01](https://s3.amazonaws.com/neuro.datasets/challenges/neurofinder/neurofinder.02.01.zip) Nicholas Sofroniew : *Svoboda Lab*
-
-Each download also includes example loading scripts in `python` and `MATLAB`, the source code of which is in this repository. To contribute example loading scripts in other languages, just submit a PR to this repo!
+Along with the data itself, each download includes example loading scripts in `python` and `MATLAB`, the source code of which are in this [reposistory](https://github.com/CodeNeuro/neurofinder/blob/master/local/). To contribute example loading scripts for other languages, just submit a pull request!
