@@ -9,18 +9,19 @@ Download data locally, develop algoritms in your favorite computing environment,
 ## download the data
 1. Browse the list of datasets below
 2. Download one or more of them
-3. Use the example scripts to load and play with the data in your language of choice (currently includes `python` and `matlab`)
+3. Use the example scripts to load data in your language of choice (currently includes `python` and `matlab`)
+4. Develop and refine your algorithm.
 
 ## submit an algorithm
 1. Run your algorithm on all the testing datasets
 1. Go to [neurofinder](http://neurofinder.codeneuro.org)
-2. Click the 'submit' tab and upload your results file
+2. Click the `submit` tab and upload your results file!
 
-Submission format:
+#### submission format
 
 Your results should be formatted as a single JSON file with all identified ROIs for all testing datasets, in the following format:
 
-```JSON
+```
 [
   {
     "dataset": "00.00.test",
@@ -56,7 +57,7 @@ All datasets are hosted on Amazon S3, with links to zipped downloads below.
 
 Each dataset includes raw image data in standardized formats, as well as simple example scripts for loading data in both `python` and `MATLAB`. The training data additionally includes the coordinates of identified neurons (the "ground truth"). Depending on the dataset, these labels are based on anatomical nuclear marker and/or hand annotation.
 
-##### training data
+#### training data
 
 [`neurofinder.00.00`](https://s3.amazonaws.com/neuro.datasets/challenges/neurofinder/neurofinder.00.00.zip) 
 [`neurofinder.00.01`](https://s3.amazonaws.com/neuro.datasets/challenges/neurofinder/neurofinder.00.01.zip)
@@ -79,7 +80,7 @@ Each dataset includes raw image data in standardized formats, as well as simple 
 [`neurofinder.02.01`](https://s3.amazonaws.com/neuro.datasets/challenges/neurofinder/neurofinder.02.01.zip)
 [`neurofinder.03.00`](https://s3.amazonaws.com/neuro.datasets/challenges/neurofinder/neurofinder.03.00.zip)
 
-##### testing data
+#### testing data
 
 [`neurofinder.00.00.test`](https://s3.amazonaws.com/neuro.datasets/challenges/neurofinder/neurofinder.00.00.test.zip) 
 [`neurofinder.00.01.test`](https://s3.amazonaws.com/neuro.datasets/challenges/neurofinder/neurofinder.00.01.test.zip)
