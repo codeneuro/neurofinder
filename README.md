@@ -2,7 +2,7 @@
 
 > Benchmarking challenge for finding neurons in [calcium imaging](https://en.wikipedia.org/wiki/Calcium_imaging) data. 
 
-Calcium imaging is a widely used techniqe in modern neuroscience for measuring the activity of large populations of neurons. Identifying individual neurons in these images remains a challenge, and most approaches still rely on manual inspection. We have assembled a collection of datasets with ground truth labels, and a web app for researchers to submit results and compare algorithms.
+Calcium imaging is a widely used techniqe in modern neuroscience for measuring the activity of large populations of neurons. Identifying individual neurons in these images remains a challenge, and most approaches still rely on manual inspection or annotation. We have assembled a collection of datasets with ground truth labels, and a web app for researchers to submit results and compare algorithms.
 
 This document describes how to download the data, develop algoritms in your favorite computing environment, and submit your results for evaluation!
 
