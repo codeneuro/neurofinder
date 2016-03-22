@@ -20,7 +20,7 @@ def toarray(f):
 
 imgs = array([toarray(f) for f in files])
 
-# load the sources
+# load the sources (training data only)
 with open('sources/sources.json') as f:
     sources = json.load(f)
 

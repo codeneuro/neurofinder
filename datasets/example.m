@@ -26,7 +26,7 @@ for i = 1:length(files)
 	fclose(fid);
 end
 
-% load the sources
+% load the sources (training data only)
 sources = loadjson('sources/sources.json');
 masks = zeros(x, y);
 for i = 1:length(sources)

@@ -9,9 +9,9 @@ print('downloading data\n')
 os.system('s4cmd.py get -r s3://neuro.datasets/challenges/neurofinder/%s' % name)
 
 print('packaging data\n\n')
-os.system('cp neurofinder/local/README.md %s/' % name)
-os.system('cp neurofinder/local/example.py %s/' % name)
-os.system('cp neurofinder/local/example.m %s/' % name)
+os.system('cp neurofinder/datasets/README.md %s/' % name)
+os.system('cp neurofinder/datasets/example.py %s/' % name)
+os.system('cp neurofinder/datasets/example.m %s/' % name)
 os.system('mv %s neurofinder.%s' % (name, name))
 
 print('creating zip\n\n')
