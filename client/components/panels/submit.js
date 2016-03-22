@@ -84,7 +84,7 @@ function submit (state) {
         Array('name', 'email', 'repository', 'user', 'algorithm').forEach(function (field) {
           if (!payload[field] || payload[field] == '') {
             failed = true
-            message = 'fill in the forms?'
+            message = 'forget a form?'
           }
         })
         if (!failed) {

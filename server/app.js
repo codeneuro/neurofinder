@@ -40,7 +40,7 @@ var start = function (opts) {
             results.push({
               dataset: dataset.name,
               lab: dataset.lab,
-              scores: evaluate.score(answer.sources, dataset.sources)
+              scores: evaluate.score(answer.data, dataset.data)
             })
           }
         })

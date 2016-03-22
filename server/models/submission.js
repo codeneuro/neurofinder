@@ -15,7 +15,6 @@ module.exports = mongoose.model('Submission', {
   results: [
     {
       dataset: String,
-      lab: String,
       scores: [
         {label: String, value: Number}
       ]
