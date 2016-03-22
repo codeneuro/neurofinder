@@ -18,4 +18,4 @@ print('creating zip\n\n')
 os.system('zip -r neurofinder.%s.zip neurofinder.%s' % (name, name))
 
 print('copying zip to s3\n\n')
-os.system('s4cmd.py put neurofinder.%s.zip s3://neuro.datasets/challenges/neurofinder/ ' % name)
+os.system('s4cmd.py put -f neurofinder.%s.zip s3://neuro.datasets/challenges/neurofinder/ ' % name)
