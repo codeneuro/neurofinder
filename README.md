@@ -1,4 +1,4 @@
-# NeuroFinder [![Join the chat at https://gitter.im/CodeNeuro/neurofinder](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/CodeNeuro/neurofinder?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+# neurofinder [![Join the chat at https://gitter.im/CodeNeuro/neurofinder](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/CodeNeuro/neurofinder?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 > Benchmarking challenge for finding neurons in [calcium imaging](https://en.wikipedia.org/wiki/Calcium_imaging) data. 
 
@@ -19,7 +19,7 @@ This document describes how to download the data, develop algoritms in your favo
 
 #### submission format
 
-Your results should be formatted as a single JSON file with all identified ROIs for all testing datasets, in the following format:
+Your results should be formatted as a single JSON file with the coordinates of all identified neurons for all testing datasets, in the following format:
 
 ```
 [
@@ -35,7 +35,7 @@ Your results should be formatted as a single JSON file with all identified ROIs 
 ]
 ```
 
-If you are working in Python, you can generate this file just by storing your results in a dictionary and writing it to a JSON string
+If you are in Python, you can generate this file by storing your results in a dictionary and writing it to a JSON string:
 
 ```python
 import json
@@ -44,18 +44,18 @@ with open('results.json', 'w') as f:
   f.write(json.dumps(results))
 ```
 
-If you are working in Matlab, checkout the [jsonlab](http://www.mathworks.com/matlabcentral/fileexchange/33381-jsonlab--a-toolbox-to-encode-decode-json-files-in-matlab-octave) package.
+If you are working in Matlab, checkout the [jsonlab](http://www.mathworks.com/matlabcentral/fileexchange/33381-jsonlab--a-toolbox-to-encode-decode-json-files-in-matlab-octave) package to achieve a similar result. Or, switch to Python.
 
 ## datasets
 
 Datasets have been generously provided by the following individuals and labs:
-- Simon Peron, Nicholas Sofroniew, & Karel Svoboda / Janelia Research Campus [`00`, `02`]
-- Adam Packer, Lloyd Russell & Michael H&auml;usser / UCL [`01`]
-- Jeff Zaremba, Patrick Kaifosh & Attila Losonczy / Columbia [`03`]
+- Simon Peron, Nicholas Sofroniew, & Karel Svoboda / Janelia Research Campus : `00`, `02`
+- Adam Packer, Lloyd Russell & Michael H&auml;usser / UCL : `01`
+- Jeff Zaremba, Patrick Kaifosh & Attila Losonczy / Columbia : `03`
 
-All datasets are hosted on Amazon S3, with links to zipped downloads below.
+All datasets are hosted on Amazon S3, and direct links to zipped downloads are below.
 
-Each dataset includes raw image data in standardized formats, as well as simple example scripts for loading data in both `python` and `MATLAB`. The training data additionally includes the coordinates of identified neurons (the "ground truth"). Depending on the dataset, these labels are based on anatomical nuclear marker and/or hand annotation.
+Each dataset includes raw image data in a standardized binary format, as well as simple example scripts for loading data in both `python` and `MATLAB`. The training data additionally includes the coordinates of identified neurons (the "ground truth"). Depending on the dataset, these ground truth labels are based on a separate anatomical nuclear marker and/or hand annotations from the dataset providers.
 
 #### training data
 
