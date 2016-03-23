@@ -64,6 +64,9 @@ var submissions = function (state, action) {
       })
       return assign({}, state, {entries: entries})
 
+    case o.SET_SEARCH:
+      return assign({}, state, {search: action.value})
+
     case o.SET_INFO:
       var entries = state.entries.map(function (entry) {
         return assign({}, entry, {info: entry._id === action._id ? action.info : entry.info})

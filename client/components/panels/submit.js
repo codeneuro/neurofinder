@@ -49,7 +49,7 @@ function submit (state) {
   }
 
   function status () {
-    if (state.upload.submitting) return hx`<div className='loader'></div>`
+    if (state.upload.submitting) return hx`<div className='loader loader-green'></div>`
     else if (state.upload.error) return hx`<div style=${style.message}>${state.upload.message}</div>`
     else if (state.upload.completed) return hx`<div style=${style.message}>completed!</div>`
     else return hx`<div style=${style.message}></div>`
@@ -119,20 +119,18 @@ function submit (state) {
   return hx`
   <div>
   <div>
-    To submit your algorithm, run it on all the test datasets and generate a JSON file with the results. The format should be an array of results, one per test dataset, each with a list of regions for all identified neurons, as lists of pixel coordinates. See <a href='https://github.com/codeneuro/neurofinder#submit-an-algorithm'>here</a> for examples of how to write results from python, javascript, or matlab.
+    To submit your algorithm, just run it locally on all the test datasets and generate a JSON file with the results! The format should be an array of results, one per test dataset, each with a list of regions for all identified neurons, as lists of pixel coordinates. See <a href='https://github.com/codeneuro/neurofinder#submit-an-algorithm'>here</a> for examples of saving results from python, javascript, or matlab.
   </div>
   <code><pre style=${style.code}>
-    [{
-      "dataset": "00.00.test",
+    [{"dataset": "00.00.test",
       "regions": [
         {"coordinates": [[x, y], ...]}, 
         {"coordinates": [[x, y], ...]}, 
-        ...
-      ]
+      ...]
     }, ...]
   </pre></code>
   <div>
-    Fill out the form below and drag your JSON file into the well. Multiple submissions from the same team are fine. Only the most recent submission for a given algorithm and team will be shown.
+    Fill out the form below and drag your JSON file into the well. Multiple submissions from the same team are fine. Fun team names are also fine. Bonus points for including a link to a code repository!
   </div>
   <br>
 
@@ -144,10 +142,10 @@ function submit (state) {
     <span style=${style.label}>algorithm name</span> <input id='algorithm' style=${style.input}>
     </div>
     <div>
-    <span style=${style.label}>contact info</span> <input placeholder='email, github, or website' id='contact' style=${style.input}>
+    <span style=${style.label}>contact info</span> <input placeholder='email, github name, or website' id='contact' style=${style.input}>
     </div>
     <div>
-    <span style=${style.label}>github repository</span> <input placeholder='optional' id='repository' style=${style.input}>
+    <span style=${style.label}>code repository</span> <input placeholder='optional' id='repository' style=${style.input}>
     </div>
   </div>
 

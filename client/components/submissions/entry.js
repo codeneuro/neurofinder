@@ -8,7 +8,7 @@ module.exports = function (state) {
     box: {
       border: 'solid 3px rgb(136, 138, 140)',
       padding: '2%',
-      marginTop: '2%',
+      marginBottom: '2%',
       position: 'relative',
       cursor: 'pointer',
       paddingLeft: '6px',

@@ -13,6 +13,13 @@ body {
   user-select: none; 
 }
 
+::selection {
+  background: rgb(140, 240, 180);
+}
+::-moz-selection {
+  background: rgb(140, 240, 180);
+}
+
 ::-webkit-input-placeholder {
    color: rgb(170,170,170);
 }
@@ -60,20 +67,18 @@ input:focus {
   padding-left: 3px !important;
 }
 
-/*css spinner from http://projects.lukehaas.me/css-loaders/*/
+/* css spinner from http://projects.lukehaas.me/css-loaders/ */
 
-.loader:before,
-.loader:after,
-.loader {
+.loader-gray:before,
+.loader-gray:after,
+.loader-gray {
   border-radius: 50%;
   width: 2.5em;
   height: 2.5em;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
-  -webkit-animation: load7 1.8s infinite ease-in-out;
-  animation: load7 1.8s infinite ease-in-out;
-}
-.loader {
+  -webkit-animation: load8 1.8s infinite ease-in-out;
+  animation: load8 1.8s infinite ease-in-out;
   font-size: 10px;
   margin: 0px auto;
   position: relative;
@@ -84,6 +89,27 @@ input:focus {
   -webkit-animation-delay: -0.16s;
   animation-delay: -0.16s;
 }
+.loader-green:before,
+.loader-green:after,
+.loader-green {
+  border-radius: 50%;
+  width: 2.5em;
+  height: 2.5em;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation: load7 1.8s infinite ease-in-out;
+  animation: load7 1.8s infinite ease-in-out;
+  font-size: 10px;
+  margin: 0px auto;
+  position: relative;
+  text-indent: -9999em;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+
 .loader:before {
   left: -3.5em;
   -webkit-animation-delay: -0.32s;
@@ -116,5 +142,26 @@ input:focus {
   }
   40% {
     box-shadow: 0 2.5em 0 0 rgb(86, 171, 114);
+  }
+}
+
+@-webkit-keyframes load8 {
+  0%,
+  80%,
+  100% {
+    box-shadow: 0 2.5em 0 -1.3em rgb(136, 138, 140);
+  }
+  40% {
+    box-shadow: 0 2.5em 0 0 rgb(136, 138, 140);
+  }
+}
+@keyframes load8 {
+  0%,
+  80%,
+  100% {
+    box-shadow: 0 2.5em 0 -1.3em rgb(136, 138, 140);
+  }
+  40% {
+    box-shadow: 0 2.5em 0 0 rgb(136, 138, 140);
   }
 }

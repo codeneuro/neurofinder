@@ -40,7 +40,7 @@ module.exports = function (state) {
       borderRadius: '2px'
     },
     logo: {
-      width: '450px'
+      width: '475px'
     },
     footer: {
       marginTop: '50px',

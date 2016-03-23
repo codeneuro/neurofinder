@@ -8,6 +8,7 @@ module.exports = {
   },
   submissions: {
     loading: true,
+    search: '',
     entries: []
   }
 }

@@ -4,7 +4,16 @@ module.exports = function (state) {
 
   var style = {
     list: {
-      width: '50%'
+      width: '60%'
+    },
+    dataset: {
+      backgroundColor: 'rgb(235,235,235)',
+      paddingLeft: '5px',
+      paddingRight: '5px',
+      marginLeft: '5px',
+      marginRight: '5px',
+      marginBottom: '5px',
+      display: 'inline-block'
     }
   }
 
@@ -12,14 +21,14 @@ module.exports = function (state) {
     var ids = ['00.00', '00.01', '00.02', '00.03', '00.04', '00.05', '00.06', '00.07', '00.08', '00.09', '00.10', '00.11',
     '01.00', '01.01', '01.02', '01.03', '01.04', '02.00', '02.01', '03.00']
     return ids.map(function (id) {
-      return hx`<span><a href=${'https://s3.amazonaws.com/neuro.datasets/challenges/neurofinder/neurofinder.' + id + '.zip'}>${id}</a><span> - </span></span>`
+      return hx`<span style=${style.dataset}><a href=${'https://s3.amazonaws.com/neuro.datasets/challenges/neurofinder/neurofinder.' + id + '.zip'}>${id}</a></span>`
     })
   }
 
   function testing () {
     var ids = ['00.00.test', '00.01.test','01.00.test', '01.01.test','02.00.test', '02.01.test', '03.00.test']
     return ids.map(function (id) {
-      return hx`<span><a href=${'https://s3.amazonaws.com/neuro.datasets/challenges/neurofinder/neurofinder.' + id + '.zip'}>${id}</a><span> - </span></span>`
+      return hx`<span style=${style.dataset}><a href=${'https://s3.amazonaws.com/neuro.datasets/challenges/neurofinder/neurofinder.' + id + '.zip'}>${id}</a></span>`
     })
   }
 

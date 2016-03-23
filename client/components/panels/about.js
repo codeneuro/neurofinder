@@ -21,7 +21,7 @@ module.exports = function (state) {
     </div>
     <br>
     <div>
-      We have assembled a collection of datasets with ground truth, and are providing this website for researchers to submit results and see algortihm performance.
+      We have assembled a collection of datasets with ground truth, and are providing this website for researchers to submit results and see algortihm performance. You can download the data, develop your algorithm in the language and environment of your choice, and submit a file with your results. See the 'download' tab for how to get the data, and the 'submit' tab for how to submit results. If you have any problems you can open an issue on <a href='https://github.com/codeneuro/neurofinder'>github</a> or come talk to us in the <a href='https://gitter.im/codeneuro/neurofinder'>chat</a>.
     </div>
   </div>`
 }
