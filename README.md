@@ -20,7 +20,7 @@ During development, you might want to use the [`neurofinder`](https://github.com
 
 ## step 2) submit your algorithm
 1. Run your algorithm on all the testing datasets.
-1. Go to [neurofinder](http://neurofinder.codeneuro.org).
+1. Go to the [neurofinder website](http://neurofinder.codeneuro.org).
 2. Click the `submit` tab and upload your results file!
 
 ## submission format
