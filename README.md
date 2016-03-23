@@ -80,7 +80,7 @@ Datasets have been generously provided by the following individuals and labs:
 
 All datasets are hosted on Amazon S3, and direct links to zipped downloads are below.
 
-Each dataset includes raw image data in a standardized binary format, as well as simple example scripts for loading data in both `python` and `MATLAB`. The training data additionally includes the coordinates of identified neurons (the "ground truth"). Depending on the dataset, these ground truth labels are based on a separate anatomical nuclear marker and/or hand annotations from the dataset providers.
+Each dataset includes raw image data in a standardized binary format, as well as simple example scripts for loading data in both `python`, `javascript`, and `matlab`. The training data additionally includes the coordinates of identified neurons (the "ground truth"). Depending on the dataset, these ground truth labels are based on a separate anatomical nuclear marker and/or hand annotations from the dataset providers.
 
 #### training data
 
