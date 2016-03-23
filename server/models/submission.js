@@ -8,7 +8,7 @@ module.exports = mongoose.model('Submission', {
   answers: [
     {
       dataset: String,
-      sources: [{coordinates: []}]
+      neurons: [{coordinates: []}]
     }
   ],
   results: [

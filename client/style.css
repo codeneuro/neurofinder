@@ -14,15 +14,15 @@ body {
 }
 
 ::-webkit-input-placeholder {
-   color: rgb(200,200,200);
+   color: rgb(170,170,170);
 }
 
 :-moz-placeholder {
-   color: rgb(200,200,200);  
+   color: rgb(170,170,170);  
 }
 
 :-ms-input-placeholder {  
-   color: rgb(200,200,200);  
+   color: rgb(170,170,170);  
 }
 
 html { width: 100vw; }

@@ -41,6 +41,12 @@ module.exports = function (state) {
     },
     logo: {
       width: '450px'
+    },
+    footer: {
+      marginTop: '50px',
+      color: 'rgb(100,100,100)',
+      fontSize: '150%',
+      textAlign: 'center'
     }
   }
 
@@ -84,5 +90,6 @@ module.exports = function (state) {
       ${tabs}
       ${panels(state.tab)}
       ${submissions(state.submissions)}
+      <div style=${style.footer}>need help? join the <a href='https://gitter.im/codeneuro/neurofinder'>chat</a></div>
     </div>`
 }

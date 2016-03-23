@@ -119,16 +119,16 @@ function submit (state) {
   return hx`
   <div>
   <div>
-    To submit your algorithm, run it on the test data and generate a JSON file with the results. The format should be an array of result objects, one per test dataset, each with a list of coordinate objects.
+    To submit your algorithm, run it on the test data and generate a JSON file with the results. The format should be an array of results, one per test dataset, each with a list of coordinates with all the pixels of each identified neuron. See <a href='https://github.com/codeneuro/neurofinder'>here</a> for examples of how to write these results files from either Python or Matlab.
   </div>
   <code><pre style=${style.code}>
     [{
       "dataset": "00.00.test",
-      "sources": [{"coordinates": [[x, y], ...]}, ...]
+      "neurons": [{"coordinates": [[x, y], ...]}, ...]
     }, ...]
   </pre></code>
   <div>
-    Then fill out the form below and drag your JSON file into the well. Each submission must have a unique GitHub user and algorithm name, but multiple submissions from the same user are fine.
+    Fill out the form below and drag your JSON file into the well. Multiple submissions from the same team are fine. Only the most recent submission for a given algorithm and team will be shown.
   </div>
   <br>
 
