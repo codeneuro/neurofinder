@@ -1,8 +1,0 @@
-PyGithub
-numpy
-boto
-pymongo
-thunder
-pytest
-termcolor
-matplotlib
