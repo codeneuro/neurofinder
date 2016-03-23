@@ -119,7 +119,7 @@ function submit (state) {
   return hx`
   <div>
   <div>
-    To submit your algorithm, just run it locally on all the test datasets and generate a JSON file with the results! The format should be an array of results, one per test dataset, each with a list of regions for all identified neurons, as lists of pixel coordinates. See <a href='https://github.com/codeneuro/neurofinder#submit-an-algorithm'>here</a> for examples of saving results from python, javascript, or matlab.
+    To submit your algorithm, just run it locally on all the test datasets and generate a JSON file with the results! The format should be an array of results, one per test dataset, each with a list of regions for all identified neurons, as lists of pixel coordinates. See <a href='https://github.com/codeneuro/neurofinder#submit-an-algorithm'>here</a> for examples of saving results from python, javascript, or matlab. See this <a href='https://github.com/codeneuro/neurofinder-python'>repository</a> for information and code for the evaluation metrics.
   </div>
   <code><pre style=${style.code}>
     [{"dataset": "00.00.test",
