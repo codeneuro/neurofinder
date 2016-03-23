@@ -23,7 +23,7 @@ During development, you might want to use the [`neurofinder`](https://github.com
 1. Go to [neurofinder](http://neurofinder.codeneuro.org).
 2. Click the `submit` tab and upload your results file!
 
-#### submission format
+## submission format
 
 Your results should be formatted as a single JSON file with the coordinates of all identified neurons for all testing datasets, in the following format:
 
