@@ -138,8 +138,20 @@ module.exports = function (state) {
   }
 
   function onmouseoutlink (e) {
-    if (state.detail) {
-      e.srcElement.style.color = 'rgb(81,82,84)'
+    e.srcElement.style.color = 'rgb(81,82,84)'
+  }
+
+  function onclickrepository (e) {
+    e.preventDefault()
+    if (state.detail && state.repository !== '') {
+      e.stopPropagation()
+      window.open(e.srcElement.href)
+    }
+  }
+
+  function onmouseoverrepository (e) {
+    if (state.detail && state.repository !== '') {
+      e.srcElement.style.color = 'rgb(10,10,10)'
     }
   }
 
@@ -148,9 +160,15 @@ module.exports = function (state) {
     else return hx`<div><div>mouse over</div><div>for info</div></div>`
   }
 
+  function contact (value) {
+    if (value.indexOf('@') === 0) return 'https://github.com/' + value.replace('@', '')
+    else if (value.indexOf('@') > 0) return 'mailto:' + value
+    else return value
+  }
+  
   return hx`<div className='entry' style=${style.box} onclick=${onclick}>
     <div style=${style.info}>
-      <span onclick=${onclicklink} onmouseover=${onmouseoverlink} onmouseout=${onmouseoutlink} href=${'https://github.com/' + state.user}>${'@' + state.user}</span><br><span onclick=${onclicklink} onmouseover=${onmouseoverlink} onmouseout=${onmouseoutlink} className='simple-link' href=${state.repository}>${state.algorithm}</span>
+      <span onclick=${onclicklink} onmouseover=${onmouseoverlink} onmouseout=${onmouseoutlink} href=${contact(state.contact)}>${state.name}</span><br><span onclick=${onclickrepository} onmouseover=${onmouseoverrepository} onmouseout=${onmouseoutlink} className='simple-link' href=${state.repository}>${state.algorithm}</span>
     </div>
     <div style=${style.header}>${header()}</div>
     <div style=${style.detail}>${detail()}</div>

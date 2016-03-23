@@ -65,7 +65,7 @@ var start = function (opts) {
               return res.status(500).end('failure posting results')
             }
             else {
-              console.log('submission saved to db from user: ' + data.user)
+              console.log('submission saved to db from name: ' + data.name)
               return res.status(200).end('submission succeeeded')
             }
           })

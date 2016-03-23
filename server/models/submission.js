@@ -1,7 +1,8 @@
 var mongoose = require('mongoose')
 
 module.exports = mongoose.model('Submission', {
-  user: String,
+  name: String,
+  contact: String,
   repository: String,
   algorithm: String,
   answers: [

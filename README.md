@@ -35,16 +35,27 @@ Your results should be formatted as a single JSON file with the coordinates of a
 ]
 ```
 
-If you are in Python, you can generate this file by storing your results in a dictionary and writing it to a JSON string:
+If you are working in Python, you can generate this file by storing your results in a list of dictionaries and writing it to JSON:
 
 ```python
 import json
-results = [{'dataset': '00.00.test', 'sources': [{'coordinates': [[0, 1], [2, 3]]}]}]
+results = [
+  {'dataset': '00.00.test', 'sources': [{'coordinates': [[0, 1], [2, 3]]}]},
+  {'dataset': '00.01.test', 'sources': [{'coordinates': [[0, 1], [2, 3]]}]},
+]
 with open('results.json', 'w') as f:
   f.write(json.dumps(results))
 ```
 
-If you are working in Matlab, checkout the [jsonlab](http://www.mathworks.com/matlabcentral/fileexchange/33381-jsonlab--a-toolbox-to-encode-decode-json-files-in-matlab-octave) package to achieve a similar result. Or, switch to Python.
+If you are working in Matlab, get [jsonlab](http://www.mathworks.com/matlabcentral/fileexchange/33381-jsonlab--a-toolbox-to-encode-decode-json-files-in-matlab-octave) then generate and save a nested struct:
+
+```matlab
+results = [
+  struct('dataset', '00.00.test', 'sources', struct('coordinates', [[0, 1]; [2, 3]])),
+  struct('dataset', '00.01.test', 'sources', struct('coordinates', [[0, 1]; [2, 3]]))
+]
+savejson('', results, 'results.json')
+```
 
 ## datasets
 

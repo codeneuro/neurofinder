@@ -13,6 +13,18 @@ body {
   user-select: none; 
 }
 
+::-webkit-input-placeholder {
+   color: rgb(200,200,200);
+}
+
+:-moz-placeholder {
+   color: rgb(200,200,200);  
+}
+
+:-ms-input-placeholder {  
+   color: rgb(200,200,200);  
+}
+
 html { width: 100vw; }
 
 a {

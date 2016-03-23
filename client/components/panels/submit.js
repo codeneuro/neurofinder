@@ -16,7 +16,7 @@ function submit (state) {
       fontSize: '18px',
       border: 'none',
       borderBottom: 'solid 1px black',
-      marginBottom: '20px',
+      marginBottom: '14px',
       marginLeft: '5px',
       width: '60%'
     },
@@ -73,16 +73,17 @@ function submit (state) {
           failed = true
           message = 'error parsing file!'
         }
-        var repo = document.querySelector('#repository').value
-        var repo = (repo !== '') ? gh(repo) : {repository: ''}
+        var repository = document.querySelector('#repository').value
+        var repository = (repository !== '') ? 'https://github.com/' + gh(repository).repository : ''
         var payload = {
-          repository: 'https://github.com/' + repo.repository,
-          user: document.querySelector('#user').value,
+          repository: repository,
+          name: document.querySelector('#name').value,
+          contact: document.querySelector('#contact').value,
           algorithm: document.querySelector('#algorithm').value,
           answers: answers
         }
 
-        Array('repository', 'user', 'algorithm').forEach(function (field) {
+        Array('name', 'contact', 'algorithm').forEach(function (field) {
           console.log(payload[field])
           if (!payload[field] || payload[field] == '') {
             failed = true
@@ -133,13 +134,16 @@ function submit (state) {
 
   <div style=${style.form}>
     <div>
-    <span style=${style.label}>github user</span> <input id='user' style=${style.input}>
-    </div>
-    <div>
-    <span style=${style.label}>github repository</span> <input id='repository' style=${style.input}>
+    <span style=${style.label}>team name</span> <input id='name' style=${style.input}>
     </div>
     <div>
     <span style=${style.label}>algorithm name</span> <input id='algorithm' style=${style.input}>
+    </div>
+    <div>
+    <span style=${style.label}>contact info</span> <input placeholder='email, github, or website' id='contact' style=${style.input}>
+    </div>
+    <div>
+    <span style=${style.label}>github repository</span> <input placeholder='optional' id='repository' style=${style.input}>
     </div>
   </div>
 
