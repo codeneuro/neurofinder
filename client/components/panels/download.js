@@ -29,7 +29,7 @@ module.exports = function (state) {
     </div>
     <br>
     <div>
-      Each dataset is available as a zip file, and includes code for loading the data and the ground truth annotations in Python and Matlab. There are 20 training datasets and 7 test datasets. Each dataset is around 1 GB zipped. Ground truth is derived from red nuclear labeling and/or hand annotation.
+      Each dataset is available as a zip file, and includes images (as TIFF), ground truth neuron regions (as JSON), metadata, and code for loading the data in python, javascript, and matlab. The code examples are also on <a href='https://github.com/codeneuro/neurofinder-datasets'>github</a>. There are 20 training datasets and 7 test datasets. Each dataset is around 1 GB zipped. Ground truth is derived from red nuclear labeling and/or hand annotation, and is only provided for training data.
     </div>
     <br>
     <div>

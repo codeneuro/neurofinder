@@ -61,6 +61,16 @@ results = [
 savejson('', results, 'results.json')
 ```
 
+If you are working in `javascript`, just do this.
+
+```javascript
+results = [
+  {dataset: '00.00.test', regions: [{coordinates: [[0, 1], [2, 3]]}]},
+  {dataset: '00.01.test', regions: [{coordinates: [[0, 1], [2, 3]]}]},
+]
+require('fs').writeFile('results.json', JSON.stringify(results))
+```
+
 ## datasets
 
 Datasets have been generously provided by the following individuals and labs:

@@ -9,7 +9,7 @@ module.exports = function (state) {
   }
   return hx`<div>
     <div>
-      Calcium <a href='https://en.wikipedia.org/wiki/Calcium_imaging'>imaging</a> is a dominant technique in modern neuroscience for measuring the activity of large populations of neurons. Several challenges in how to best process and extract signals from these data.
+      Calcium <a href='https://en.wikipedia.org/wiki/Calcium_imaging'>imaging</a> is a dominant technique in modern neuroscience for measuring the activity of large populations of neurons. Several challenges remain in how to best process and extract signals from these data.
     </div>
     <br>
     <img style=${style.image} src='./components/assets/movie.gif'>
@@ -17,11 +17,11 @@ module.exports = function (state) {
     <br>
     <br>
     <div>
-      One is how to take time-varying images (left) and extracting "regions of interest" (right) that correspond to individual neurons. Despite many efforts to automate this process, most solutions still require significant manual inspection, and most algorithms have not been compared on ground truth data.
+      One challenge is how to take time-varying images (left) and extract "regions of interest" (right) that correspond to individual neurons. Despite many efforts to automate this process, most solutions still require significant manual inspection, and most algorithms have not been compared on ground truth data.
     </div>
     <br>
     <div>
-      We have assembled a collection of datasets with ground truth, and are providing this web app for researchers to submit results and see algortihm performance.
+      We have assembled a collection of datasets with ground truth, and are providing this website for researchers to submit results and see algortihm performance.
     </div>
   </div>`
 }
