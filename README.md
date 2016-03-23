@@ -10,7 +10,7 @@ For more info, check out the following repositories:
 - [`neurofinder-datasets`](https://github.com/codeneuro/neurofinder-datasets) example scripts for loading the datasets
 - [`neurofinder-python`](https://github.com/codeneuro/neurofinder-python) python module used to compare algorithm results
 
-## download the data
+## step 1) download and develop 
 1. Browse the list of datasets below.
 2. Download one or more of them.
 3. Use the example scripts to learn how to load the data (examples in `python`, `javascript`, and `matlab`).
@@ -18,7 +18,7 @@ For more info, check out the following repositories:
 
 You can optionally using the [`neurofinder`](https://github.com/codeneuro/neurofinder-python) python module to evaluate your performance on the training data during development. It computes the same metrics that will be used to evaluate your algorithm. If you are working in another language, just check out that repository for a full explanation of the metrics and see the source code (it's pretty simple).
 
-## submit an algorithm
+## step 2) submit your algorithm
 1. Run your algorithm on all the testing datasets.
 1. Go to [neurofinder](http://neurofinder.codeneuro.org).
 2. Click the `submit` tab and upload your results file!
