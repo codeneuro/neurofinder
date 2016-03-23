@@ -17,15 +17,15 @@ module.exports = function (state) {
     info: {
       display: 'inline-block',
       textAlign: 'right',
-      fontSize: '150%',
-      width: '25%',
+      fontSize: '125%',
+      width: '26%',
       color: 'rgb(81,82,84)'
     },
     detail: {
       display: 'inline-block',
       textAlign: 'right',
-      width: '25%',
-      verticalAlign: 'bottom',
+      width: '26%',
+      verticalAlign: 'super',
       color: 'rgb(141,144,146)',
       display: state.detail ? 'inline-block' : 'none'
     },
@@ -33,7 +33,7 @@ module.exports = function (state) {
       color: 'rgb(141,144,146)',
       width: '13%',
       textAlign: 'left',
-      marginLeft: '2%',
+      marginLeft: '1%',
       marginTop: '2%'
     },
     number: {
@@ -43,14 +43,14 @@ module.exports = function (state) {
       pointerEvents: 'none'
     },
     header: {
-      marginLeft: '5%',
+      marginLeft: '4%',
       width: '69%',
       display: 'inline-block',
       verticalAlign: 'bottom'
     },
     matrix: {
       marginTop: '40px',
-      marginLeft: '5%',
+      marginLeft: '4%',
       width: '69%',
       display: state.detail ? 'inline-block' : 'none',
     },

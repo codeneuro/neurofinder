@@ -37,6 +37,7 @@
     "parse-github-url": "^0.3.0",
     "redux": "^3.3.1",
     "s3": "^4.4.0",
+    "timestamp": "0.0.1",
     "watchify": "^3.7.0"
   }
 }

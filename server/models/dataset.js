@@ -6,5 +6,5 @@ module.exports = mongoose.model('Dataset', {
   region: String,
   lab: String,
   animal: String,
-  sources: [{id: String, coordinates: []}]
+  regions: [{id: String, coordinates: []}]
 })

@@ -2,6 +2,7 @@ var path = require('path')
 var express = require('express')
 var parser = require('body-parser')
 var mongoose = require('mongoose')
+var timestamp = require('timestamp')
 var evaluate = require('./evaluate')
 var config = require('./config')
 var Dataset = require('./models/dataset')
@@ -32,7 +33,7 @@ var start = function (opts) {
   app.post('/api/submit/', function(req, res){ 
     var answers = req.body.answers
 
-    Submission.find({user: req.body.user, algorithm: req.body.algorithm}, function (err, data) {
+    Submission.find({name: req.body.name, algorithm: req.body.algorithm}, function (err, data) {
       if (data && data.length > 0) {
         return res.status(500).end('already submitted!')
       }
@@ -45,7 +46,7 @@ var start = function (opts) {
                 results.push({
                   dataset: dataset.name,
                   lab: dataset.lab,
-                  scores: evaluate.score(answer.neurons, dataset.sources)
+                  scores: evaluate.score(answer.regions, dataset.regions)
                 })
               }
             })
@@ -57,6 +58,7 @@ var start = function (opts) {
 
           results = evaluate.average(results)
           req.body.results = results
+          req.body.timestamp = timestamp()
 
           var submission = new Submission(req.body)
 

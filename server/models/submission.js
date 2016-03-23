@@ -5,10 +5,11 @@ module.exports = mongoose.model('Submission', {
   contact: String,
   repository: String,
   algorithm: String,
+  timestamp: Number,
   answers: [
     {
       dataset: String,
-      neurons: [{coordinates: []}]
+      regions: [{coordinates: []}]
     }
   ],
   results: [

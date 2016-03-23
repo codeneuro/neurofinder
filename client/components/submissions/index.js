@@ -13,6 +13,11 @@ module.exports = function (state) {
       }).reduce(function (x, y) {return x + y})
     }
 
+    console.log(state.entries)
+
+    // TODO for every unique combination of name and algorithm
+    // if there are multiple results, only show the most recent
+
     return state.entries.sort(function (a, b) {return total(b) - total(a)}).map(function (item) {
       return entry(item)
     })

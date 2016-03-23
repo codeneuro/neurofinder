@@ -28,8 +28,8 @@ function download (name, cb) {
       Bucket: 'neuro.datasets.private',
       Key: 'challenges/neurofinder.test/' + name + '/sources/sources.json'
     }).on('end', function (data) {
-      var sources = JSON.parse(data)
-      cb({info: info, sources: sources})
+      var regions = JSON.parse(data)
+      cb({info: info, regions: regions})
     })
   })
 }
@@ -43,7 +43,7 @@ function populate (datasets) {
         region: data.info.region,
         lab: data.info.lab,
         animal: data.info.animal,
-        sources: data.sources
+        regions: data.regions
       })
       dataset.save(function (err, data) {
         if (err) return console.error(err)
