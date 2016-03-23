@@ -39,7 +39,7 @@ Your results should be formatted as a single JSON file with the coordinates of a
 ]
 ```
 
-If you are working in Python, you can generate this file by storing your results in a list of dictionaries and writing it to JSON:
+If you are working in `python`, you can generate this file by storing your results in a list of dictionaries and writing it to JSON:
 
 ```python
 import json
@@ -51,7 +51,7 @@ with open('results.json', 'w') as f:
   f.write(json.dumps(results))
 ```
 
-If you are working in Matlab, get [jsonlab](http://www.mathworks.com/matlabcentral/fileexchange/33381-jsonlab--a-toolbox-to-encode-decode-json-files-in-matlab-octave) then generate and save a nested struct:
+If you are working in `matlab`, get [jsonlab](http://www.mathworks.com/matlabcentral/fileexchange/33381-jsonlab--a-toolbox-to-encode-decode-json-files-in-matlab-octave) then generate and save a nested struct:
 
 ```matlab
 results = [
