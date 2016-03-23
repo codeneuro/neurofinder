@@ -61,7 +61,7 @@ results = [
 savejson('', results, 'results.json')
 ```
 
-If you are working in `javascript`, just do this.
+If you are working in `javascript`, it's even more direct:
 
 ```javascript
 results = [
