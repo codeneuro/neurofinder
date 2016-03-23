@@ -1,4 +1,6 @@
-# neurofinder [![Join the chat at https://gitter.im/codeneuro/neurofinder](https://img.shields.io/badge/gitter-join%20chat-brightgreen.svg?style=flat-square)](https://gitter.im/codeneuro/neurofinder)
+# neurofinder 
+
+[![Join the chat at https://gitter.im/codeneuro/neurofinder](https://img.shields.io/badge/gitter-join%20chat-brightgreen.svg?style=flat-square)](https://gitter.im/codeneuro/neurofinder)
 
 > benchmarking challenge for finding neurons in [calcium imaging](https://en.wikipedia.org/wiki/Calcium_imaging) data. 
 
