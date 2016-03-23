@@ -11,14 +11,14 @@ For more info, check out the following repositories:
 - [`neurofinder-python`](https://github.com/codeneuro/neurofinder-python) python module used to compare algorithm results
 
 ## download the data
-1. Browse the list of datasets below
-2. Download one or more of them
-3. Use the example scripts to load data in your language of choice (currently includes `python` and `matlab`)
+1. Browse the list of datasets below.
+2. Download one or more of them.
+3. Use the example scripts to learn how to load the data (examples in `python`, `javascript`, and `matlab`).
 4. Develop and refine your algorithm.
 
 ## submit an algorithm
-1. Run your algorithm on all the testing datasets
-1. Go to [neurofinder](http://neurofinder.codeneuro.org)
+1. Run your algorithm on all the testing datasets.
+1. Go to [neurofinder](http://neurofinder.codeneuro.org).
 2. Click the `submit` tab and upload your results file!
 
 #### submission format
