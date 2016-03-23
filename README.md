@@ -4,7 +4,11 @@
 
 Calcium imaging is a widely used techniqe in modern neuroscience for measuring the activity of large populations of neurons. Identifying individual neurons in these images remains a challenge, and most approaches still rely on manual inspection or annotation. We have assembled a collection of datasets with ground truth labels, and a web app for researchers to submit results and compare algorithms.
 
-This repo contains example scripts for loading the data, and the code for the web app. This document describes how to download the data, develop algoritms in your favorite computing environment, and submit your results for evaluation!
+This repo contains the code for the web app. This document describes how to download the data, develop algoritms in your favorite computing environment, and submit your results for evaluation!
+
+See also
+- [`neurofinder-datasets`](https://github.com/codeneuro/neurofinder-datasets) example scripts for loading the datasets
+- [`neurofinder-python`](https://github.com/codeneuro/neurofinder-python) python module used to compare algorithm results
 
 ## download the data
 1. Browse the list of datasets below
