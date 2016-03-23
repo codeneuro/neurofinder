@@ -16,6 +16,8 @@ For more info, check out the following repositories:
 3. Use the example scripts to learn how to load the data (examples in `python`, `javascript`, and `matlab`).
 4. Develop and refine your algorithm.
 
+You can optionally using the [`neurofinder`](https://github.com/codeneuro/neurofinder-python) python module to evaluate your performance on the training data during development. It computes the same metrics that will be used to evaluate your algorithm. If you are working in another language, just check out that repository for a full explanation of the metrics and see the source code (it's pretty simple).
+
 ## submit an algorithm
 1. Run your algorithm on all the testing datasets.
 1. Go to [neurofinder](http://neurofinder.codeneuro.org).
