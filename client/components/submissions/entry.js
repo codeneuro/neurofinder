@@ -91,7 +91,7 @@ module.exports = function (state) {
         return score.label === field
       }).map(function (score) {return {value: score.value, field: field, lab: result.lab, dataset: result.dataset}})
     })
-    selected = _.sortby(selected, function (item) {return item[0].dataset})
+    selected = _.sortBy(selected, function (item) {return item[0].dataset})
     return selected.map(function (item) {
       var value = item[0].value.toFixed(2)
       var cell = Object.assign({}, style.cell, {backgroundColor: scale(value)})
