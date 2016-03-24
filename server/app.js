@@ -10,6 +10,7 @@ var spawn = require('child_process').spawn
 var evaluate = require('./evaluate')
 var config = require('./config')
 var Dataset = require('./models/dataset')
+var Answer = require('./models/Answer')
 var Submission = require('./models/submission')
 
 mongoose.connect(config.db.uri)
@@ -74,9 +75,18 @@ var start = function (opts) {
       })
     }
 
-    function sendResults (results, next) {
+    function sendAnswers (results, next) {
       req.body.results = results
       req.body.timestamp = timestamp()
+      var answer = new Answer(req.body)
+      answer.save(function (err, data) {
+        if (err) return next({stage: 'sending results', error: err})
+        return next(null)
+      })
+    }
+
+    function sendResults (next) {
+      delete req.body.answers 
       var submission = new Submission(req.body)
       submission.save(function (err, data) {
         if (err) return next({stage: 'sending results', error: err})
@@ -85,7 +95,7 @@ var start = function (opts) {
     }
 
     async.waterfall([
-      getDatasets, checkAnswers, computeResults, sendResults
+      getDatasets, checkAnswers, computeResults, sendAnswers, sendResults
     ], function (err) {
       if (err) {
         console.error(err)

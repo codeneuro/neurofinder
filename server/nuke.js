@@ -2,6 +2,7 @@ var s3 = require('s3')
 var mongoose = require('mongoose')
 var config = require('./config')
 var Submission = require('./models/submission')
+var Answer = require('./models/answer')
 
 mongoose.connect(config.db.uri)
 
@@ -11,11 +12,19 @@ db.once('open', function() {
   console.log('connected to db')
 })
 
-function refresh () {
+function nukeSubmissions () {
   Submission.remove({}, function (err, data) {
     if (err) return console.error(err)
     console.log('db emptied')
   })
 }
 
-refresh()
+function nukeAnswers () {
+  Answer.remove({}, function (err, data) {
+    if (err) return console.error(err)
+    console.log('db emptied')
+  })
+}
+
+nukeSubmissions()
+nukeAnswers()

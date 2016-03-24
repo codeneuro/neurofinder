@@ -1,6 +1,6 @@
 var mongoose = require('mongoose')
 
-module.exports = mongoose.model('Submission', {
+module.exports = mongoose.model('Answer', {
   name: String,
   contact: String,
   repository: String,
@@ -13,6 +13,12 @@ module.exports = mongoose.model('Submission', {
       scores: [
         {label: String, value: Number}
       ]
+    }
+  ],
+  answers: [
+    {
+      dataset: String,
+      regions: [{coordinates: []}]
     }
   ]
 })
