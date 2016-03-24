@@ -10,7 +10,7 @@ var spawn = require('child_process').spawn
 var evaluate = require('./evaluate')
 var config = require('./config')
 var Dataset = require('./models/dataset')
-var Answer = require('./models/Answer')
+var Answer = require('./models/answer')
 var Submission = require('./models/submission')
 
 mongoose.connect(config.db.uri)
