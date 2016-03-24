@@ -72,6 +72,8 @@ module.exports = function (state) {
     }
   }
 
+  console.log(state)
+
   var scale = d3.scaleLinear().domain([0, 1]).range(["rgb(80, 110, 90)", "rgb(100, 240, 160)"])
 
   function onclick () {
@@ -81,7 +83,7 @@ module.exports = function (state) {
 
   var fields = state.results[0].scores.map(function (score) {
     return score.label
-  }).filter(function (label) {return label !== 'average'})
+  }).filter(function (label) {return label !== 'combined'})
 
   function row (field) {
     var selected = state.results.map(function (result) {
@@ -100,11 +102,11 @@ module.exports = function (state) {
   }
 
   function header () {
-    return hx`<div style=${style.row}>${row('average')}</div>`
+    return hx`<div style=${style.row}>${row('combined')}</div>`
   }
 
   function matrix () {
-    return fields.map(function (field) {
+    return Array('recall', 'precision', 'inclusion', 'exclusion').map(function (field) {
       return hx`<div style=${style.row}>${row(field)}</div>`
     })
   }

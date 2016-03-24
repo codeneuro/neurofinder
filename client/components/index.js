@@ -90,6 +90,6 @@ module.exports = function (state) {
       ${tabs}
       ${panels(state.tab)}
       ${submissions(state.submissions)}
-      <div style=${style.footer}>need help? join the <a href='https://gitter.im/codeneuro/neurofinder'>chat</a></div>
+      <div style=${style.footer}>questions? see the <a href='https://github.com/codeneuro/neurofinder'>code</a>, join the <a href='https://gitter.im/codeneuro/neurofinder'>chat</a></div>
     </div>`
 }
