@@ -114,3 +114,15 @@ Each dataset includes raw image data in a standardized binary format, as well as
 [`neurofinder.02.01.test`](https://s3.amazonaws.com/neuro.datasets/challenges/neurofinder/neurofinder.02.01.test.zip)
 [`neurofinder.03.00.test`](https://s3.amazonaws.com/neuro.datasets/challenges/neurofinder/neurofinder.03.00.test.zip) 
 
+## web app
+
+To run the web app in development, clone this repo, then call
+
+```
+npm install
+npm start
+```
+
+Which will start the server and progressively bundle the static assets. You need to specify a mongo database inside `server/config.js`. 
+
+To run in production, bundle the static assets using `npm run bundle` then start the server using `npm run server`.
