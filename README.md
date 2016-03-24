@@ -123,6 +123,8 @@ npm install
 npm start
 ```
 
-Which will start the server and progressively bundle the static assets. You need to specify a mongo database inside `server/config.js`. 
+Which will start the server and live bundle the static assets. 
 
 To run in production, bundle the static assets using `npm run build` then start the server using `npm run serve`.
+
+You need to specify a mongo database inside `server/config.js`, and also set the environmental variables `MONGO_USER` and `MONGO_PASSWORD`. A script for fetching datasets is included in `server/fetch.js`, and also requires that `AWS_ACCESS_KEY_ID`, and `AWS_SECRET_ACCESS_KEY`, because the data is fetched from S3.
