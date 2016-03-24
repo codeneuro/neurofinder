@@ -125,4 +125,4 @@ npm start
 
 Which will start the server and progressively bundle the static assets. You need to specify a mongo database inside `server/config.js`. 
 
-To run in production, bundle the static assets using `npm run bundle` then start the server using `npm run server`.
+To run in production, bundle the static assets using `npm run build` then start the server using `npm run serve`.
