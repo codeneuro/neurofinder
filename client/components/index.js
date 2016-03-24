@@ -79,7 +79,7 @@ module.exports = function (state) {
 
   var tabs = hx`
   <div style=${style.tabs}>
-    <div id='about-tab' className='tab' style=${style['about-tab']} onclick=${onclick}>welcome</div>
+    <div id='about-tab' className='tab' style=${style['about-tab']} onclick=${onclick}>about</div>
     <div id='download-tab' className='tab' style=${style['download-tab']} onclick=${onclick}>download data</div>
     <div id='submit-tab' className='tab' style=${style['submit-tab']} onclick=${onclick}>submit results</div>
   </div>`
