@@ -72,8 +72,6 @@ module.exports = function (state) {
     }
   }
 
-  console.log(state)
-
   var scale = d3.scaleLinear().domain([0, 1]).range(["rgb(80, 110, 90)", "rgb(100, 240, 160)"])
 
   function onclick () {
