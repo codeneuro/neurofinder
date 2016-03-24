@@ -1,6 +1,6 @@
 var hx = require('hxdx').hx
 var dx = require('hxdx').dx
-var sortby = require('lodash.sortby')
+var _ = require('lodash')
 var d3 = require('d3-scale')
 
 module.exports = function (state) {
@@ -91,7 +91,7 @@ module.exports = function (state) {
         return score.label === field
       }).map(function (score) {return {value: score.value, field: field, lab: result.lab, dataset: result.dataset}})
     })
-    selected = sortby(selected, function (item) {return item[0].dataset})
+    selected = _.sortby(selected, function (item) {return item[0].dataset})
     return selected.map(function (item) {
       var value = item[0].value.toFixed(2)
       var cell = Object.assign({}, style.cell, {backgroundColor: scale(value)})
