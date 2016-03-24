@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/CodeNeuro/neurofinder#readme",
   "dependencies": {
+    "async": "^2.0.0-rc.1",
     "body-parser": "^1.15.0",
     "browser-request": "^0.3.3",
     "d3-scale": "^0.6.4",
@@ -38,6 +39,7 @@
     "redux": "^3.3.1",
     "s3": "^4.4.0",
     "timestamp": "0.0.1",
+    "tmp": "0.0.28",
     "watchify": "^3.7.0"
   }
 }

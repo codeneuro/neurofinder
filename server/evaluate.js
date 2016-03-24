@@ -1,36 +1,27 @@
-function score (answer, truth) {
-  if (answer.length == 1) {
-    return [
-      {label: 'recall', value: Math.random()},
-      {label: 'precision', value: Math.random()},
-      {label: 'overlap', value: Math.random()},
-      {label: 'exactness', value: Math.random()}
-    ]
-  } else {
-    return [
-      {label: 'recall', value: Math.random()},
-      {label: 'precision', value: Math.random()},
-      {label: 'overlap', value: Math.random()},
-      {label: 'exactness', value: Math.random()}
-    ]
+var fs = require('fs')
+var tmp = require('tmp')
+var path = require('path')
+var exec = require('child_process').exec
+
+module.exports = function (a, b, cb) {
+  function write (dir, cb) {
+    fs.writeFile(path.join(dir, 'a.json'), JSON.stringify(a), function (err) {
+      if (err) return cb(err)
+      else fs.writeFile(path.join(dir, 'b.json'), JSON.stringify(b), function (err) {
+        if (err) return cb(err)
+        else cb()
+      })
+    })
   }
-}
 
-function average (results) {
-  var results = results.map(function (result) {
-    var accumulated = result.scores.map(function (score) {return score.value})
-    var mean = accumulated.reduce(function (x, y) {return x + y}) / result.scores.length
-    return {
-      dataset: result.dataset,
-      lab: result.lab,
-      scores: result.scores.concat({label: 'average', value: mean})
-    }
+  tmp.dir(function (err, dir) {
+    write(dir, function () {
+      var cmd = 'neurofinder evaluate ' + dir + '/a.json ' + dir + '/b.json'
+      exec(cmd, function (err, stdout, stderr) {
+        if (err) return cb(err)
+        else if (stderr) return cb(err)
+        else return cb(null, JSON.parse(stdout))
+      })
+    })
   })
-
-  return results
-}
-
-module.exports = {
-  score: score,
-  average: average
 }
