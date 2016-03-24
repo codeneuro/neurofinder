@@ -73,10 +73,8 @@ function submit (state) {
           failed = true
           message = 'error parsing file!'
         }
-        var repository = document.querySelector('#repository').value
-        var repository = (repository !== '') ? 'https://github.com/' + gh(repository).repository : ''
         var payload = {
-          repository: repository,
+          repository: document.querySelector('#repository').value,
           name: document.querySelector('#name').value,
           contact: document.querySelector('#contact').value,
           algorithm: document.querySelector('#algorithm').value,
