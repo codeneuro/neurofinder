@@ -135,7 +135,7 @@ module.exports = function (state) {
   }
 
   function link (href) {
-    if (state.detail) return hx`
+    if (state.detail && href !== '') return hx`
     <a onclick=${clickLink} href=${href}>
       <img className='link-icon' width=25 height=25 style=${style.icon} src='components/assets/images/link.svg'>
     </a>`
