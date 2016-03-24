@@ -67,8 +67,8 @@ module.exports = function (state) {
       backgroundColor: 'rgb(100,100,100)',
       borderRadius: '2px'
     },
-    link: {
-      color: 'rgb(81,82,84)'
+    icon: {
+      verticalAlign: 'bottom'
     }
   }
 
@@ -123,38 +123,6 @@ module.exports = function (state) {
     }, 50)
   }
 
-  function onclicklink (e) {
-    e.preventDefault()
-    if (state.detail) {
-      e.stopPropagation()
-      window.open(e.srcElement.href)
-    }
-  }
-
-  function onmouseoverlink (e) {
-    if (state.detail) {
-      e.srcElement.style.color = 'rgb(10,10,10)'
-    }
-  }
-
-  function onmouseoutlink (e) {
-    e.srcElement.style.color = 'rgb(81,82,84)'
-  }
-
-  function onclickrepository (e) {
-    e.preventDefault()
-    if (state.detail && state.repository !== '') {
-      e.stopPropagation()
-      window.open(e.srcElement.href)
-    }
-  }
-
-  function onmouseoverrepository (e) {
-    if (state.detail && state.repository !== '') {
-      e.srcElement.style.color = 'rgb(10,10,10)'
-    }
-  }
-
   function detail () {
     if (state.info) return hx`<div><div>${state.info.dataset}</div><div>${state.info.lab}</div></div>`
     else return hx`<div><div>mouse over</div><div>for info</div></div>`
@@ -165,10 +133,25 @@ module.exports = function (state) {
     else if (value.indexOf('@') > 0) return 'mailto:' + value
     else return value
   }
-  
+
+  function link (href) {
+    if (state.detail) return hx`
+    <a onclick=${clickLink} href=${href}>
+      <img className='link-icon' width=25 height=25 style=${style.icon} src='components/assets/images/link.svg'>
+    </a>`
+  }
+
+  function clickLink (e) {
+    e.stopPropagation()
+  }
+
   return hx`<div className='entry' style=${style.box} onclick=${onclick}>
     <div style=${style.info}>
-      <span onclick=${onclicklink} onmouseover=${onmouseoverlink} onmouseout=${onmouseoutlink} href=${contact(state.contact)}>${state.name}</span><br><span onclick=${onclickrepository} onmouseover=${onmouseoverrepository} onmouseout=${onmouseoutlink} className='simple-link' href=${state.repository}>${state.algorithm}</span>
+      ${link(contact(state.contact))}
+      <span>${state.name}</span>
+      <br>
+      ${link(state.repository)}
+      <span>${state.algorithm}</span>
     </div>
     <div style=${style.header}>${header()}</div>
     <div style=${style.detail}>${detail()}</div>

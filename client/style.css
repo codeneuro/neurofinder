@@ -67,6 +67,14 @@ input:focus {
   padding-left: 3px !important;
 }
 
+.link-icon {
+  opacity: 0.4;
+}
+
+.link-icon:hover {
+  opacity: 0.7;
+}
+
 /* css spinner from http://projects.lukehaas.me/css-loaders/ */
 
 .loader-gray:before,
