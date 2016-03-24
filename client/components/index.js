@@ -74,7 +74,7 @@ module.exports = function (state) {
 
   var logo = hx`
   <div style=${style.header}>
-    <img style=${style.logo} src='./components/assets/images/logo-long.svg'></img>
+    <a href='http://codeneuro.org'><img style=${style.logo} src='./components/assets/images/logo-long.svg'></img></a>
   </div>`
 
   var tabs = hx`
