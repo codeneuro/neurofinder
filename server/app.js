@@ -19,6 +19,7 @@ var start = function (opts) {
   var port = opts.port || 8080
   var app = express()
   app.use(express.static(path.join(__dirname, '../client')))
+  app.use(express.bodyParser({limit: '50mb'}))
   app.use(parser.urlencoded({ extended: false }))
   app.use(parser.json())
 
