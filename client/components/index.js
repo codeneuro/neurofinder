@@ -9,8 +9,7 @@ module.exports = function (state) {
     main: {
       width: (window.innerWidth > 1200) ? '60%' : '70%',
       marginLeft: (window.innerWidth > 1200) ? '20%' : '15%',
-      marginRight: (window.innerWidth > 1200) ? '20%' : '15%',
-      marginBottom: '100px'
+      marginRight: (window.innerWidth > 1200) ? '20%' : '15%'
     },
     header: {
       width: '80%',
@@ -46,7 +45,8 @@ module.exports = function (state) {
       marginTop: '50px',
       color: 'rgb(100,100,100)',
       fontSize: '150%',
-      textAlign: 'center'
+      textAlign: 'center',
+      paddingBottom: '50px'
     }
   }
 
