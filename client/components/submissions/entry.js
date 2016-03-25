@@ -113,7 +113,8 @@ module.exports = function (state) {
 
   function onmouseover (e) {
     clearTimeout(timeout)
-    var info = e.srcElement['data-info']
+    var target = e.target || e.srcElement
+    var info = target['data-info']
     dx({type: 'SET_INFO', _id: state._id, info: info})
   }
 
