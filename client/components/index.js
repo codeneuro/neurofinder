@@ -17,7 +17,8 @@ module.exports = function (state) {
       marginRight: '10%',
       textAlign: 'center',
       marginBottom: '7%',
-      paddingTop: '7%'
+      paddingTop: '7%',
+      height: '75px'
     },
     tabs: {
       display: 'flex',
