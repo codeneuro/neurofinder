@@ -46,6 +46,13 @@ var start = function (opts) {
     console.log('')
     debug('processing submission from ' + req.body.name)
 
+    function checkSchema (next) {
+      debug('checking schema')
+      var result = v.validate(answers, schema)
+      if (result.errors.length > 0) return next({stage: 'checking answers', error: 'invalid result format'})
+      return next(null)
+    }
+
     function getDatasets (next) {
       debug('fetching datasets')
       Dataset.find({}, function (err, data) {
@@ -56,8 +63,6 @@ var start = function (opts) {
 
     function checkAnswers (datasets, next) {
       debug('checking answers')
-      var result = v.validate(answers, schema)
-      if (result.errors.length > 0) return next({stage: 'checking answers', error: 'invalid result format'})
       if (datasets.length !== answers.length) {
         return next({stage: 'checking answers', error: 'too few datasets in submission'})
       }
@@ -118,10 +123,10 @@ var start = function (opts) {
     }
 
     async.waterfall([
-      getDatasets, checkAnswers, computeResults, sendAnswers, sendResults
+      checkSchema, getDatasets, checkAnswers, computeResults, sendAnswers, sendResults
     ], function (err) {
       if (err) {
-        debug('error processing results')
+        debug('failed and sending error message')
         if (err.stage === 'getting datasets') return res.status(500).end('error fetching')
         else if (err.stage === 'checking answers') return res.status(500).end(err.error)
         else if (err.stage === 'computing results') return res.status(500).end('failure evaulating, check your file!')
