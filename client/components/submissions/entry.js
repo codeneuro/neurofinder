@@ -130,9 +130,17 @@ module.exports = function (state) {
   }
 
   function contact (value) {
+    console.log(value)
     if (value.indexOf('@') === 0) return 'https://github.com/' + value.replace('@', '')
     else if (value.indexOf('@') > 0) return 'mailto:' + value
-    else return value
+    else if (value.indexOf('http') === 0) return value
+    else return 'https://github.com/' + value
+  }
+
+  function repository (value) {
+    if (value.indexOf('http') === 0) return value
+    else if (value.indexOf('github.com') === 0) return 'https://' + value
+    else return vale
   }
 
   function link (href) {
@@ -151,7 +159,7 @@ module.exports = function (state) {
       ${link(contact(state.contact))}
       <span>${state.name}</span>
       <br>
-      ${link(state.repository)}
+      ${link(repository(state.repository))}
       <span>${state.algorithm}</span>
     </div>
     <div style=${style.header}>${header()}</div>
