@@ -15,7 +15,7 @@ module.exports = function (state) {
       borderRadius: '2px'
     },
     info: {
-      display: 'inline-block',
+      display: 'inline-table',
       textAlign: 'right',
       fontSize: '125%',
       width: '26%',
@@ -38,7 +38,7 @@ module.exports = function (state) {
     },
     number: {
       marginTop: '10px',
-      marginLeft: '-15px',
+      marginLeft: '-19px',
       position: 'absolute',
       pointerEvents: 'none'
     },
@@ -61,7 +61,7 @@ module.exports = function (state) {
       marginBottom: '5px'
     },
     cell: {
-      width: (40 / state.results.length) + '%',
+      width: (33 / state.results.length) + '%',
       height: '50px',
       paddingLeft: '5%',
       backgroundColor: 'rgb(100,100,100)',
@@ -130,7 +130,6 @@ module.exports = function (state) {
   }
 
   function contact (value) {
-    console.log(value)
     if (value.indexOf('@') === 0) return 'https://github.com/' + value.replace('@', '')
     else if (value.indexOf('@') > 0) return 'mailto:' + value
     else if (value.indexOf('http') === 0) return value
@@ -140,7 +139,7 @@ module.exports = function (state) {
   function repository (value) {
     if (value.indexOf('http') === 0) return value
     else if (value.indexOf('github.com') === 0) return 'https://' + value
-    else return vale
+    else return value
   }
 
   function link (href) {

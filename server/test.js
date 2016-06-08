@@ -30,6 +30,14 @@ var instance = [
   {
     "dataset": "03.00.test",
     "regions": [{"coordinates": [[0, 0], [0, 1]]}]
+  },
+  {
+    "dataset": "04.00.test",
+    "regions": [{"coordinates": [[0, 0], [0, 1]]}]
+  },
+  {
+    "dataset": "04.01.test",
+    "regions": [{"coordinates": [[0, 0], [0, 1]]}]
   }
 ]
 

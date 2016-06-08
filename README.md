@@ -103,6 +103,8 @@ Each dataset includes raw image data in a standardized binary format, as well as
 [`neurofinder.02.00`](https://s3.amazonaws.com/neuro.datasets/challenges/neurofinder/neurofinder.02.00.zip)
 [`neurofinder.02.01`](https://s3.amazonaws.com/neuro.datasets/challenges/neurofinder/neurofinder.02.01.zip)
 [`neurofinder.03.00`](https://s3.amazonaws.com/neuro.datasets/challenges/neurofinder/neurofinder.03.00.zip)
+[`neurofinder.04.00`](https://s3.amazonaws.com/neuro.datasets/challenges/neurofinder/neurofinder.04.00.zip)
+[`neurofinder.04.01`](https://s3.amazonaws.com/neuro.datasets/challenges/neurofinder/neurofinder.04.01.zip)
 
 #### testing data
 
@@ -113,6 +115,8 @@ Each dataset includes raw image data in a standardized binary format, as well as
 [`neurofinder.02.00.test`](https://s3.amazonaws.com/neuro.datasets/challenges/neurofinder/neurofinder.02.00.test.zip) 
 [`neurofinder.02.01.test`](https://s3.amazonaws.com/neuro.datasets/challenges/neurofinder/neurofinder.02.01.test.zip)
 [`neurofinder.03.00.test`](https://s3.amazonaws.com/neuro.datasets/challenges/neurofinder/neurofinder.03.00.test.zip) 
+[`neurofinder.04.00.test`](https://s3.amazonaws.com/neuro.datasets/challenges/neurofinder/neurofinder.03.00.test.zip) 
+[`neurofinder.04.01.test`](https://s3.amazonaws.com/neuro.datasets/challenges/neurofinder/neurofinder.03.00.test.zip) 
 
 ## web app
 
