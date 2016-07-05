@@ -38,7 +38,11 @@ module.exports = function (state) {
     </div>
     <br>
     <div>
-      Each dataset is available as a zip file, and includes images (as TIFF), ground truth neuron regions (as JSON), metadata, and code for loading the data in python, javascript, and matlab. The code examples are also on <a href='https://github.com/codeneuro/neurofinder-datasets'>github</a>. Each dataset is around 1 GB zipped, and represents a single imaging plane varying over time. Ground truth is derived from red nuclear labeling and/or hand annotation, and is only provided for training data.
+      Each dataset is available as a zip file, and includes images (as TIFF), ground truth neuron regions (as JSON), metadata, and code for loading the data in python, javascript, and matlab. The code examples are also on <a href='https://github.com/codeneuro/neurofinder-datasets'>github</a>. Each dataset is around 1 GB zipped, and represents a single imaging plane varying over time. Labels are provided only for training data.
+    </div>
+    <br>
+    <div>
+      The source of labels differs across the datasets, to reflect some amibiguity as how to best define "ground truth" for this problem. For the <span style=${style.dataset}>00</span> data, labels are derived from an anatomical marker that indicates the precise location of each neuron, and includes neurons with no activity. For the <span style=${style.dataset}>01</span> <span style=${style.dataset}>02</span> <span style=${style.dataset}>03</span> <span style=${style.dataset}>04</span> data labels were hand drawn or manually curated, using the raw data and various summary statistics, some of which are biased torwards active neurons. As a result, an algorithm's performance may vary across datasets depending on how sensitive it is to levels of activity. That is why we show all evaluation metrics for all datasets!
     </div>
     <br>
     <div>
