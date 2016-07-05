@@ -79,6 +79,7 @@ Datasets have been generously provided by the following individuals and labs:
 - Simon Peron, Nicholas Sofroniew, & Karel Svoboda / Janelia Research Campus : `00`, `02`
 - Adam Packer, Lloyd Russell & Michael H&auml;usser / UCL : `01`
 - Jeff Zaremba, Patrick Kaifosh & Attila Losonczy / Columbia : `03`
+- Selmaan Chettih, Matthias Minderer, Chris Harvey / Harvard : `04`
 
 All datasets are hosted on Amazon S3, and direct links to zipped downloads are below.
 
