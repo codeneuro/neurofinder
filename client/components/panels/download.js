@@ -14,6 +14,14 @@ module.exports = function (state) {
       marginRight: '5px',
       marginBottom: '5px',
       display: 'inline-block'
+    },
+    datasetInline: {
+      backgroundColor: 'rgb(235,235,235)',
+      paddingLeft: '5px',
+      paddingRight: '5px',
+      marginLeft: '5px',
+      marginRight: '5px',
+      display: 'inline-block'
     }
   }
 
@@ -42,7 +50,7 @@ module.exports = function (state) {
     </div>
     <br>
     <div>
-      The source of labels differs across the datasets, to reflect some amibiguity as how to best define "ground truth" for this problem. For the <span style=${style.dataset}>00</span> data, labels are derived from an anatomical marker that indicates the precise location of each neuron, and includes neurons with no activity. For the <span style=${style.dataset}>01</span> <span style=${style.dataset}>02</span> <span style=${style.dataset}>03</span> <span style=${style.dataset}>04</span> data labels were hand drawn or manually curated, using the raw data and various summary statistics, some of which are biased torwards active neurons. As a result, an algorithm's performance may vary across datasets depending on how sensitive it is to levels of activity. That is why we show all evaluation metrics for all datasets!
+      The source of labels differs across the datasets, to reflect some amibiguity as how to best define "ground truth" for this problem. For the <span style=${style.datasetInline}>00</span> data, labels are derived from an anatomical marker that indicates the precise location of each neuron, and includes neurons with no activity. For the <span style=${style.datasetInline}>01</span> <span style=${style.datasetInline}>02</span> <span style=${style.datasetInline}>03</span> <span style=${style.datasetInline}>04</span> data labels were hand drawn or manually curated, using the raw data and various summary statistics, some of which are biased torwards active neurons. As a result, an algorithm's performance may vary across datasets depending on how sensitive it is to levels of activity. That is why we show all evaluation metrics for all datasets!
     </div>
     <br>
     <div>

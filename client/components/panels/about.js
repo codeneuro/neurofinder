@@ -17,7 +17,7 @@ module.exports = function (state) {
     <br>
     <br>
     <div>
-      One challenge is how to take time-varying images (the movie on the left) and extract "regions of interest" (the pink regions on the right) that correspond to individual neurons. Despite many efforts to automate this process, most solutions still require significant manual inspection, and most algorithms have not been compared on ground truth data.
+      One challenge is how to take time-varying images (left) and extract "regions of interest" (the pink regions on the right) that correspond to individual neurons. Despite many efforts to automate this process, most solutions still require significant manual inspection, and most algorithms have not been compared on ground truth data.
     </div>
     <br>
     <div>
