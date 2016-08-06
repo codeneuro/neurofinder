@@ -134,7 +134,7 @@ module.exports = function (state) {
 
   function detail () {
     if (state.info) return hx`<div><div>${state.info.dataset}</div><div>${state.info.lab}</div></div>`
-    else return hx`<div><div>mouse over</div><div>for info</div></div>`
+    else return hx`<div><div>mouse over</div><div>for dataset info</div></div>`
   }
 
   function contact (value) {
