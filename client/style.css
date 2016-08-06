@@ -21,15 +21,15 @@ body {
 }
 
 ::-webkit-input-placeholder {
-   color: rgb(170,170,170);
+   color: rgb(180,180,180);
 }
 
 :-moz-placeholder {
-   color: rgb(170,170,170);  
+   color: rgb(180,180,180);  
 }
 
 :-ms-input-placeholder {  
-   color: rgb(170,170,170);  
+   color: rgb(180,180,180);  
 }
 
 html { width: 100vw; }

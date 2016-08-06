@@ -11,8 +11,8 @@ module.exports = function (state) {
       width: '90%',
       height: '50px',
       textAlign: 'left',
-      paddingTop: '22px',
-      paddingBottom: '10px'
+      paddingTop: '25px',
+      paddingBottom: '6px'
     },
     input: {
       fontFamily: 'Abel',
@@ -21,7 +21,7 @@ module.exports = function (state) {
       height: '60%',
       width: '85%',
       paddingLeft: '12px',
-      color: 'rgb(130,130,130)'
+      color: 'rgb(170,170,170)'
     },
     icon: {
       width: '30px',

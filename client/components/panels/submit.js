@@ -117,7 +117,11 @@ function submit (state) {
   return hx`
   <div>
   <div>
-    To submit your algorithm, just run it locally on all the test datasets and generate a JSON file with the results! The format should be an array of results, one per test dataset, each with a list of regions for all identified neurons, as lists of pixel coordinates. See <a href='https://github.com/codeneuro/neurofinder#step-2-submit-your-algorithm'>here</a> for examples of saving results from python, javascript, or matlab, and see <a href='https://github.com/codeneuro/neurofinder-python'>here</a> for detailed info and code samples for the metrics used to evaluate results.
+    To submit your algorithm, just run it locally on all the test datasets and generate a JSON file with the results! The format should be an array of results, one per test dataset, each with a list of regions for all identified neurons, as lists of pixel coordinates. See <a href='https://github.com/codeneuro/neurofinder#step-2-submit-your-algorithm'>here</a> for examples of saving results from python, javascript, or matlab.
+    </div>
+    <br>
+    <div>
+    Algorithms will be evaluated based on the fraction of neurons in the ground truth that are found (recall), one minus the fraction of neurons identified without corresponding groud truth (precision), and the spatial similarity of the detected neurons (inclusion and exclusion). See <a href='https://github.com/codeneuro/neurofinder-python'>here</a> for info and code samples for these metrics.
   </div>
   <code><pre style=${style.code}>
     [{"dataset": "00.00.test",
@@ -128,7 +132,7 @@ function submit (state) {
     }, ...]
   </pre></code>
   <div>
-    Fill out the form below and drag your JSON file into the well. Multiple submissions from the same team are fine. Fun team names are also fine. Bonus points for including a link to a code repository!
+    Fill out the form below and drag your JSON file into the well. Multiple submissions from the same team are fine. Bonus points for including a link to a code repository!
   </div>
   <br>
 

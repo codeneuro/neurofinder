@@ -68,7 +68,15 @@ module.exports = function (state) {
       borderRadius: '2px'
     },
     icon: {
-      verticalAlign: 'bottom'
+      position: 'absolute',
+      display: 'inline-block',
+      marginLeft: '-29px',
+      marginTop: '4px'
+    },
+    byline: {
+      fontSize: '80%',
+      color: 'rgb(150,150,150)',
+      paddingBottom: '5px'
     }
   }
 
@@ -156,10 +164,10 @@ module.exports = function (state) {
   return hx`<div className='entry' style=${style.box} onclick=${onclick}>
     <div style=${style.info}>
       ${link(contact(state.contact))}
-      <span>${state.name}</span>
+      <span>${state.algorithm}</span>
       <br>
       ${link(repository(state.repository))}
-      <span>${state.algorithm}</span>
+      <span style=${style.byline}>by ${state.name}</span>
     </div>
     <div style=${style.header}>${header()}</div>
     <div style=${style.detail}>${detail()}</div>

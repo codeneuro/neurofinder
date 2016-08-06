@@ -44,10 +44,21 @@ module.exports = function (state) {
         return entry(item)
       })
 
+    var style = {
+      explanation: {
+        color: 'rgb(140,140,140)',
+        fontSize: '110%',
+        paddingTop: '0px',
+        paddingBottom: '15px'
+      }
+    }
+
     return hx`
     <div>
       ${search(state)}
+      <div style=${style.explanation}>Each panel shows results for a submitted algorithm. Click a panel to see more info about the submission.<br>Columns in each table are different datasets, and rows are different evaluation metrics.</div>
       ${list}
+      
     </div>
     `
   } 
