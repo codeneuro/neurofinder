@@ -163,10 +163,10 @@ module.exports = function (state) {
 
   return hx`<div className='entry' style=${style.box} onclick=${onclick}>
     <div style=${style.info}>
-      ${link(contact(state.contact))}
+      ${link(repository(state.repository))}
       <span>${state.algorithm}</span>
       <br>
-      ${link(repository(state.repository))}
+      ${link(contact(state.contact))}
       <span style=${style.byline}>by ${state.name}</span>
     </div>
     <div style=${style.header}>${header()}</div>
