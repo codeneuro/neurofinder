@@ -95,7 +95,15 @@ module.exports = function (state) {
     var selected = state.results.map(function (result) {
       return result.scores.filter(function (score) {
         return score.label === field
-      }).map(function (score) {return {value: score.value, field: field, lab: result.lab, dataset: result.dataset}})
+      }).map(function (score) {return {
+        value: score.value, 
+        field: field, 
+        lab: result.lab, 
+        dataset: result.dataset,
+        region: result.region,
+        rate: result.rate + ' Hz',
+        duration: result.duration + 'ec'
+      }})
     })
     selected = _.sortBy(selected, function (item) {return item[0].dataset})
     return selected.map(function (item) {
@@ -133,7 +141,11 @@ module.exports = function (state) {
   }
 
   function detail () {
-    if (state.info) return hx`<div><div>${state.info.dataset}</div><div>${state.info.lab}</div></div>`
+    if (state.info) return hx`<div>
+      <div>data ${state.info.dataset}</div>
+      <div>${state.info.duration} @ ${state.info.rate}</div>
+      <div>${state.info.region} / ${state.info.lab}</div>
+    </div>`
     else return hx`<div><div>mouse over</div><div>for dataset info</div></div>`
   }
 

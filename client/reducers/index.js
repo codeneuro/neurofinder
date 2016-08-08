@@ -45,6 +45,8 @@ var upload = function (state, action) {
 var submissions = function (state, action) {
   if (typeof state === 'undefined') state = initial.submissions
 
+  console.log(state.entries)
+
   switch (action.type) {
 
     case o.FETCH_SUBMISSIONS:
