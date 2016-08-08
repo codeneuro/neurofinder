@@ -16,7 +16,6 @@ module.exports = function (a, b, threshold, cb) {
 
   tmp.dir(function (err, dir) {
     write(dir, function () {
-      console.log(Math.round(threshold))
       var cmd = 'neurofinder evaluate ' + dir + '/a.json ' + dir + '/b.json --threshold=' + Math.round(threshold)
       exec(cmd, function (err, stdout, stderr) {
         if (err) return cb(err)
