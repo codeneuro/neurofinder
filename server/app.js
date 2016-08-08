@@ -32,6 +32,12 @@ var start = function (opts) {
     })
   })
 
+  app.get('/api/answers/', function (req, res) {
+    Answer.find({}, function (err, data) {
+      return res.json(data)
+    })
+  })
+
   app.get('/api/submissions/', function (req, res) {
     Submission.find({}, function (err, data) {
       return res.json(data)
@@ -80,7 +86,8 @@ var start = function (opts) {
       async.map(datasets, function (dataset, next) {
         answers.forEach(function (answer) {
           if (answer.dataset === dataset.name) {
-            evaluate(dataset.regions, answer.regions, function (err, scores) {
+            var threshold = parseFloat(dataset.pixels) * 5
+            evaluate(dataset.regions, answer.regions, threshold, function (err, scores) {
               if (err) return next({stage: 'computing results', error: err})
               var reformatted = []
               _.forEach(scores, function (value, label) {
@@ -89,6 +96,9 @@ var start = function (opts) {
               var result = {
                 dataset: dataset.name,
                 lab: dataset.lab,
+                duration: dataset.duration,
+                rate: dataset.rate,
+                region: dataset.region,
                 scores: reformatted
               }
               return next(null, result)

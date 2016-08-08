@@ -3,7 +3,7 @@ var tmp = require('tmp')
 var path = require('path')
 var exec = require('child_process').exec
 
-module.exports = function (a, b, cb) {
+module.exports = function (a, b, threshold, cb) {
   function write (dir, cb) {
     fs.writeFile(path.join(dir, 'a.json'), JSON.stringify(a), function (err) {
       if (err) return cb(err)
@@ -16,7 +16,8 @@ module.exports = function (a, b, cb) {
 
   tmp.dir(function (err, dir) {
     write(dir, function () {
-      var cmd = 'neurofinder evaluate ' + dir + '/a.json ' + dir + '/b.json'
+      console.log(Math.round(threshold))
+      var cmd = 'neurofinder evaluate ' + dir + '/a.json ' + dir + '/b.json --threshold=' + Math.round(threshold)
       exec(cmd, function (err, stdout, stderr) {
         if (err) return cb(err)
         else if (stderr) return cb(err)

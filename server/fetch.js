@@ -43,6 +43,9 @@ function populate (datasets) {
         region: data.info.region,
         lab: data.info.lab,
         animal: data.info.animal,
+        rate: data.info['rate-hz'],
+        pixels: data.info['pixels-per-micron'],
+        duration: Math.round(data.info.dimensions[2]/data.info['rate-hz']) + ' s',
         regions: data.regions
       })
       dataset.save(function (err, data) {

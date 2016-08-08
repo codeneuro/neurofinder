@@ -10,6 +10,9 @@ module.exports = mongoose.model('Answer', {
     {
       dataset: String,
       lab: String,
+      duration: String,
+      rate: String,
+      region: String,
       scores: [
         {label: String, value: Number}
       ]

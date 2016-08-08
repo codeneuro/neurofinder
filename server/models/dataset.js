@@ -6,5 +6,8 @@ module.exports = mongoose.model('Dataset', {
   region: String,
   lab: String,
   animal: String,
+  rate: String,
+  duration: String,
+  pixels: String,
   regions: [{id: String, coordinates: []}]
 })
