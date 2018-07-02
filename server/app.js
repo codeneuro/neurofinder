@@ -133,7 +133,7 @@ var start = function (opts) {
     }
 
     async.waterfall([
-      checkSchema, getDatasets, checkAnswers, computeResults, sendAnswers, sendResults
+      checkSchema, getDatasets, checkAnswers, computeResults, sendResults
     ], function (err) {
       if (err) {
         debug('failed and sending error message')

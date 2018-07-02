@@ -36,7 +36,9 @@ module.exports = function (state) {
     unique.forEach(function (entry) {
       selected = _.find(_.sortBy(entries, 'timestamp').reverse(), 
         { name: entry.name, algorithm: entry.algorithm })
-      filtered.push(selected)
+      if (selected.results.length > 0) {
+        filtered.push(selected)
+      }
     })
 
     var list = filtered.sort(function (a, b) {
