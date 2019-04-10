@@ -111,19 +111,10 @@ var start = function (opts) {
       })
     }
 
-    function sendAnswers (results, next) {
-      debug('sending answers')
-      req.body.results = results
-      req.body.timestamp = timestamp()
-      var answer = new Answer(req.body)
-      answer.save(function (err, data) {
-        if (err) return next({stage: 'sending results', error: err})
-        return next(null)
-      })
-    }
-
     function sendResults (next) {
       debug('sending results')
+      req.body.results = results
+      req.body.timestamp = timestamp()
       delete req.body.answers 
       var submission = new Submission(req.body)
       submission.save(function (err, data) {
