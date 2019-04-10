@@ -111,7 +111,7 @@ var start = function (opts) {
       })
     }
 
-    function sendResults (next) {
+    function sendResults (results, next) {
       debug('sending results')
       req.body.results = results
       req.body.timestamp = timestamp()
